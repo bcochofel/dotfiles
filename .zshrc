@@ -111,20 +111,6 @@ source $ZSH/oh-my-zsh.sh
 #POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir virtualenv vcs)
 #POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time virtualenv)
 
-# Hashicorp Stack
-export NOMAD_ADDR=http://server-1:4646
-complete -o nospace -C /usr/local/bin/terraform terraform
-complete -o nospace -C /usr/local/bin/nomad nomad
-complete -o nospace -C /usr/local/bin/consul consul
-
-# SecureCRT
-export TERM="xterm-256color"
-
-# Golang
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/Projects/
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 autoload -U +X bashcompinit && bashcompinit
