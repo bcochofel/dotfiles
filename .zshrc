@@ -72,7 +72,7 @@ BULLETTRAIN_PROMPT_ORDER=(
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(ssh-agent colored-man-pages python virtualenvwrapper zsh-autosuggestions)
-plugins=(ssh-agent git)
+plugins=(ssh-agent git zsh-autosuggestions)
 
 # ssh-agent plugin setting
 zstyle :omz:plugins:ssh-agent agent-forwarding on
