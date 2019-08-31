@@ -1,0 +1,2 @@
+#!/bin/sh
+'feh' '--bg-scale' '/home/bcochofel/Pictures/linux_perf_tools_full.png' 

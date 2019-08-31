@@ -1,0 +1,5 @@
+[http]
+	sslVerify = false
+[user]
+	email = bruno.cochofel@gmail.com
+	name = Bruno Cochofel
