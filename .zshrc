@@ -12,13 +12,18 @@ export ZSH="$HOME/.oh-my-zsh"
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="agnoster"
 ZSH_THEME="bullet-train"
-BULLETTRAIN_DIR_EXTENDED=0
-BULLETTRAIN_PROMPT_ORDER=(
-  git
-  context
-  dir
-  time
-)
+#BULLETTRAIN_DIR_EXTENDED=0
+#BULLETTRAIN_PROMPT_ORDER=(
+#  git
+#  status
+#  context
+#  dir
+#  virtualenv
+#  go
+#  time
+#)
+
+BULLETTRAIN_STATUS_EXIT_SHOW="true"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -46,10 +51,10 @@ BULLETTRAIN_PROMPT_ORDER=(
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -62,7 +67,7 @@ BULLETTRAIN_PROMPT_ORDER=(
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -77,7 +82,7 @@ plugins=(ssh-agent git zsh-autosuggestions)
 
 # ssh-agent plugin setting
 zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent identities id_rsa
+zstyle :omz:plugins:ssh-agent identities id_rsa ghost
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,8 +123,8 @@ source $ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 autoload -U +X bashcompinit && bashcompinit
 
 # Hashicorp Stack
-#export NOMAD_ADDR=http://server-1:4646
-#export VAULT_ADDR=http://server-1:8200
+export NOMAD_ADDR=http://server-1:4646
+export VAULT_ADDR=http://server-1:8200
 complete -o nospace -C /usr/local/bin/terraform terraform
 complete -o nospace -C /usr/local/bin/vault vault
 complete -o nospace -C /usr/local/bin/nomad nomad
