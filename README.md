@@ -6,4 +6,16 @@ apt install zsh zsh-syntax-highlighting neovim ttf-ancient-fonts zsh-theme-power
 
 ## Install oh-my-zsh
 
-Check: https://github.com/ohmyzsh/ohmyzsh
+https://github.com/ohmyzsh/ohmyzsh
+
+## Install Kitty terminal
+
+https://sw.kovidgoyal.net/kitty/
+
+## Install NeoVim
+
+https://neovim.io/
+
+## Install i3 window manager
+
+https://i3wm.org/
