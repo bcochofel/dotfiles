@@ -2,7 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/bcochofel/.oh-my-zsh"
+#export ZSH="/home/bcochofel/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -76,7 +77,7 @@ plugins=(ssh-agent git zsh-autosuggestions)
 
 # ssh-agent plugin setting
 zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent identities id_rsa ghost
+zstyle :omz:plugins:ssh-agent identities id_rsa
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,6 +112,26 @@ source $ZSH/oh-my-zsh.sh
 #POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir virtualenv vcs)
 #POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time virtualenv)
 
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 autoload -U +X bashcompinit && bashcompinit
+
+# Hashicorp Stack
+#export NOMAD_ADDR=http://server-1:4646
+#export VAULT_ADDR=http://server-1:8200
+complete -o nospace -C /usr/local/bin/terraform terraform
+complete -o nospace -C /usr/local/bin/vault vault
+complete -o nospace -C /usr/local/bin/nomad nomad
+complete -o nospace -C /usr/local/bin/consul consul
+
+# SecureCRT
+export TERM="xterm-256color"
+
+# Golang
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/Projects/
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+# Slakc API URL
+#export SLACK_API_URL=https://hooks.slack.com/services/<token>

@@ -25,17 +25,3 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-
-# Hashicorp Stack
-export NOMAD_ADDR=http://server-1:4646
-complete -o nospace -C /usr/local/bin/terraform terraform
-complete -o nospace -C /usr/local/bin/nomad nomad
-complete -o nospace -C /usr/local/bin/consul consul
-
-# SecureCRT
-export TERM="xterm-256color"
-
-# Golang
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/Projects/
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
