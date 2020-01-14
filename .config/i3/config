@@ -13,9 +13,6 @@ set $mod Mod4
 
 # === appearance ===
 
-# wallpaper
-exec --no-startup-id feh --bg-scale "/home/bcochofel/Pictures/linux_perf_tools_full.png"
-
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8
@@ -37,6 +34,7 @@ floating_modifier $mod
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec kitty
+#bindsym $mod+Return exec terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -162,29 +160,44 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+set $WS1 1:console
+set $WS2 2:secureCRT
+set $WS3 3:www
+set $WS4 4
+set $WS5 5
+set $WS6 6
+set $WS7 7
+set $WS8 8
+set $WS9 9:media
+set $WS10 10:chat
+
+# switch between workspace
+bindsym mod1+Tab workspace next
+bindsym mod1+iShift+Tab workspace next
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS8
+bindsym $mod+Shift+9 move container to workspace $WS9
+bindsym $mod+Shift+0 move container to workspace $WS10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -219,6 +232,20 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# move workspace to another screen
+#bindsym $mod+Ctrl+Down move workspace to output eDP-1<Paste>
+#bindsym $mod+Ctrl+Up move workspace to output DP-2
+
+# binding apps to workspaces
+assign [class="SecureCRT"] $WS2
+assign [class="Firefox"] $WS3
+assign [class="Google-chrome"] $WS3
+assign [class="Slack"] $WS10
+assign [class="whatsdesk"] $WS10
+assign [class="yakyak"] $WS10
+
+for_window [class="Spotify"] move to workspace $WS9
+
 # start i3bar to display a workspace bar
 # run conky or i3status
 # force tray icons to be available on primary monitor
@@ -235,5 +262,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xhost local:root
 exec --no-startup-id ~/bin/monitors.sh
 #exec --no-startup-id sudo iwconfig wlp2s0 power off
-#exec --no-startup-id i3-msg 'workspace 1:console; exec i3-sensible-terminal'
-exec --no-startup-id i3-msg 'workspace 1:console; exec kitty'
+#exec --no-startup-id i3-msg 'workspace $WS1; exec i3-sensible-terminal'
+exec --no-startup-id i3-msg 'workspace $WS1; exec kitty'
+#exec --no-startup-id i3-msg 'workspace $WS1; exec terminator'
+# wallpaper
+exec --no-startup-id feh --bg-center "/home/bcochofel/Pictures/i3refguide.png"
