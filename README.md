@@ -13,10 +13,15 @@ It uses the following:
 
 ```bash
 # install applications
-sudo apt install git unzip curl wget i3 feh rofi scrot terminator neovim zsh zsh-syntax-highlighting ttf-ancient-fonts
+sudo apt install git unzip curl wget i3 conky feh rofi scrot terminator neovim zsh zsh-syntax-highlighting ttf-ancient-fonts
 
 # clone dotfiles repo
 git clone https://github.com/bcochofel/dotfiles.git
+
+# install ttf font
+mkdir ~/.local/share/fonts
+cp dotfiles/.config/i3/i3status-conky/fontawesome-webfont.ttf ~/.local/share/fonts
+fc-cache -f -v
 
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
