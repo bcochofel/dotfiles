@@ -12,11 +12,11 @@ It uses the following:
 ## TL;DR
 
 ```bash
+# install applications
+sudo apt install git i3 feh rofi scrot terminator neovim zsh zsh-syntax-highlighting ttf-ancient-fonts
+
 # clone dotfiles repo
 git clone git@github.com:bcochofel/dotfiles.git
-
-# install applications
-sudo apt install i3 feh rofi scrot terminator neovim zsh zsh-syntax-highlighting ttf-ancient-fonts
 
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
