@@ -266,4 +266,4 @@ exec --no-startup-id ~/bin/monitors.sh
 exec --no-startup-id i3-msg 'workspace $WS1; exec kitty'
 #exec --no-startup-id i3-msg 'workspace $WS1; exec terminator'
 # wallpaper
-#exec --no-startup-id feh --bg-scale "/home/$USER/Pictures/linux_perf_tools_full.png"
+exec --no-startup-id feh --bg-center "/home/$USER/Pictures/photo1.jpg"
