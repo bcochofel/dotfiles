@@ -13,7 +13,7 @@ It uses the following:
 
 ```bash
 # install applications
-sudo apt install git unzip curl wget i3 conky feh rofi scrot terminator neovim zsh zsh-syntax-highlighting ttf-ancient-fonts
+sudo apt install git unzip curl wget i3 i3lock xautolock conky feh rofi scrot terminator neovim zsh zsh-syntax-highlighting ttf-ancient-fonts
 
 # clone dotfiles repo
 git clone https://github.com/bcochofel/dotfiles.git
