@@ -16,7 +16,7 @@ It uses the following:
 sudo apt install git unzip curl wget i3 feh rofi scrot terminator neovim zsh zsh-syntax-highlighting ttf-ancient-fonts
 
 # clone dotfiles repo
-git clone git@github.com:bcochofel/dotfiles.git
+git clone https://github.com/bcochofel/dotfiles.git
 
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
