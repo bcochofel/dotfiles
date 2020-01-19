@@ -69,6 +69,7 @@ EOF
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 cp ~/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
 vim +PluginInstall +qall
+vim +UpdateRemotePlugins +qall
 ```
 
 ## Install zsh/neovim on Ubuntu
