@@ -64,6 +64,11 @@ foreground       #00FF00
 # The background color
 background       #000000
 EOF
+
+# install vundle for neovim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
+cp ~/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
+vim +PluginInstall +qall
 ```
 
 ## Install zsh/neovim on Ubuntu
