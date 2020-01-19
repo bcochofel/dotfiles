@@ -27,6 +27,7 @@ curl -O https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-them
 chsh -s $(which zsh)
 
 # install kitty
+cd
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
 cat <<EOF > ~/.config/kitty/kitty.conf
@@ -53,6 +54,7 @@ foreground       #00FF00
 
 # The background color
 background       #000000
+EOF
 ```
 
 ## Install zsh/neovim on Ubuntu
