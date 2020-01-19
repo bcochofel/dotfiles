@@ -72,12 +72,6 @@ vim +PluginInstall +qall
 vim +UpdateRemotePlugins +qall
 ```
 
-## Install zsh/neovim on Ubuntu
-
-```bash
-apt install zsh zsh-syntax-highlighting neovim ttf-ancient-fonts zsh-theme-powerlevel9k
-```
-
 ## Install oh-my-zsh
 
 https://github.com/ohmyzsh/ohmyzsh
@@ -90,6 +84,10 @@ curl -o https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-them
 
 chsh -s $(which zsh)
 ```
+
+## Terminator
+
+https://terminator-gtk3.readthedocs.io/en/latest/gettingstarted.html
 
 ## Install Kitty terminal
 
