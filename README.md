@@ -29,7 +29,7 @@ chsh -s $(which zsh)
 # install kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
-cat <<EOF > .config/kitty/kitty.conf
+cat <<EOF > ~/.config/kitty/kitty.conf
 # vim:fileencoding=utf-8:ft=conf
 
 # Font family. You can also specify different fonts for the
