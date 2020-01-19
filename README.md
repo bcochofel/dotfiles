@@ -5,8 +5,8 @@ Dotfiles for user profile.
 It uses the following:
 
 - Window Manager: i3
-- Linux terminal: terminator and kitty
-- Editor: vim and neovim
+- Linux terminal: terminator/kitty
+- Editor: vim/neovim + vundle plugins
 - Shell: zsh + oh-my-zsh
 
 ## TL;DR
