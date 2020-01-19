@@ -19,7 +19,7 @@ sudo apt install git unzip curl wget i3 conky feh rofi scrot terminator neovim z
 git clone https://github.com/bcochofel/dotfiles.git
 
 # install ttf font
-mkdir ~/.local/share/fonts
+mkdir -p ~/.local/share/fonts
 cp dotfiles/.config/i3/i3status-conky/fontawesome-webfont.ttf ~/.local/share/fonts
 fc-cache -f -v
 
