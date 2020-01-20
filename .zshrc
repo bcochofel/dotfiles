@@ -121,6 +121,13 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 autoload -U +X bashcompinit && bashcompinit
 
+# VTE FIX for tilix
+# you may need to do the following:
+# sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+    source /etc/profile.d/vte.sh
+fi
+
 # Hashicorp Stack
 export NOMAD_ADDR=http://server-1:4646
 export VAULT_ADDR=http://server-1:8200
