@@ -34,12 +34,16 @@ instance=wlp2s0;in
 label=
 color=#509b98
 interval=1
+min_width="9999mb"
+align=right
 
 [bandwidth]
 instance=wlp2s0;out
 label=
 color=#21d0c8
 interval=1
+min_width="9999mb"
+align=right
 
 #[spotify]
 #interval=persist
