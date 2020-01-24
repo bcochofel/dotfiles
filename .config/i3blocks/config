@@ -46,6 +46,20 @@ label=
 color=#2db94b
 interval=10
 
+[memory]
+label=
+instance=mem;free
+interval=30
+
+[memory]
+label=
+instance=swap;total
+interval=30
+
+[cpu]
+label=
+interval=2
+
 [ssid]
 label=
 color=#00ffff
@@ -81,12 +95,16 @@ label=♪
 color=#81b71a
 interval=5
 
+#[bluetooth]
+#label=
+#interval=10
+
 [battery]
 markup=pango
 interval=30
 
 [datetime]
-instance=%H:%M - %Y/%m/%d
+instance=%d/%m %H:%M
 label=
 color=#ff9633
 interval=5
