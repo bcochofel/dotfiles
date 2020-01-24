@@ -82,7 +82,7 @@ plugins=(ssh-agent git zsh-autosuggestions)
 
 # ssh-agent plugin setting
 zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent identities id_rsa ghost
+zstyle :omz:plugins:ssh-agent identities id_rsa
 
 source $ZSH/oh-my-zsh.sh
 
