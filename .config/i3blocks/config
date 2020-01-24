@@ -41,6 +41,14 @@ label=
 color=#21d0c8
 interval=1
 
+#[spotify]
+#interval=persist
+
+[spotify2]
+label=
+color=#81b71a
+interval=5
+
 [load_average]
 label=
 color=#2db94b
@@ -81,14 +89,6 @@ label=
 instance=wlp2s0
 color=#3792de
 interval=10
-
-#[spotify]
-#interval=persist
-
-[spotify2]
-label=
-color=#81b71a
-interval=5
 
 [audio]
 label=♪
