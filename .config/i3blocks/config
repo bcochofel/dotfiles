@@ -32,33 +32,40 @@ markup=none
 [bandwidth]
 instance=wlp2s0;in
 label=
+color=#509b98
 interval=1
 
 [bandwidth]
 instance=wlp2s0;out
 label=
+color=#21d0c8
 interval=1
 
 [load_average]
 label=
+color=#2db94b
 interval=10
 
 [ssid]
 label=
+color=#00ffff
 interval=60
 
 [ip-address]
 label=
+color=#0011ff
 interval=60
 
 [network]
 label=
 instance=enp0s31f6
+color=#3792de
 interval=10
 
 [network]
 label=
 instance=wlp2s0
+color=#3792de
 interval=10
 
 #[spotify]
@@ -71,6 +78,7 @@ interval=5
 
 [audio]
 label=♪
+color=#81b71a
 interval=5
 
 [battery]
@@ -80,6 +88,7 @@ interval=30
 [datetime]
 instance=%H:%M - %Y/%m/%d
 label=
+color=#ff9633
 interval=5
 
 # Part 1
