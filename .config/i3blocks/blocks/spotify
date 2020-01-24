@@ -65,6 +65,8 @@ class SpotifyBlocklet:
         # X11 mouse button number to MPRIS method mapping
         'mouse_buttons': {
             '1': 'PlayPause',
+            '9': 'Previous',
+            '8': 'Next'
         },
     }
 
