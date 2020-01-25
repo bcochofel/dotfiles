@@ -241,7 +241,7 @@ bindsym $mod+r mode "resize"
 assign [class="SecureCRT"] $WS2
 assign [class="Firefox"] $WS3
 assign [class="Google-chrome"] $WS3
-assign [class="code"] $WS4
+assign [class="Code"] $WS4
 assign [class="Slack"] $WS10
 assign [class="whatsdesk"] $WS10
 assign [class="yakyak"] $WS10
