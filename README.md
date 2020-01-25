@@ -26,7 +26,7 @@ Take a look at: https://www.atlassian.com/git/tutorials/dotfiles to keep your do
 
 Using the method described before you can clone the Git repository to your home.
 
-## Start your repository
+## Start your repository from scratch
 
 ```bash
 git init --bare $HOME/.dotfiles
