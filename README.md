@@ -62,6 +62,10 @@ sudo apt install terminator tilix
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 ```
 
+## @TODO
+
+Tilix profile backup/restore
+
 ## Install kitty
 
 https://sw.kovidgoyal.net/kitty/
@@ -98,6 +102,7 @@ EOF
 
 # Create a symbolic link to add kitty to PATH (assuming ~/.local/bin is in
 # your PATH)
+mkdir -p ~/.local/bin
 ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin/
 # Place the kitty.desktop file somewhere it can be found by the OS
 cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications
