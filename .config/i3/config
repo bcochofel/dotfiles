@@ -33,9 +33,9 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec kitty
+#bindsym $mod+Return exec kitty
 #bindsym $mod+Return exec tilix
-#bindsym $mod+Return exec terminator
+bindsym $mod+Return exec terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -266,8 +266,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xhost local:root
 exec --no-startup-id ~/bin/monitors.sh
 #exec --no-startup-id i3-msg 'workspace $WS1; exec i3-sensible-terminal'
-exec --no-startup-id i3-msg 'workspace $WS1; exec kitty'
-#exec --no-startup-id i3-msg 'workspace $WS1; exec terminator'
+#exec --no-startup-id i3-msg 'workspace $WS1; exec kitty'
 #exec --no-startup-id i3-msg 'workspace $WS1; exec tilix'
+exec --no-startup-id i3-msg 'workspace $WS1; exec terminator'
 # wallpaper
 exec --no-startup-id feh --bg-center "/home/$USER/Pictures/background.jpg"
