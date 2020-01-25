@@ -60,13 +60,15 @@ Clone repoitory
 
 ```bash
 alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-gitdotfiles status
 echo ".dotfiles" >> .gitignore
 git clone --bare https://github.com/bcochofel/dotfiles.git $HOME/.dotfiles
 alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+mkdir -p ~/.config-backup
+gitdotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} ~/.config-backup/{}
 gitdotfiles checkout
 gitdotfiles config --local status.showUntrackedFiles no
 gitdotfiles status
+echo "alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
 ```
 
 Additional configuration
