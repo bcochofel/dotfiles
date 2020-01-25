@@ -37,18 +37,7 @@ echo "alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HO
 
 ## Install your dotfiles onto a new system (or migrate to this setup)
 
-```bash
-alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-gitdotfiles status
-echo ".dotfiles" >> .gitignore
-git clone --bare https://github.com/bcochofel/dotfiles.git $HOME/.dotfiles
-alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-gitdotfiles checkout
-gitdotfiles config --local status.showUntrackedFiles no
-gitdotfiles status
-```
-
-Additional configuration
+Install and configure dependencies
 
 ```bash
 # oh-my-zsh
@@ -65,9 +54,28 @@ chsh -s $(which zsh)
 
 # kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+```
+
+Clone repoitory
+
+```bash
+alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+gitdotfiles status
+echo ".dotfiles" >> .gitignore
+git clone --bare https://github.com/bcochofel/dotfiles.git $HOME/.dotfiles
+alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+gitdotfiles checkout
+gitdotfiles config --local status.showUntrackedFiles no
+gitdotfiles status
+```
+
+Additional configuration
+
+```bash
 # Create a symbolic link to add kitty to PATH (assuming ~/.local/bin is in
 # your PATH)
 mkdir -p ~/.local/bin
+mkdir -p ~/.local/share/applications
 ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin/
 # Place the kitty.desktop file somewhere it can be found by the OS
 cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications
@@ -79,7 +87,6 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vund
 vim +PluginInstall +qall
 vim +UpdateRemotePlugins +qall
 ```
-
 # Install manually
 
 ## i3 Window manager
@@ -172,6 +179,7 @@ EOF
 # Create a symbolic link to add kitty to PATH (assuming ~/.local/bin is in
 # your PATH)
 mkdir -p ~/.local/bin
+mkdir -p ~/.local/share/applications
 ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin/
 # Place the kitty.desktop file somewhere it can be found by the OS
 cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications
