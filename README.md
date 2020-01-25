@@ -13,6 +13,10 @@ It uses the following:
 sudo apt install curl wget git unzip gnome-control-center gnome-screensaver apt-file mc
 ```
 
+# Git your dotfiles
+
+Take a look at: https://www.atlassian.com/git/tutorials/dotfiles to keep your dotfiles managed by Git.
+
 # i3 Window manager
 
 https://i3wm.org/
