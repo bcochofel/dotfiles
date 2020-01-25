@@ -60,16 +60,19 @@ interval=10
 
 [memory]
 label=
+color=#2db94b
 instance=mem;free
 interval=30
 
 [memory]
 label=
+color=#2db94b
 instance=swap;total
 interval=30
 
 [cpu]
 label=
+color=#2db94b
 interval=2
 
 [ssid]
