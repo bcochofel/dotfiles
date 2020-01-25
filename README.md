@@ -125,3 +125,10 @@ cp ~/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
 vim +PluginInstall +qall
 vim +UpdateRemotePlugins +qall
 ```
+
+## Clone repository
+
+```bash
+mkdir ~/Pictures/screenshots
+# change ~/.config/i3blocks/config and adapt to network devices
+```
