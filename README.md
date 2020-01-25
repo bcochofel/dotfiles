@@ -46,6 +46,33 @@ alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 gitdotfiles checkout
 gitdotfiles config --local status.showUntrackedFiles no
 gitdotfiles status
+```
+
+Additional configuration
+
+```bash
+# oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+# oh-my-zsh bullet-train theme
+cd ~/.oh-my-zsh/themes/
+curl -O https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
+
+# zsh-autosuggestions plugin
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+chsh -s $(which zsh)
+
+# kitty
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+# Create a symbolic link to add kitty to PATH (assuming ~/.local/bin is in
+# your PATH)
+mkdir -p ~/.local/bin
+ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin/
+# Place the kitty.desktop file somewhere it can be found by the OS
+cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications
+# Update the path to the kitty icon in the kitty.desktop file
+sed -i "s/Icon\=kitty/Icon\=\/home\/$USER\/.local\/kitty.app\/share\/icons\/hicolor\/256x256\/apps\/kitty.png/g" ~/.local/share/applications/kitty.desktop
 
 # install vundle on neovim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
