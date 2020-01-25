@@ -79,17 +79,17 @@ mode "$mode_system" {
 }
 
 # lock the screen
-#bindsym Mod1+Ctrl+l exec i3lock -c '#000000'
-bindsym Mod1+Ctrl+l exec gnome-screensaver-command --lock
+bindsym Mod1+Ctrl+l exec i3lock -c '#000000'
+#bindsym Mod1+Ctrl+l exec gnome-screensaver-command --lock
 
 # screenshot
 
 # Print multi head                                                 
-bindsym --release Print exec "scrot -m '%F_%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/'"
+bindsym --release Print exec "scrot -m '%Y%m%d-%H%M_$wx$h.png' -e 'mv $f ~/Pictures/screenshots/'"
 # Print selection
-bindsym --release Shift+Print exec "scrot -s '%F_%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/'"
+bindsym --release Shift+Print exec "scrot -s '%Y%m%d-%H%M_$wx$h.png' -e 'mv $f ~/Pictures/screenshots/'"
 # Print focused window
-bindsym --release $mod+Shift+Print exec "scrot -u -d 4 '%F_%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/'"
+bindsym --release $mod+Shift+Print exec "scrot -u -d 4 '%Y%m%d-%H%M_$wx$h.png' -e 'mv $f ~/Pictures/screenshots/'"
 
 # Pulse Audio controls                                             
 
@@ -163,7 +163,7 @@ bindsym $mod+a focus parent
 set $WS1 1:console
 set $WS2 2:secureCRT
 set $WS3 3:www
-set $WS4 4
+set $WS4 4:vscode
 set $WS5 5
 set $WS6 6
 set $WS7 7
@@ -233,13 +233,15 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # move workspace to another screen
-#bindsym $mod+Ctrl+Down move workspace to output eDP-1<Paste>
+#bindsym $mod+Ctrl+Down move workspace to output eDP-1
 #bindsym $mod+Ctrl+Up move workspace to output DP-2
 
 # binding apps to workspaces
+# use xprop to check the name of the windows
 assign [class="SecureCRT"] $WS2
 assign [class="Firefox"] $WS3
 assign [class="Google-chrome"] $WS3
+assign [class="code"] $WS4
 assign [class="Slack"] $WS10
 assign [class="whatsdesk"] $WS10
 assign [class="yakyak"] $WS10
@@ -251,20 +253,20 @@ for_window [class="Spotify"] move to workspace $WS9
 # force tray icons to be available on primary monitor
 bar {
 #  status_command /home/$USER/.config/i3/i3status-conky/i3status.sh
-#  tray_output primary
   status_command i3blocks -c ~/.config/i3blocks/config
+  tray_output primary
 }
 
 # === autostart programs ===
 
-#exec xautolock -time 10 -locker "i3lock -c '#000000'"
-exec xautolock -time 10 -locker "gnome-screensaver-command --lock"
+exec xautolock -time 10 -locker "i3lock -c '#000000'"
+#exec xautolock -time 10 -locker "gnome-screensaver-command --lock"
 exec --no-startup-id nm-applet
 exec --no-startup-id xhost local:root
 exec --no-startup-id ~/bin/monitors.sh
-#exec --no-startup-id sudo iwconfig wlp2s0 power off
 #exec --no-startup-id i3-msg 'workspace $WS1; exec i3-sensible-terminal'
 exec --no-startup-id i3-msg 'workspace $WS1; exec kitty'
 #exec --no-startup-id i3-msg 'workspace $WS1; exec terminator'
+#exec --no-startup-id i3-msg 'workspace $WS1; exec tilix'
 # wallpaper
 exec --no-startup-id feh --bg-center "/home/$USER/Pictures/background.jpg"

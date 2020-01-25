@@ -10,7 +10,7 @@ It uses the following:
 # Dependencies
 
 ```bash
-sudo apt install curl wget git unzip
+sudo apt install curl wget git unzip gnome-control-center gnome-screensaver apt-file
 ```
 
 # i3 Window manager
@@ -20,7 +20,7 @@ https://i3wm.org/
 ## Install packages
 
 ```bash
-sudo apt install i3 i3blocks i3lock i3lock-fancy i3status xautolock conky feh rofi scrot
+sudo apt install i3 i3blocks i3lock i3lock-fancy i3status xautolock conky feh rofi scrot pulseaudio-utils xbacklight
 ```
 
 # Zsh + oh-my-zsh
