@@ -10,7 +10,7 @@ It uses the following:
 # Dependencies
 
 ```bash
-sudo apt install curl wget git unzip gnome-control-center gnome-screensaver apt-file
+sudo apt install curl wget git unzip gnome-control-center gnome-screensaver apt-file mc
 ```
 
 # i3 Window manager
