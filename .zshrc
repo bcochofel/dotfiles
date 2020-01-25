@@ -2,7 +2,6 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-#export ZSH="/home/bcochofel/.oh-my-zsh"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -77,8 +76,19 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-#plugins=(ssh-agent colored-man-pages python virtualenvwrapper zsh-autosuggestions)
-plugins=(ssh-agent git zsh-autosuggestions)
+plugins=(
+  ssh-agent
+  zsh-autosuggestions
+  colorize
+#  ansible
+#  docker
+#  kubectl
+  git
+#  git-prompt
+#  golang
+#  python
+#  virtualenvwrapper
+)
 
 # ssh-agent plugin setting
 zstyle :omz:plugins:ssh-agent agent-forwarding on
@@ -113,36 +123,32 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
-#source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir virtualenv vcs)
-#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time virtualenv)
-
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 autoload -U +X bashcompinit && bashcompinit
 
-# VTE FIX for tilix
-# you may need to do the following:
-# sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+autoload -Uz compinit
+compinit
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
+
+# tiliz terminal
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     source /etc/profile.d/vte.sh
 fi
 
+# SecureCRT
+export TERM="xterm-256color"
+
 # Hashicorp Stack
-export NOMAD_ADDR=http://server-1:4646
-export VAULT_ADDR=http://server-1:8200
+#export NOMAD_ADDR=http://server-1:4646
+#export VAULT_ADDR=http://server-1:8200
 complete -o nospace -C /usr/local/bin/terraform terraform
 complete -o nospace -C /usr/local/bin/vault vault
 complete -o nospace -C /usr/local/bin/nomad nomad
 complete -o nospace -C /usr/local/bin/consul consul
 
-# SecureCRT
-export TERM="xterm-256color"
-
 # Golang
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/Projects/
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-
-# Slakc API URL
-#export SLACK_API_URL=https://hooks.slack.com/services/<token>
