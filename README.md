@@ -7,35 +7,73 @@ It uses the following:
 - Editor: vim/neovim + vundle plugins
 - Shell: zsh + oh-my-zsh
 
-# Dependencies
+# Install Dependencies/Packages
 
 ```bash
 sudo apt install curl wget git unzip gnome-control-center gnome-screensaver apt-file mc
+sudo apt install i3 i3blocks i3lock i3lock-fancy i3status xautolock conky feh rofi scrot pulseaudio-utils xbacklight
+sudo apt install zsh zsh-syntax-highlighting ttf-ancient-fonts fonts-powerline fonts-font-awesome
+sudo apt install terminator tilix
+sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+sudo apt install vim neovim
 ```
 
 # Git your dotfiles
 
 Take a look at: https://www.atlassian.com/git/tutorials/dotfiles to keep your dotfiles managed by Git.
 
-# i3 Window manager
+# Install dotfiles
+
+Using the method described before you can clone the Git repository to your home.
+
+## Start your repository
+
+```bash
+git init --bare $HOME/.dotfiles
+alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+gitdotfiles config --local status.showUntrackedFiles no
+echo "alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
+```
+
+## Install your dotfiles onto a new system (or migrate to this setup)
+
+```bash
+alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+gitdotfiles status
+echo ".dotfiles" >> .gitignore
+git clone --bare https://github.com/bcochofel/dotfiles.git $HOME/.dotfiles
+alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+gitdotfiles checkout
+gitdotfiles config --local status.showUntrackedFiles no
+gitdotfiles status
+
+# install vundle on neovim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
+vim +PluginInstall +qall
+vim +UpdateRemotePlugins +qall
+```
+
+# Install manually
+
+## i3 Window manager
 
 https://i3wm.org/
 
-## Install packages
+### Install packages
 
 ```bash
 sudo apt install i3 i3blocks i3lock i3lock-fancy i3status xautolock conky feh rofi scrot pulseaudio-utils xbacklight
 ```
 
-# Zsh + oh-my-zsh
+## Zsh + oh-my-zsh
 
-## Install packages
+### Install packages
 
 ```bash
 sudo apt install zsh zsh-syntax-highlighting ttf-ancient-fonts fonts-powerline fonts-font-awesome
 ```
 
-## Install oh-my-zsh
+### Install oh-my-zsh
 
 https://github.com/ohmyzsh/ohmyzsh
 
@@ -53,24 +91,24 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 chsh -s $(which zsh)
 ```
 
-# Install terminals
+## Install terminals
 
 https://terminator-gtk3.readthedocs.io/en/latest/gettingstarted.html
 
 https://gnunn1.github.io/tilix-web/
 
-## Install packages
+### Install packages
 
 ```bash
 sudo apt install terminator tilix
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 ```
 
-## @TODO
+### @TODO
 
 Tilix profile backup/restore
 
-## Install kitty
+### Install kitty
 
 https://sw.kovidgoyal.net/kitty/
 
@@ -114,11 +152,13 @@ cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applicatio
 sed -i "s/Icon\=kitty/Icon\=\/home\/$USER\/.local\/kitty.app\/share\/icons\/hicolor\/256x256\/apps\/kitty.png/g" ~/.local/share/applications/kitty.desktop
 ```
 
-## Install NeoVim
+## Install Vim/NeoVim
 
 https://neovim.io/
 
 ```bash
+sudo apt install vim neovim
+
 # install vundle for neovim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 cp ~/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
@@ -129,6 +169,8 @@ vim +UpdateRemotePlugins +qall
 ## Clone repository
 
 ```bash
+git clone https://github.com/bcochofel/dotfiles.git
+# copy the structure to your home
 mkdir ~/Pictures/screenshots
 # change ~/.config/i3blocks/config and adapt to network devices
 ```
