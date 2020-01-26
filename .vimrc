@@ -212,6 +212,11 @@ set ruler
 
 " Highlight current line - allows you to track cursor position more easily
 set cursorline
+
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
  
 " Always display the status line, even if only one window is displayed
 set laststatus=2
