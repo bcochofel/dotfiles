@@ -196,36 +196,14 @@ https://neovim.io/
 ```bash
 sudo apt install vim neovim
 
+# install vundle for vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # install vundle for neovim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 cp ~/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
 vim +PluginInstall +qall
 vim +UpdateRemotePlugins +qall
 ```
-
-### Vim/Neovim Plugins
-
-#### Languages Plugins
-
-- [Vim development for Go](https://github.com/fatih/vim-go)
-- [Vim syntax file for Docker's Dockerfile and snippets for snipMate.](https://github.com/ekalinin/Dockerfile.vim)
-- [This project contains Vim configuration files for editing and compiling Ruby](https://github.com/vim-ruby/vim-ruby)
-- [Markdown VIM mode](https://github.com/plasticboy/vim-markdown)
-
-#### Hashicorp Tools Plugins
-
-- [Terraform VIM integration](https://github.com/hashivim/vim-terraform)
-- [Terraform completion](https://github.com/juliosueiras/vim-terraform-completion)
-
-#### Themes Plugins
-
-- [Nord Theme](https://github.com/arcticicestudio/nord-vim)
-- [GitHub Colors](https://github.com/albertorestifo/github.vim)
-- [A color scheme for Sublime Text, (Neo)Vim, iTerm, and more.](https://github.com/sonph/onehalf)
-
-#### Tools Plugins
-
-- [Full path fuzzy file, buffer, mru, tag, ... finder for Vim.](https://github.com/ctrlpvim/ctrlp.vim)
 
 ## Clone repository
 
