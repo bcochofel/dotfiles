@@ -5,6 +5,11 @@
 "              If you're a more advanced user, building your own .vimrc based
 "              on this file is still a good idea.
 
+" fix vim-go warning
+let g:go_version_warning = 0
+" fix cursor on terminal
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
+
 "------------------------------------------------------------
 " Plugin Manager {{{1
 "
