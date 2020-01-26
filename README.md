@@ -142,9 +142,10 @@ sudo apt install terminator tilix
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 ```
 
-### @TODO
+### Tilix Backup and Restore configuration
 
-Tilix profile backup/restore
+dconf dump /com/gexperts/Tilix/ > tilix.dconf
+dconf load /com/gexperts/Tilix/ < tilix.dconf
 
 ### Install kitty
 
