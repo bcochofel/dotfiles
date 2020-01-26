@@ -17,22 +17,22 @@ Plugin 'ctrlpvim/ctrlp.vim'
 " Languages
 Plugin 'fatih/vim-go'
 Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'vim-ruby/vim-ruby'
+"Plugin 'vim-ruby/vim-ruby'
 "Plugin 'mxw/vim-jsx'
 "Plugin 'pangloss/vim-javascript'
-"Plugin 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 "Plugin 'jparise/vim-graphql'
 "Plugin 'hashicorp/sentinel.vim'
 
 " Terraform
-Plugin 'hashivim/vim-terraform'
+"Plugin 'hashivim/vim-terraform'
 Plugin 'juliosueiras/vim-terraform-completion'
 
 " themes
 Plugin 'arcticicestudio/nord-vim'
-Plugin 'albertorestifo/github.vim'
-Plugin 'sonph/onehalf', {'rtp': 'vim/'}
+"Plugin 'albertorestifo/github.vim'
+"Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 
 " Highlight indent
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -79,7 +79,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'rizzatti/dash.vim'
 
 " Markdown
-Plugin 'itspriddle/vim-marked'
+"Plugin 'itspriddle/vim-marked'
 
 " Utility
 Plugin 'vim-scripts/SyntaxAttr.vim'
