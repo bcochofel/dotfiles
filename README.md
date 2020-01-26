@@ -38,7 +38,6 @@ gitdotfiles config --local status.showUntrackedFiles no
 echo "alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
 ```
 
-
 ## Install your dotfiles onto a new system (or migrate to this setup)
 
 Install and configure dependencies
@@ -92,9 +91,12 @@ sed -i "s/Icon\=kitty/Icon\=\/home\/$USER\/.local\/kitty.app\/share\/icons\/hico
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 vim +UpdateRemotePlugins +qall
-# create symbolic link for neovim
+# create symbolic link for neovim config
 ln -s ~/.vimrc ~/.config/nvim/init.vim
+# choose default terminal
+sudo update-alternatives --set x-terminal-emulator /usr/bin/terminator
 ```
+
 # Install manually
 
 ## i3 Window manager

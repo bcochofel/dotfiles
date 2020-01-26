@@ -132,7 +132,7 @@ compinit
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
 
-# tiliz terminal
+# tilix terminal
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     source /etc/profile.d/vte.sh
 fi
