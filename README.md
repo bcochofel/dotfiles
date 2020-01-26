@@ -15,7 +15,7 @@ sudo apt install i3 i3blocks i3lock i3lock-fancy i3status xautolock conky feh ro
 sudo apt install zsh zsh-syntax-highlighting ttf-ancient-fonts fonts-powerline fonts-font-awesome
 sudo apt install terminator tilix
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
-sudo apt install vim neovim
+sudo apt install vim neovimi exuberant-ctags
 ```
 
 # Git your dotfiles
@@ -84,10 +84,12 @@ cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applicatio
 # Update the path to the kitty icon in the kitty.desktop file
 sed -i "s/Icon\=kitty/Icon\=\/home\/$USER\/.local\/kitty.app\/share\/icons\/hicolor\/256x256\/apps\/kitty.png/g" ~/.local/share/applications/kitty.desktop
 
-# install vundle on neovim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
+# install vundle on vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 vim +UpdateRemotePlugins +qall
+# create symbolic link for neovim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
 ```
 # Install manually
 
@@ -198,9 +200,8 @@ sudo apt install vim neovim
 
 # install vundle for vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-# install vundle for neovim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
-cp ~/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
+cp ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/.vimrc ~/.config/nvim/init.vim
 vim +PluginInstall +qall
 vim +UpdateRemotePlugins +qall
 ```
