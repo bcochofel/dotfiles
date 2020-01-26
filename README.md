@@ -28,7 +28,8 @@ Take a look at: https://www.atlassian.com/git/tutorials/dotfiles to keep your do
 
 Using the method described before you can clone the Git repository to your home.
 
-## Start your repository from scratch
+#
+# Start your repository from scratch
 
 ```bash
 git init --bare $HOME/.dotfiles
@@ -36,6 +37,7 @@ alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 gitdotfiles config --local status.showUntrackedFiles no
 echo "alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
 ```
+
 
 ## Install your dotfiles onto a new system (or migrate to this setup)
 
@@ -62,7 +64,7 @@ Clone repoitory
 
 ```bash
 alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-echo ".dotfiles" >> .gitignore
+#echo ".dotfiles" >> .gitignore
 git clone --bare https://github.com/bcochofel/dotfiles.git $HOME/.dotfiles
 alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 mkdir -p ~/.config-backup
@@ -70,7 +72,7 @@ gitdotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} 
 gitdotfiles checkout
 gitdotfiles config --local status.showUntrackedFiles no
 gitdotfiles status
-echo "alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
+#echo "alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
 ```
 
 Additional configuration

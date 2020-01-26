@@ -152,3 +152,6 @@ complete -o nospace -C /usr/local/bin/consul consul
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/Projects/
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+# alias for git dotfiles
+alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
