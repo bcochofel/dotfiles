@@ -111,7 +111,7 @@ markup=pango
 interval=30
 
 [datetime]
-instance=%d/%m %H:%M
+instance=%H:%M | %d/%m
 label=
 color=#ff9633
 interval=5
