@@ -15,7 +15,9 @@ sudo apt install i3 i3blocks i3lock i3lock-fancy i3status xautolock conky feh ro
 sudo apt install zsh zsh-syntax-highlighting ttf-ancient-fonts fonts-powerline fonts-font-awesome
 sudo apt install terminator tilix
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
-sudo apt install vim neovim exuberant-ctags
+sudo apt install vim neovim
+sudo apt install python3-pip exuberant-ctags ack-grep
+sudo pip3 install pynvim flake8 pylint isort
 ```
 
 # Git your dotfiles

@@ -30,8 +30,10 @@ Plugin 'VundleVim/Vundle.vim'
 
 " ----- Utilities -----
 Plugin 'ctrlpvim/ctrlp.vim'
+" Code commenter
+Plugin 'scrooloose/nerdcommenter'
 " NerdTree explorer
-Plugin 'preservim/nerdtree'
+Plugin 'scrooloose/nerdtree'
 " Tagbar to view tags in right hand column
 Plugin 'majutsushi/tagbar'
 " Highlight indent
@@ -55,6 +57,19 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'rizzatti/dash.vim'
 " Utility
 Plugin 'vim-scripts/SyntaxAttr.vim'
+" Completion from other opened files
+Plugin 'Shougo/context_filetype.vim'
+" Just to add the python go-to-definition and similar features, autocompletion
+" from this plugin is disabled
+Plugin 'davidhalter/jedi-vim'
+" Automatically close parenthesis, etc
+Plugin 'Townk/vim-autoclose'
+" Surround
+Plugin 'tpope/vim-surround'
+" Better language packs
+Plugin 'sheerun/vim-polyglot'
+" Ack code search (requires ack installed in the system)
+Plugin 'mileszs/ack.vim'
 
 " ----- Themes -----
 Plugin 'arcticicestudio/nord-vim'
@@ -63,6 +78,9 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 " ----- Languages -----
+
+" Python autocompletion
+Plugin 'deoplete-plugins/deoplete-jedi'
 
 " Golang
 Plugin 'fatih/vim-go'
@@ -111,6 +129,13 @@ filetype plugin indent on    " required
  
 " Completion options (select longest + show menu even if a single match is found)
 set completeopt=longest,menuone
+
+" needed so deoplete can auto select the first suggestion
+set completeopt+=noinsert
+" comment this line to enable autocompletion preview window
+" (displays documentation related to the selected completion option)
+" disabled by default because preview makes the window flicker
+set completeopt-=preview
 
 " Make sure that coursor is always vertically centered on j/k moves
 set so=999
@@ -407,6 +432,11 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 " Deoplete
 "
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_smart_case = 1
+" complete with words from any opened file
+let g:context_filetype#same_filetypes = {}
+let g:context_filetype#same_filetypes._ = '_'
 call deoplete#custom#option('omni_patterns', {
 \ 'complete_method': 'omnifunc',
 \ 'go': '[^. *\t]\.\w*',
@@ -423,6 +453,34 @@ else
     set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
+" Jedi-vim ------------------------------
+
+" Disable autocompletion (using deoplete instead)
+let g:jedi#completions_enabled = 0
+
+" All these mappings work only for python code:
+" Go to definition
+let g:jedi#goto_command = ',d'
+" Find ocurrences
+let g:jedi#usages_command = ',o'
+" Find assignments
+let g:jedi#goto_assignments_command = ',a'
+" Go to definition in new tab
+nmap ,D :tab split<CR>:call jedi#goto()<CR>
+
+" Ack.vim ------------------------------
+
+" mappings
+nmap ,r :Ack 
+nmap ,wr :execute ":Ack " . expand('<cword>')<CR>
+
+" Autoclose ------------------------------
+
+" Fix to let ESC work as espected with Autoclose plugin
+" (without this, when showing an autocompletion window, ESC won't leave insert
+"  mode)
+let g:AutoClosePumvisible = {"ENTER": "\<C-Y>", "ESC": "\<ESC>"}
+
 "----------
 
 " Path to python interpreter for neovim
@@ -432,6 +490,20 @@ let g:python_host_prog  = '/usr/bin/python2'
 let g:python3_host_skip_check = 0
 
 "----------
+
+" Neomake ------------------------------
+
+" Run linter on write
+autocmd! BufWritePost * Neomake
+
+" Check code as python3 by default
+let g:neomake_python_python_maker = neomake#makers#ft#python#python()
+let g:neomake_python_flake8_maker = neomake#makers#ft#python#flake8()
+let g:neomake_python_python_maker.exe = 'python3 -m py_compile'
+let g:neomake_python_flake8_maker.exe = 'python3 -m flake8'
+
+" Disable error messages inside the buffer, next to the problematic line
+let g:neomake_virtualtext_current_error = 0
 
 " Syntastic
 
