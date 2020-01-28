@@ -1,20 +1,9 @@
-" URL: http://vim.wikia.com/wiki/Example_vimrc
-" Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
-" Description: A minimal, but feature rich, example .vimrc. If you are a
-"              newbie, basing your first .vimrc on this file is a good choice.
-"              If you're a more advanced user, building your own .vimrc based
-"              on this file is still a good idea.
-
-" fix vim-go warning
-let g:go_version_warning = 0
-" fix cursor on terminal
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
-
 "------------------------------------------------------------
-" Plugin Manager {{{1
-"
 " To setup Vundle:
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+" fix cursor on terminal
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
  
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -28,73 +17,86 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" ----- Utilities -----
-Plugin 'ctrlpvim/ctrlp.vim'
-" Code commenter
-Plugin 'scrooloose/nerdcommenter'
-" NerdTree explorer
-Plugin 'scrooloose/nerdtree'
-" Tagbar to view tags in right hand column
-Plugin 'majutsushi/tagbar'
-" Highlight indent
-Plugin 'nathanaelkane/vim-indent-guides'
-" Neomake
-Plugin 'neomake/neomake'
-" Autocomplete
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'roxma/nvim-yarp'
-Plugin 'roxma/vim-hug-neovim-rpc'
-" Git
-Plugin 'tpope/vim-fugitive.git'
-Plugin 'tpope/vim-git.git'
-" Super tab
-Plugin 'ervandew/supertab'
-" Syntax checking
-Plugin 'vim-syntastic/syntastic'
-" Fix indentation
-Plugin 'junegunn/vim-easy-align'
-" Dash
-Plugin 'rizzatti/dash.vim'
-" Utility
-Plugin 'vim-scripts/SyntaxAttr.vim'
-" Completion from other opened files
-Plugin 'Shougo/context_filetype.vim'
-" Just to add the python go-to-definition and similar features, autocompletion
-" from this plugin is disabled
-Plugin 'davidhalter/jedi-vim'
-" Automatically close parenthesis, etc
-Plugin 'Townk/vim-autoclose'
-" Surround
-Plugin 'tpope/vim-surround'
-" Better language packs
-Plugin 'sheerun/vim-polyglot'
-" Ack code search (requires ack installed in the system)
-Plugin 'mileszs/ack.vim'
+" -----------
+" Look & Feel
+" -----------
 
-" ----- Themes -----
+" Theme
 Plugin 'arcticicestudio/nord-vim'
 " Status bar
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-" ----- Languages -----
-
-" Python autocompletion
-Plugin 'deoplete-plugins/deoplete-jedi'
-
-" Golang
-Plugin 'fatih/vim-go'
-
-" Dockerfile
-Plugin 'ekalinin/Dockerfile.vim'
-
-" Markdown
+" ---------
+" Utilities
+" ---------
+" Code commenter
+Plugin 'preservim/nerdcommenter'
+" NerdTree explorer
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+" Tagbar to view tags in right hand column
+Plugin 'majutsushi/tagbar'
+" Fuzzy Finder
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
+" CtrlP 
+Plugin 'ctrlpvim/ctrlp.vim'
+" Vim Indent Guides
+Plugin 'nathanaelkane/vim-indent-guides'
+" Super tab
+Plugin 'ervandew/supertab'
+" Ack file searcher
+Plugin 'mileszs/ack.vim'
+" Fix indentation
+Plugin 'junegunn/vim-easy-align'
+" tabular
 Plugin 'godlygeek/tabular'
+
+" -------------------
+" General Programming
+" -------------------
+" Better language packs
+Plugin 'sheerun/vim-polyglot'
+" Neomake Asynchronous linting and make framework
+Plugin 'neomake/neomake'
+" Syntax checking
+Plugin 'vim-syntastic/syntastic'
+"Plugin 'w0rp/ale'
+" auto pair
+Plugin 'jiangmiao/auto-pairs'
+" Autocomplete
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
+" autocomplete for python
+Plugin 'deoplete-plugins/deoplete-jedi'
+" formtat source code
+Plugin 'sbdchd/neoformat'
+" code jump
+Plugin 'davidhalter/jedi-vim'
+
+" ---
+" GIT
+" ---
+Plugin 'tpope/vim-fugitive.git'
+Plugin 'tpope/vim-git.git'
+
+" --------
+" Markdown
+" --------
+" depends on: Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
+" ---------
 " Terraform
+" ---------
 Plugin 'hashivim/vim-terraform'
-"Plugin 'juliosueiras/vim-terraform-completion'
+
+" -------
+" Ansible
+" -------
+Plugin 'pearofducks/ansible-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -110,14 +112,12 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+" ------------------------------------------------------------
 
+" ----------------------
+" Features Configuration
+" ----------------------
 
-"------------------------------------------------------------
-" Features {{{1
-"
-" These options and commands enable some very useful features in Vim, that
-" no user should have to live without.
- 
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 "set nocompatible
@@ -126,7 +126,7 @@ filetype plugin indent on    " required
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
 "filetype indent plugin on
- 
+
 " Completion options (select longest + show menu even if a single match is found)
 set completeopt=longest,menuone
 
@@ -140,310 +140,64 @@ set completeopt-=preview
 " Make sure that coursor is always vertically centered on j/k moves
 set so=999
 
-" add vertical lines on columns
-set colorcolumn=80,120
-
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-else
-  set wildignore+=.git\*,.hg\*,.svn\*
-endif
-
 " Enable syntax highlighting
 syntax on
 
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" When on, uses highlight-guifg and highlight-guibg attributes in
+" the terminal (thus using 24-bit color).
+if (has("termguicolors"))
   set termguicolors
 endif
- 
- 
-"------------------------------------------------------------
-" Must have options {{{1
-"
-" These are highly recommended options.
- 
-" Vim with default settings does not allow easy switching between multiple files
-" in the same editor window. Users can use multiple split windows or multiple
-" tab pages to edit multiple files, but it is still best to enable an option to
-" allow easier switching between files.
-"
-" One such option is the 'hidden' option, which allows you to re-use the same
-" window and switch from an unsaved buffer without saving it first. Also allows
-" you to keep an undo history for multiple files when re-using the same window
-" in this way. Note that using persistent undo also lets you undo in multiple
-" files even in the same window, but is less efficient and is actually designed
-" for keeping undo history after closing Vim entirely. Vim will complain if you
-" try to quit without saving, and swap files will keep you safe if your computer
-" crashes.
-set hidden
- 
-" Note that not everyone likes working this way (with the hidden option).
-" Alternatives include using tabs or split windows instead of re-using the same
-" window as mentioned above, and/or either of the following options:
-" set confirm
-" set autowriteall
- 
+
+" add vertical lines on columns
+set colorcolumn=80,120
+
+" Highlight current line - allows you to track cursor position more easily
+set cursorline
+
+" cursor FIX for Neovim
+highlight Cursor guifg=white guibg=black
+highlight iCursor guifg=white guibg=steelblue 
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
+
+" Always display the status line, even if only one window is displayed
+set laststatus=2
+
+" Instead of failing a command because of unsaved changes, instead raise a
+" dialogue asking if you wish to save changed files.
+set confirm
+
+" Display line numbers on the left
+set number
+
+" Allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
+set whichwrap+=<,>,h,l
+
+" When opening a new line and no filetype-specific indenting is enabled, keep
+" the same indent as the line you're currently on. Useful for READMEs, etc.
+set autoindent
+
+" Stop certain movements from always going to the first character of a line.
+" While this behaviour deviates from that of Vi, it does what most users
+" coming from other editors would expect.
+set nostartofline
+
 " Better command-line completion
 set wildmenu
 
 " Set command-line completion mode
 set wildmode=list:longest,full
- 
+
 " Show partial commands in the last line of the screen
 set showcmd
- 
+
 " Highlight searches (use <C-L> to temporarily turn off highlighting; see the
 " mapping of <C-L> below)
 set hlsearch
- 
-" Modelines have historically been a source of security vulnerabilities. As
-" such, it may be a good idea to disable them and use the securemodelines
-" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
-" set nomodeline
-
- 
-"------------------------------------------------------------
-" Usability options {{{1
-"
-" These are options that users frequently set in their .vimrc. Some of them
-" change Vim's behaviour in ways which deviate from the true Vi way, but
-" which are considered to add usability. Which, if any, of these options to
-" use is very much a personal preference, but they are harmless.
- 
-" Use case insensitive search, except when using capital letters
-set ignorecase
-set smartcase
- 
-" Allow backspacing over autoindent, line breaks and start of insert action
-set backspace=indent,eol,start
-set whichwrap+=<,>,h,l
- 
-" When opening a new line and no filetype-specific indenting is enabled, keep
-" the same indent as the line you're currently on. Useful for READMEs, etc.
-set autoindent
- 
-" Stop certain movements from always going to the first character of a line.
-" While this behaviour deviates from that of Vi, it does what most users
-" coming from other editors would expect.
-set nostartofline
- 
-" Display the cursor position on the last line of the screen or in the status
-" line of a window
-set ruler
-
-" Highlight current line - allows you to track cursor position more easily
-set cursorline
-
-set guicursor=n-v-c:block-Cursor
-set guicursor+=i:ver100-iCursor
-set guicursor+=n-v-c:blinkon0
-set guicursor+=i:blinkwait10
- 
-" Always display the status line, even if only one window is displayed
-set laststatus=2
- 
-" Instead of failing a command because of unsaved changes, instead raise a
-" dialogue asking if you wish to save changed files.
-set confirm
- 
-" Use visual bell instead of beeping when doing something wrong
-set visualbell
- 
-" And reset the terminal code for the visual bell. If visualbell is set, and
-" this line is also included, vim will neither flash nor beep. If visualbell
-" is unset, this does nothing.
-set t_vb=
- 
-" Enable use of the mouse for all modes
-set mouse=a
- 
-" Set the command window height to 2 lines, to avoid many cases of having to
-" "press <Enter> to continue"
-set cmdheight=2
- 
-" Display line numbers on the left
-set number
- 
-" Quickly time out on keycodes, but never time out on mappings
-set notimeout ttimeout ttimeoutlen=200
- 
-" Use <F11> to toggle between 'paste' and 'nopaste'
-set pastetoggle=<F11>
- 
- 
-"------------------------------------------------------------
-" Indentation options {{{1
-"
-" Indentation settings according to personal preference.
- 
-" Indentation settings for using 2 spaces instead of tabs.
-" Do not change 'tabstop' from its default value of 8 with this setup.
-set shiftwidth=2
-set softtabstop=2
-set expandtab
- 
-" Indentation settings for using hard tabs for indent. Display tabs as
-" four characters wide.
-"set shiftwidth=4
-set tabstop=2
- 
- 
-"------------------------------------------------------------
-" Plugins Configuration {{{1
-"
-" Options to configure plugins
-
-" Nord theme
-" https://github.com/arcticicestudio/nord-vim
-
-" set color scheme
-colorscheme nord
-
-" Indent guide
-let g:indent_guides_enable_on__startup = 1
-let g:indent_guides_auto_colors        = 1
-hi IndentGuidesOdd  ctermbg            = 236
-hi IndentGuidesEven ctermbg            = 235
-
-"----------
-
-" ==================== vim-go ====================
-let g:go_fmt_fail_silently = 1
-let g:go_fmt_command = "goimports"
-let g:go_debug_windows = {
-      \ 'vars':  'leftabove 35vnew',
-      \ 'stack': 'botright 10new',
-\ }
-
-let g:go_test_prepend_name = 1
-let g:go_list_type = "quickfix"
-let g:go_auto_type_info = 0
-let g:go_auto_sameids = 0
-
-let g:go_null_module_warning = 0
-let g:go_echo_command_info = 1
-
-let g:go_autodetect_gopath = 1
-
-let g:go_metalinter_autosave=1
-let g:go_metalinter_autosave_enabled=['golint', 'govet', 'typecheck']
-let g:go_metalinter_command='golangci-lint'
-
-let g:go_highlight_space_tab_error = 0
-let g:go_highlight_array_whitespace_error = 0
-let g:go_highlight_trailing_whitespace_error = 0
-let g:go_highlight_extra_types = 0
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_types = 0
-let g:go_highlight_operators = 1
-let g:go_highlight_format_strings = 0
-let g:go_highlight_function_calls = 0
-let g:go_gocode_propose_source = 1
-
-let g:go_modifytags_transform = 'camelcase'
-let g:go_fold_enable = []
-
-" wrap long lines in quickfix
-augroup quickfix
-    autocmd!
-    autocmd FileType qf setlocal wrap
-augroup END
-
-" Show a list of interfaces which is implemented by the type under your cursor
-au FileType go nmap <Leader>s <Plug>(go-implements)
-
-" Show type info for the word under your cursor
-au FileType go nmap <Leader>i <Plug>(go-info)
-
-" Open the relevant Godoc for the word under the cursor
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-
-" Open the Godoc in browser
-au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
-
-" Run/build/test/coverage
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-
-let g:tagbar_type_go = {  
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-\ }
-
-set timeoutlen=400 ttimeoutlen=0
-
-"----------
-
-" Ctrl P - Basic Usage
-" --------------------
-" Run :CtrlP or :CtrlP [starting-directory] to invoke CtrlP in find file mode.
-" Run :CtrlPBuffer or :CtrlPMRU to invoke CtrlP in find buffer or find MRU file mode.
-" Run :CtrlPMixed to search in Files, Buffers and MRU files at the same time.
-" Check :help ctrlp-commands and :help ctrlp-extensions for other commands.
-let g:ctrlp_max_files    = 10000
-let g:ctrlp_max_depth    = 40
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:100'
-
-
-"----------
-
-" Markdown settings
-" https://github.com/plasticboy/vim-markdown
-"let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_folding_style_pythonic = 1
-let g:vim_markdown_toc_autofit = 1
-let g:vim_markdown_emphasis_multiline = 0
-
-" Spelling
-autocmd BufRead,BufNewFile *.md setlocal spell
-
-"----------
-
-" Deoplete
-"
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_smart_case = 1
-" complete with words from any opened file
-let g:context_filetype#same_filetypes = {}
-let g:context_filetype#same_filetypes._ = '_'
-call deoplete#custom#option('omni_patterns', {
-\ 'complete_method': 'omnifunc',
-\ 'go': '[^. *\t]\.\w*',
-\})
-
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
@@ -453,69 +207,211 @@ else
     set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
-" Jedi-vim ------------------------------
+" -------------------
+" Indentation options
+" -------------------
+"
+" Indentation settings according to personal preference.
 
-" Disable autocompletion (using deoplete instead)
-let g:jedi#completions_enabled = 0
+" Indentation settings for using 2 spaces instead of tabs.
+" Do not change 'tabstop' from its default value of 8 with this setup.
+set shiftwidth=2
+set softtabstop=2
+set expandtab
 
-" All these mappings work only for python code:
-" Go to definition
-let g:jedi#goto_command = ',d'
-" Find ocurrences
-let g:jedi#usages_command = ',o'
-" Find assignments
-let g:jedi#goto_assignments_command = ',a'
-" Go to definition in new tab
-nmap ,D :tab split<CR>:call jedi#goto()<CR>
+" Indentation settings for using hard tabs for indent. Display tabs as
+" four characters wide.
+"set shiftwidth=4
+set tabstop=2
 
-" Ack.vim ------------------------------
+" ---------------------
+" Plugins configuration
+" ---------------------
 
-" mappings
-nmap ,r :Ack 
-nmap ,wr :execute ":Ack " . expand('<cword>')<CR>
+" set color scheme
+colorscheme nord
 
-" Autoclose ------------------------------
+" indent guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 1
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
-" Fix to let ESC work as espected with Autoclose plugin
-" (without this, when showing an autocompletion window, ESC won't leave insert
-"  mode)
-let g:AutoClosePumvisible = {"ENTER": "\<C-Y>", "ESC": "\<ESC>"}
+" NERDTree GIT
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 
-"----------
+" ------------
+" Mapping Keys
+" ------------
 
-" Path to python interpreter for neovim
-let g:python3_host_prog  = '/usr/bin/python3'
-let g:python_host_prog  = '/usr/bin/python2'
-" Skip the check of neovim module
-let g:python3_host_skip_check = 0
+" <Leader>: \
 
-"----------
+" Tabs mapping
+" :tabs         list all tabs including their displayed windows
+" :tabm 0       move current tab to first
+" :tabm         move current tab to last
+" :tabm {i}     move current tab to position i+1
+" :tabn         go to next tab
+" :tabp         go to previous tab
+" :tabfirst     go to first tab
+" :tablast      go to last tab
+" In normal mode, you can type:
+" gt            go to next tab
+" gT            go to previous tab
+" {i}gt         go to tab in position i
 
-" Neomake ------------------------------
+" Vim-Indent-Guides
+" :IndentGuidesEnable
+" :IndentGuidesDisable
+" :IndentGuidesToggle
 
-" Run linter on write
-autocmd! BufWritePost * Neomake
+" Edit vimrc configuration file
+nnoremap <Leader>ve :e $MYVIMRC<CR>
+" " Reload vimrc configuration file
+nnoremap <Leader>vr :source $MYVIMRC<CR>
 
-" Check code as python3 by default
-let g:neomake_python_python_maker = neomake#makers#ft#python#python()
-let g:neomake_python_flake8_maker = neomake#makers#ft#python#flake8()
-let g:neomake_python_python_maker.exe = 'python3 -m py_compile'
-let g:neomake_python_flake8_maker.exe = 'python3 -m flake8'
+" ----- NERDTree -----
+map <F6>            : NERDTreeToggle<CR>
+" :help NERDTreeMappings
+" t: Open the selected file in a new tab
+" i: Open the selected file in a horizontal split window
+" s: Open the selected file in a vertical split window
+" I: Toggle hidden files
+" m: Show the NERD Tree menu
+" R: Refresh the tree, useful if files change outside of Vim
+" ?: Toggle NERD Tree's quick help
 
-" Disable error messages inside the buffer, next to the problematic line
-let g:neomake_virtualtext_current_error = 0
+" ----- NERD Commenter -----
+" - [count]<leader>cc |NERDCommenterComment|
+" Comment out the current line or text selected in visual mode.
+" - [count]<leader>cn |NERDCommenterNested|
+" Same as cc but forces nesting.
+" - [count]<leader>c<space> |NERDCommenterToggle|
+" Toggles the comment state of the selected line(s). If the topmost selected
+" line is commented, all selected lines are uncommented and vice versa.
 
-" Syntastic
+" ----- TagBar -----
+map <F8>            : TagbarToggle<CR>
 
-" Javascript
-let g:syntastic_javascript_checkers = ['eslint', 'jshint']
+" ----- FZF: Fuzzy Finder -----
+" :Files
+" Fzf Configuration
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+
+" In Neovim, you can set up fzf window using a Vim command
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '-tabnew' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+" Mapping selecting Mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" ----- CtrlP -----
+map <C-p>           : CtrlP<CR>
+map <C-t>           : CtrlPBufTag<CR>
+map <leader>p       : CtrlPBuffer<CR>
+
+" ----- Neomake -----
+
+" Full config: when writing or reading a buffer, and on changes in insert and
+" normal mode (after 500ms; no delay when writing).
+call neomake#configure#automake('nrwi', 500)
+"let g:neomake_open_list = 2
+
+let g:neomake_python_enabled_makers = ['flake8']
+
+" Maker types
+" 
+" There are two types of makers: file makers (acting on the current buffer) and project makers (acting globally).
+"You invoke file makers using :Neomake, and project makers using :Neomake!.
+
+" ----- Syntastic -----
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
 " YAML
 let g:syntastic_yaml_checkers = ['yamllint']
 
-"----------
+" Ansible
+let g:syntastic_ansible_checkers = ['ansible_lint']
 
-" Easy Align
+" ----- Ack -----
+" Usage
+" :Ack [options] {pattern} [{directories}]
+" Search recursively in {directories} (which defaults to the current directory) for the {pattern}.
+" Files containing the search term will be listed in the quickfix window, along with the line number of the occurrence, once for each occurrence. <Enter> on a line in this window will open the file and place the cursor on the matching line.
+" Just like where you use :grep, :grepadd, :lgrep, and :lgrepadd, you can use :Ack, :AckAdd, :LAck, and :LAckAdd respectively. (See :help Ack after installing, or doc/ack.txt in the repo, for more information.)
+" For more ack help see ack documentation.
+"
+" Keyboard Shortcuts
+
+" The quickfix results window is augmented with these convenience mappings:
+
+" ?    a quick summary of these keys, repeat to close
+" o    to open (same as Enter)
+" O    to open and close the quickfix window
+" go   to preview file, open but maintain focus on ack.vim results
+" t    to open in new tab
+" T    to open in new tab without moving to it
+" h    to open in horizontal split
+" H    to open in horizontal split, keeping focus on the results
+" v    to open in vertical split
+" gv   to open in vertical split, keeping focus on the results
+" q    to close the quickfix window
+
+" ----- vim-easy-align -----
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -523,51 +419,76 @@ xmap ga <Plug>(EasyAlign)
 " " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-"----------
+" ----- vim-markdown -----
 
-" Terraform
-"let g:syntastic_terraform_tffilter_plan = 1
-"let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
-"let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
-"let g:terraform_completion_keys = 0
-"let g:terraform_registry_module_completion = 0
-let g:terraform_fmt_on_save = 1
+" Markdown settings
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_toc_autofit = 1
+
+" nmap <BS> <C-W>h
+
+" Spelling
+autocmd BufRead,BufNewFile *.md setlocal spell
+
+" Commands
+" :TableFormat: Format the table under the cursor like this.
+" Requires Tabular.
+" The input table must already have a separator line as the second line of the table. That line only needs to contain the correct pipes |, nothing else is required.
+" 
+" :Toc: create a quickfix vertical window navigable table of contents with the headers.
+" Hit <Enter> on a line to jump to the corresponding line of the markdown file.
+
+" ----- vim-terraform -----
+let g:terraform_align=1
+let g:terraform_fold_sections=1
+let g:terraform_fmt_on_save=1
 
 " HCL
-au BufRead,BufNewFile *.hcl setlocal filetype=terraform
+augroup filetypedetect
+  au! BufRead,BufNewFile *.hcl setf terraform
+augroup END
 
+" ----- vim-ansible -----
 
-"------------------------------------------------------------
-" Mappings {{{1
-"
-" Useful mappings
- 
-" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
-" which is the default
-map Y y$
- 
-" Map <C-L> (redraw screen) to also turn off search highlighting until the
-" next search
-nnoremap <C-L> :nohl<CR><C-L>
- 
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
+let g:ansible_unindent_after_newline = 1
+let g:ansible_attribute_highlight = "ob"
 
-map <C-p>           : CtrlP<CR>
-map <C-t>           : CtrlPBufTag<CR>
-map <leader>p       : CtrlPBuffer<CR>
-map <F6>            : NERDTreeToggle<CR>
-map <F8>            : TagbarToggle<CR>
-map -a	            : call SyntaxAttr()<CR>
+" ----- deoplete -----
 
-" Remap arrow keys
-noremap <Up>    <nop>
-noremap <Down>  <nop>
-noremap <Left>  <nop>
-noremap <Right> <nop>
+let g:deoplete#enable_at_startup = 1
 
-"----------
+" ----- deoplete-jedi -----
 
-call deoplete#initialize()
+" Path to python interpreter for neovim
+let g:python3_host_prog  = '/usr/bin/python3'
+let g:python_host_prog  = '/usr/bin/python2'
+" Skip the check of neovim module
+let g:python3_host_skip_check = 0
 
-"------------------------------------------------------------
+" ----- neoformat -----
+
+" Enable alignment
+let g:neoformat_basic_format_align = 1
+
+" Enable tab to spaces conversion
+let g:neoformat_basic_format_retab = 1
+
+" Enable trimmming of trailing whitespace
+let g:neoformat_basic_format_trim = 1
+
+" ----- jedi-vim -----
+
+" disable autocompletion, cause we use deoplete for completion
+let g:jedi#completions_enabled = 0
+
+" open the go-to function in split, not another buffer
+let g:jedi#use_splits_not_buffers = "right"
+
+" How to use jedi-vim
+" 
+" Move the cursor to the class or method you want to check, then press the various supported shortcut provided by jedi-vim:
+
+" <leader>d: go to definition
+" K: check documentation of class or method
+" <leader>n: show the usage of a name in current file
+" <leader>r: rename a name

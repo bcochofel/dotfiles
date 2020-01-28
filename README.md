@@ -28,7 +28,6 @@ Take a look at: https://www.atlassian.com/git/tutorials/dotfiles to keep your do
 
 Using the method described before you can clone the Git repository to your home.
 
-#
 # Start your repository from scratch
 
 ```bash
@@ -59,7 +58,7 @@ chsh -s $(which zsh)
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 ```
 
-Clone repoitory
+Clone repository
 
 ```bash
 alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -221,3 +220,130 @@ git clone https://github.com/bcochofel/dotfiles.git
 mkdir ~/Pictures/screenshots
 # change ~/.config/i3blocks/config and adapt to network devices
 ```
+
+# Plugin Manager
+
+## Install Vundle
+
+https://github.com/VundleVim/Vundle.vim
+
+```bash
+ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
+
+## Configure Vundle
+
+Edit ~/.vimrc
+
+```bash
+"------------------------------------------------------------
+" To setup Vundle:
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+ 
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" insert here your plugins
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+"------------------------------------------------------------
+```
+
+## Install plugins
+
+Run the following command to install plugins:
+
+```bash
+vim +PluginInstall +qall
+```
+
+to update plugins run:
+
+```bash
+vim +UpdateRemotePlugins +qall
+```
+
+# Useful plugins
+
+## Look & Feel
+
+- https://github.com/arcticicestudio/nord-vim
+- https://github.com/vim-airline/vim-airline
+- https://github.com/vim-airline/vim-airline-themes
+
+## Utilities
+
+- [NERDCommenter: Comment functions so powerful—no comment necessary.](https://github.com/preservim/nerdcommenter)
+- [NERDTree: a file system explorer for the Vim editor.](https://github.com/preservim/nerdtree)
+- [NERDTree-GIT: A plugin of NERDTree showing git status flags.](https://github.com/Xuyuanp/nerdtree-git-plugin)
+- [Tagbar: a class outline viewer for Vim](https://github.com/majutsushi/tagbar)
+  - Dependencies: sudo apt install exuberant-ctags
+- [FZF: A command-line fuzzy finder.](https://github.com/junegunn/fzf.vim)
+- [CtrlP: Full path fuzzy file, buffer, mru, tag, ... finder for Vim.](https://github.com/ctrlpvim/ctrlp.vim)
+- [Vim-Indent: Indent Guides is a plugin for visually displaying indent levels in Vim.](https://github.com/nathanaelkane/vim-indent-guides)
+- [SuperTab: vim plugin which allows you to use <Tab> for all your insert completion needs (:help ins-completion).](https://github.com/ervandew/supertab)
+- [Ack: Run your favorite search tool from Vim, with an enhanced results list.](https://github.com/mileszs/ack.vim)
+  - Dependencies: sudo apt install ack-grep
+- [Vim-easy-alin: A simple, easy-to-use Vim alignment plugin.](https://github.com/junegunn/vim-easy-align)
+- [tabular: Vim script for text filtering and alignment ](https://github.com/godlygeek/tabular)
+
+## General Programming
+
+- [vim-polyglot: A solid language pack for Vim.](https://github.com/sheerun/vim-polyglot)
+- [Neomake: Asynchronous linting and make framework for Neovim/Vim](https://github.com/neomake/neomake)
+  - Dependencies: pip install pylint yamllint ansible-lint flake8
+- [auto-pairs: Insert or delete brackets, parens, quotes in pair.](https://github.com/jiangmiao/auto-pairs)
+- [Syntastic: Syntax checking hacks for vim](https://github.com/vim-syntastic/syntastic)
+  - Dependencies: pip install yamllint ansible-lint
+- [Deoplete: Dark powered asynchronous completion framework for neovim/Vim8](https://github.com/Shougo/deoplete.nvim)
+  - Dependencies: pip install pynvim
+- [Deoplete-jedi: deoplete.nvim source for Python](https://github.com/deoplete-plugins/deoplete-jedi)
+  - Dependencies: pip install jedi
+- [Neoformat: A (Neo)vim plugin for formatting code.](https://github.com/sbdchd/neoformat)
+  - Dependencies: pip install autopep8 yapf docformatter
+- [jedi-vim: jedi-vim - awesome Python autocompletion with VIM](https://github.com/davidhalter/jedi-vim)
+
+## GIT
+
+- [vim-fugitive: A Git wrapper so awesome, it should be illegal](https://github.com/tpope/vim-fugitive)
+- [vim-git: Vim Git runtime files](https://github.com/tpope/vim-git)
+
+## Tmux
+
+- [vim-tmux-navigator: Navigation between tmux and vim](https://github.com/christoomey/vim-tmux-navigator)
+
+## Markdown
+
+- [vim-markdown: Markdown Vim Mode](https://github.com/plasticboy/vim-markdown)
+
+## Terraform
+
+- [vim-terraform: basic vim/terraform integration](https://github.com/hashivim/vim-terraform)
+  - Depends: terraform binary
+
+## Ansible
+
+- [vim-ansible: A vim plugin for syntax highlighting Ansible's common filetypes](https://github.com/pearofducks/ansible-vim)
