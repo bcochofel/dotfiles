@@ -1,0 +1,69 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+$NVIM_TUI_ENABLE_CURSOR_SHAPE	.config/nvim/_init.vim	/^let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0$/;"	v
+-a		.config/nvim/_init.vim	/^map -a	            : call SyntaxAttr()<CR>$/;"	m
+<BS>	.config/nvim/_init.vim	/^nmap <BS> <C-W>h$/;"	m
+<C-h>	.config/nvim/_init.vim	/^nmap <silent> <C-h> : wincmd h<CR>$/;"	m
+<C-j>	.config/nvim/_init.vim	/^map <silent> <C-j>  : wincmd j<CR>$/;"	m
+<C-k>	.config/nvim/_init.vim	/^map <silent> <C-k>  : wincmd k<CR>$/;"	m
+<C-l>	.config/nvim/_init.vim	/^map <silent> <C-l>  : wincmd l<CR>$/;"	m
+<C-p>	.config/nvim/_init.vim	/^map <C-p>           : CtrlP<CR>$/;"	m
+<C-t>	.config/nvim/_init.vim	/^map <C-t>           : CtrlPBufTag<CR>$/;"	m
+<F6>	.config/nvim/_init.vim	/^map <F6>            : NERDTreeToggle<CR>$/;"	m
+<F8>	.config/nvim/_init.vim	/^map <F8>            : TagbarToggle<CR>$/;"	m
+<leader>a	.config/nvim/_init.vim	/^map <leader>a :Ack<space>$/;"	m
+<leader>p	.config/nvim/_init.vim	/^map <leader>p       : CtrlPBuffer<CR>$/;"	m
+<leader>pp	.config/nvim/_init.vim	/^map <leader>pp :setlocal paste!<cr>$/;"	m
+AVAILABLE	.config/terminator/plugins/clone_session.py	/^AVAILABLE = ['ClonedSplittingMenu']$/;"	v
+ClonableTerminal	.config/terminator/plugins/clone_session.py	/^class ClonableTerminal(Terminal):$/;"	c
+ClonedSplittingMenu	.config/terminator/plugins/clone_session.py	/^class ClonedSplittingMenu(plugin.MenuItem):$/;"	c
+FormatNumber	.config/i3blocks/blocks/bandwidth	/^function FormatNumber() {$/;"	f
+__init__	.config/terminator/plugins/clone_session.py	/^    def __init__(self):$/;"	m	class:ClonableTerminal
+__init__	.config/terminator/plugins/clone_session.py	/^  def __init__(self):$/;"	m	class:ClonedSplittingMenu
+bus	.config/i3blocks/blocks/spotify2	/^    bus = dbus.SessionBus()$/;"	v
+callback	.config/terminator/plugins/clone_session.py	/^  def callback(self, menuitems, menu, terminal):$/;"	m	class:ClonedSplittingMenu
+capabilities	.config/terminator/plugins/clone_session.py	/^  capabilities = ['terminal_menu']$/;"	v	class:ClonedSplittingMenu
+clone_session	.config/terminator/plugins/clone_session.py	/^  def clone_session(self, menuitem, is_horizontal, terminal):$/;"	m	class:ClonedSplittingMenu
+config	.config/terminator/plugins/clone_session.py	/^  config = Config()$/;"	v	class:ClonedSplittingMenu
+control_iface	.config/i3blocks/blocks/spotify2	/^        control_iface = dbus.Interface(spotify, 'org.mpris.MediaPlayer2.Player')$/;"	v
+full_title	.config/i3blocks/blocks/spotify2	/^        full_title = str(props['xesam:title'])$/;"	v
+g:_markdown_folding_disabled	.config/nvim/_init.vim	/^let g:_markdown_folding_disabled = 1$/;"	v
+g:ctrlp_match_window	.config/nvim/_init.vim	/^let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:100'$/;"	v
+g:ctrlp_max_depth	.config/nvim/_init.vim	/^let g:ctrlp_max_depth    = 40$/;"	v
+g:ctrlp_max_files	.config/nvim/_init.vim	/^let g:ctrlp_max_files    = 10000$/;"	v
+g:deoplete#enable_at_startup	.config/nvim/_init.vim	/^let g:deoplete#enable_at_startup = 1$/;"	v
+g:deoplete#sources#dart#dart_sdk_path	.config/nvim/_init.vim	/^let g:deoplete#sources#dart#dart_sdk_path='\/Users\/nicj\/dart-sdk\/'$/;"	v
+g:deoplete#sources#rust#racer_binary	.config/nvim/_init.vim	/^let g:deoplete#sources#rust#racer_binary='\/Users\/nicj\/.cargo\/bin\/racer'$/;"	v
+g:deoplete#sources#rust#rust_source_path	.config/nvim/_init.vim	/^let g:deoplete#sources#rust#rust_source_path='\/uslocal\/Cellar\/rust\/1.20.0\/lib\/rustlib\/src\/rust\/src'$/;"	v
+g:gista#client#default_username	.config/nvim/_init.vim	/^let g:gista#client#default_username = 'nicholasjackson'$/;"	v
+g:go_version_warning	.config/nvim/_init.vim	/^let g:go_version_warning = 0$/;"	v
+g:jsx_ext_required	.config/nvim/_init.vim	/^let g:jsx_ext_required = 0$/;"	v
+g:mapleader	.config/nvim/_init.vim	/^let g:mapleader = ","$/;"	v
+g:python3_host_prog	.config/nvim/_init.vim	/^let g:python3_host_prog  = '\/usr\/bin\/python3'$/;"	v
+g:python3_host_skip_check	.config/nvim/_init.vim	/^let g:python3_host_skip_check = 0$/;"	v
+g:python_host_prog	.config/nvim/_init.vim	/^let g:python_host_prog  = '\/usr\/bin\/python2'$/;"	v
+g:syntastic_javascript_checkers	.config/nvim/_init.vim	/^let g:syntastic_javascript_checkers = ['eslint', 'jshint']$/;"	v
+g:syntastic_yaml_checkers	.config/nvim/_init.vim	/^let g:syntastic_yaml_checkers = ['yamllint']$/;"	v
+g:tagbar_type_go	.config/nvim/_init.vim	/^let g:tagbar_type_go = {  $/;"	v
+g:terraform_fmt_on_save	.config/nvim/_init.vim	/^let g:terraform_fmt_on_save = 1$/;"	v
+g:test#preserve_screen	.config/nvim/_init.vim	/^let g:test#preserve_screen = 1$/;"	v
+g:vim_markdown_folding_disabled	.config/nvim/_init.vim	/^let g:vim_markdown_folding_disabled = 1$/;"	v
+ga	.config/nvim/_init.vim	/^nmap ga <Plug>(EasyAlign)$/;"	m
+get_terminal_cmd	.config/terminator/plugins/clone_session.py	/^  def get_terminal_cmd(self, terminal):$/;"	m	class:ClonedSplittingMenu
+get_terminal_container	.config/terminator/plugins/clone_session.py	/^  def get_terminal_container(self, terminal, container=None):$/;"	m	class:ClonedSplittingMenu
+log	.config/terminator/plugins/clone_session.py	/^  def log(self, name, obj):$/;"	m	class:ClonedSplittingMenu
+maker	.config/terminator/plugins/clone_session.py	/^  maker = Factory()$/;"	v	class:ClonedSplittingMenu
+mapleader	.config/nvim/_init.vim	/^let mapleader = ","$/;"	v
+props	.config/i3blocks/blocks/spotify2	/^    props = spotify_iface.Get('org.mpris.MediaPlayer2.Player', 'Metadata')$/;"	v
+quickfix	.config/nvim/_init.vim	/^augroup quickfix$/;"	a
+register_signals	.config/terminator/plugins/clone_session.py	/^  def register_signals(self, container, terminal):$/;"	m	class:ClonedSplittingMenu
+spawn_child_with_command	.config/terminator/plugins/clone_session.py	/^    def spawn_child_with_command(self, init_command=None, widget=None, respawn=False, debugserver=False):$/;"	m	class:ClonableTerminal
+split_horiz	.config/terminator/plugins/clone_session.py	/^  def split_horiz(self, terminal, cwd=None, sibling=None):$/;"	m	class:ClonedSplittingMenu
+split_vert	.config/terminator/plugins/clone_session.py	/^  def split_vert(self, terminal, cwd=None, sibling=None):$/;"	m	class:ClonedSplittingMenu
+spotify	.config/i3blocks/blocks/spotify2	/^    spotify = bus.get_object("org.mpris.MediaPlayer2.spotify", "\/org\/mpris\/MediaPlayer2")$/;"	v
+spotify_iface	.config/i3blocks/blocks/spotify2	/^    spotify_iface = dbus.Interface(spotify, 'org.freedesktop.DBus.Properties')$/;"	v
+title	.config/i3blocks/blocks/spotify2	/^        title = (full_title[:15] + '..') if len(full_title) > 15 else full_title$/;"	v

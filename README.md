@@ -13,7 +13,7 @@ It uses the following:
 sudo apt install curl wget git unzip gnome-control-center gnome-screensaver apt-file mc
 sudo apt install i3 i3blocks i3lock i3lock-fancy i3status xautolock conky feh rofi scrot pulseaudio-utils xbacklight
 sudo apt install zsh zsh-syntax-highlighting ttf-ancient-fonts fonts-powerline fonts-font-awesome
-sudo apt install terminator tilix
+sudo apt install terminator tilix tmux
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 sudo apt install vim neovim
 sudo apt install python3-pip exuberant-ctags ack-grep silversearcher-ag
@@ -313,6 +313,7 @@ vim +UpdateRemotePlugins +qall
 - [vim-repeat: repeat.vim: enable repeating supported plugin maps with "."](https://github.com/tpope/vim-repeat)
 - [vim-swoop: It allows you to find and replace occurrences in many buffers being aware of the context.](https://github.com/pelodelfuego/vim-swoop)
 - [vim-mark: Highlight several words in different colors simultaneously.](https://github.com/inkarkat/vim-mark)
+- [vim-tmux-navigator: Seamless navigation between tmux panes and vim splits](https://github.com/christoomey/vim-tmux-navigator)
 
 ## General Programming
 

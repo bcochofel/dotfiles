@@ -60,6 +60,8 @@ Plugin 'tpope/vim-repeat'
 Plugin 'pelodelfuego/vim-swoop'
 " vim mark
 Plugin 'inkarkat/vim-mark'
+" tmux navigator
+Plugin 'christoomey/vim-tmux-navigator'
 
 " -------------------
 " General Programming
