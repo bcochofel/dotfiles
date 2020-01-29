@@ -52,6 +52,14 @@ Plugin 'mileszs/ack.vim'
 Plugin 'junegunn/vim-easy-align'
 " tabular
 Plugin 'godlygeek/tabular'
+" refresh ctags
+Plugin 'ludovicchabant/vim-gutentags'
+" repeat commands
+Plugin 'tpope/vim-repeat'
+" vim swoop
+Plugin 'pelodelfuego/vim-swoop'
+" vim mark
+Plugin 'inkarkat/vim-mark'
 
 " -------------------
 " General Programming
@@ -388,6 +396,13 @@ let g:syntastic_yaml_checkers = ['yamllint']
 let g:syntastic_ansible_checkers = ['ansible_lint']
 
 " ----- Ack -----
+
+" use silver searcher if available
+" https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 " Usage
 " :Ack [options] {pattern} [{directories}]
 " Search recursively in {directories} (which defaults to the current directory) for the {pattern}.
@@ -492,3 +507,11 @@ let g:jedi#use_splits_not_buffers = "right"
 " K: check documentation of class or method
 " <leader>n: show the usage of a name in current file
 " <leader>r: rename a name
+
+" ----- vim-swoop -----
+
+nmap <Leader>l :call Swoop()<CR>
+vmap <Leader>l :call SwoopSelection()<CR>
+let g:swoopIgnoreCase = 1
+let g:swoopAutoInsertMode = 0
+let g:defaultWinSwoopHeight = 10

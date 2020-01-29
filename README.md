@@ -16,8 +16,8 @@ sudo apt install zsh zsh-syntax-highlighting ttf-ancient-fonts fonts-powerline f
 sudo apt install terminator tilix
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 sudo apt install vim neovim
-sudo apt install python3-pip exuberant-ctags ack-grep
-sudo pip3 install pynvim flake8 pylint isort
+sudo apt install python3-pip exuberant-ctags ack-grep silversearcher-ag
+sudo pip3 install pynvim flake8 pylint isort yamllint ansible-lint jedi autopep8 yapf docformatter
 ```
 
 # Git your dotfiles
@@ -309,6 +309,10 @@ vim +UpdateRemotePlugins +qall
   - Dependencies: sudo apt install ack-grep
 - [Vim-easy-alin: A simple, easy-to-use Vim alignment plugin.](https://github.com/junegunn/vim-easy-align)
 - [tabular: Vim script for text filtering and alignment ](https://github.com/godlygeek/tabular)
+- [vim-gutentags: A Vim plugin that manages your tag files](https://github.com/ludovicchabant/vim-gutentags)
+- [vim-repeat: repeat.vim: enable repeating supported plugin maps with "."](https://github.com/tpope/vim-repeat)
+- [vim-swoop: It allows you to find and replace occurrences in many buffers being aware of the context.](https://github.com/pelodelfuego/vim-swoop)
+- [vim-mark: Highlight several words in different colors simultaneously.](https://github.com/inkarkat/vim-mark)
 
 ## General Programming
 
