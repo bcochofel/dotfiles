@@ -91,6 +91,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 vim +UpdateRemotePlugins +qall
 # create symbolic link for neovim config
+mkdir -p ~/.config/nvim
 ln -s ~/.vimrc ~/.config/nvim/init.vim
 # choose default terminal
 sudo update-alternatives --set x-terminal-emulator /usr/bin/terminator
