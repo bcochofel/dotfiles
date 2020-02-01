@@ -224,6 +224,10 @@ mkdir ~/Pictures/screenshots
 
 # Plugin Manager
 
+## Install Vim-Plug
+
+https://github.com/junegunn/vim-plug
+
 ## Install Vundle
 
 https://github.com/VundleVim/Vundle.vim
