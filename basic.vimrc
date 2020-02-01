@@ -68,6 +68,8 @@ set noswapfile " no swap files
 
 set path=.,** " search relative to current file + directory
 
+set confirm " instead raise a dialogue asking if you wish to save changed files.
+
 set shell=/usr/bin/zsh " Prefer zsh for shell-related tasks
 
 " }}}
