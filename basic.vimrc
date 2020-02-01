@@ -70,6 +70,12 @@ set path=.,** " search relative to current file + directory
 
 set confirm " instead raise a dialogue asking if you wish to save changed files.
 
+set wildmenu " better command-line completion
+
+set wildmode=list:longest,full " set command-line completion mode
+
+set showcmd " show partial commands in the last line of the screen
+
 set shell=/usr/bin/zsh " Prefer zsh for shell-related tasks
 
 " }}}
