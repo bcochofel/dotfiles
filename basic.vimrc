@@ -54,6 +54,8 @@ syntax on " turn on syntax highlighting
 
 set hlsearch  " highlight searches
 
+set smartcase " case-sensitive if search contains an uppercase character
+
 set number relativenumber " turn relative line numbers on
 
 set colorcolumn=80,120 " add vertical lines on columns
