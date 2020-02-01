@@ -78,7 +78,15 @@ set wildmode=list:longest,full " set command-line completion mode
 
 set showcmd " show partial commands in the last line of the screen
 
-set shell=/usr/bin/zsh " Prefer zsh for shell-related tasks
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
+if has("win16") || has("win32")
+  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+else
+  set wildignore+=.git\*,.hg\*,.svn\*
+endif
+
+set shell=/usr/bin/zsh " prefer zsh for shell-related tasks
 
 " }}}
 
