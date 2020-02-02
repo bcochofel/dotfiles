@@ -251,4 +251,14 @@ vnoremap <Up> <Nop>
 :nmap <Leader>v :e $MYVIMRC<CR>
 
 " <Leader> is \ by default, so those commands can be invoked by doing \v and \s
+"
+" useful settings:
+" Typing ":set xxx" sets the option "xxx".  Some options are:
+"    'ic' 'ignorecase'       ignore upper/lower case when searching
+"    'is' 'incsearch'        show partial matches for a search phrase
+"    'hls' 'hlsearch'        highlight all matching phrases
+"    You can either use the long or the short option name.
+"
+"    Prepend "no" to switch an option off:   :set noic
+
 " }}}
