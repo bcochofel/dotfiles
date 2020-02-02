@@ -28,6 +28,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'preservim/nerdcommenter'
+Plug 'majutsushi/tagbar'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'ervandew/supertab'
 
 call plug#end()
 
@@ -126,6 +129,20 @@ let g:NERDDefaultAlign = 'left'
 " ?: Toggle NERD Tree's quick help
 
 map <F6> : NERDTreeToggle<CR>
+
+" ----- TagBar -----
+" :help tagbar
+
+map <F8> : TagbarToggle<CR>
+
+" ----- Indent Guides -----
+" :help indent-guides
+
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 1
+
+" ----- Super TAB -----
+" :help supertab
 " }}}
 
 " Mapping {{{
