@@ -12,7 +12,7 @@ It uses the following:
 ## Install Utilities
 
 ```bash
-sudo apt install curl wget git unzip apt-file mc
+sudo apt install curl wget git unzip apt-file mc exuberant-ctags ack-grep silversearcher-ag ripgrep
 ```
 
 ## Install i3 Window Manager

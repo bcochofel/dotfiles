@@ -31,6 +31,19 @@ Plug 'preservim/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ervandew/supertab'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
+
+" ---------
+" Terraform
+" ---------
+Plug 'hashivim/vim-terraform'
+
+" -------
+" Ansible
+" -------
+Plug 'pearofducks/ansible-vim'
 
 call plug#end()
 
@@ -143,6 +156,61 @@ let g:indent_guides_auto_colors = 1
 
 " ----- Super TAB -----
 " :help supertab
+
+" ----- FZF: Fuzzy Finder -----
+" :Files
+" Fzf Configuration
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" ----- Ack -----
+
+" use silver searcher if available
+" https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" Usage
+" :Ack [options] {pattern} [{directories}]
+" Search recursively in {directories} (which defaults to the current directory) for the {pattern}.
+" Files containing the search term will be listed in the quickfix window, along with the line number of the occurrence, once for each occurrence. <Enter> on a line in this window will open the file and place the cursor on the matching line.
+" Just like where you use :grep, :grepadd, :lgrep, and :lgrepadd, you can use :Ack, :AckAdd, :LAck, and :LAckAdd respectively. (See :help Ack after installing, or doc/ack.txt in the repo, for more information.)
+" For more ack help see ack documentation.
+"
+" Keyboard Shortcuts
+
+" The quickfix results window is augmented with these convenience mappings:
+
+" ?    a quick summary of these keys, repeat to close
+" o    to open (same as Enter)
+" O    to open and close the quickfix window
+" go   to preview file, open but maintain focus on ack.vim results
+" t    to open in new tab
+" T    to open in new tab without moving to it
+" h    to open in horizontal split
+" H    to open in horizontal split, keeping focus on the results
+" v    to open in vertical split
+" gv   to open in vertical split, keeping focus on the results
+" q    to close the quickfix window
+
+" ----- vim-terraform -----
+let g:terraform_align=1
+let g:terraform_fold_sections=1
+let g:terraform_fmt_on_save=1
+
+" HCL
+augroup filetypedetect
+  au! BufRead,BufNewFile *.hcl setf terraform
+augroup END
+
+" ----- vim-ansible -----
+
+let g:ansible_unindent_after_newline = 1
+let g:ansible_attribute_highlight = "ob"
 " }}}
 
 " Mapping {{{
