@@ -45,6 +45,11 @@ Plug 'hashivim/vim-terraform'
 " -------
 Plug 'pearofducks/ansible-vim'
 
+" ----
+" TMux
+" ----
+Plug 'christoomey/vim-tmux-navigator'
+
 call plug#end()
 
 " Color theme {{{
