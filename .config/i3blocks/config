@@ -87,13 +87,13 @@ interval=60
 
 [network]
 label=
-instance=enp0s31f6
+instance=enp9s0
 color=#3792de
 interval=10
 
 [network]
 label=
-instance=wlp2s0
+instance=wlp12s0
 color=#3792de
 interval=10
 
