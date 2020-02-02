@@ -12,13 +12,14 @@ It uses the following:
 ## Install Utilities
 
 ```bash
-sudo apt install curl wget git unzip gnome-control-center gnome-screensaver apt-file mc
+sudo apt install curl wget git unzip apt-file mc
 ```
 
 ## Install i3 Window Manager
 
 ```bash
-sudo apt install i3 i3blocks i3lock i3lock-fancy i3status xautolock conky feh rofi scrot pulseaudio-utils xbacklight
+sudo apt install i3 i3blocks i3lock i3lock-fancy i3status xautolock conky feh rofi \
+  gnome-control-center gnome-screensaver scrot pulseaudio-utils xbacklight
 ```
 
 ## Install zsh
