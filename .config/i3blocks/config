@@ -29,21 +29,21 @@ command=~/.config/i3blocks/blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
-[bandwidth]
-instance=wlp2s0;in
-label=
-color=#509b98
-interval=1
-min_width="9999mb"
-align=right
+# [bandwidth]
+# instance=wlp2s0;in
+# label=
+# color=#509b98
+# interval=1
+# min_width="9999mb"
+# align=right
 
-[bandwidth]
-instance=wlp2s0;out
-label=
-color=#21d0c8
-interval=1
-min_width="9999mb"
-align=right
+# [bandwidth]
+# instance=wlp2s0;out
+# label=
+# color=#21d0c8
+# interval=1
+# min_width="9999mb"
+# align=right
 
 #[spotify]
 #interval=persist
@@ -58,22 +58,22 @@ label=
 color=#2db94b
 interval=10
 
-[memory]
-label=
-color=#2db94b
-instance=mem;free
-interval=30
+# [memory]
+# label=
+# color=#2db94b
+# instance=mem;free
+# interval=30
 
-[memory]
-label=
-color=#2db94b
-instance=swap;total
-interval=30
+# [memory]
+# label=
+# color=#2db94b
+# instance=swap;total
+# interval=30
 
-[cpu]
-label=
-color=#2db94b
-interval=2
+# [cpu]
+# label=
+# color=#2db94b
+# interval=2
 
 [ssid]
 label=

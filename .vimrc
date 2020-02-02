@@ -24,6 +24,11 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Utilities
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'preservim/nerdcommenter'
+
 call plug#end()
 
 " Color theme {{{
@@ -92,6 +97,37 @@ set shell=/usr/bin/zsh " prefer zsh for shell-related tasks
 
 " }}}
 
+" Plugin Configurations {{{
+
+" ----- NerdCommenter -----
+" :help nerdcommenter
+"
+" [count]<leader>c<space> |NERDCommenterToggle| 
+" Toggles the comment state of the selected line(s). If the topmost selected 
+" line is commented, all selected lines are uncommented and vice versa.
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" ----- NERDTree -----
+" :help NERDTreeMappings
+" t: Open the selected file in a new tab
+" i: Open the selected file in a horizontal split window
+" s: Open the selected file in a vertical split window
+" I: Toggle hidden files
+" m: Show the NERD Tree menu
+" R: Refresh the tree, useful if files change outside of Vim
+" ?: Toggle NERD Tree's quick help
+
+map <F6> : NERDTreeToggle<CR>
+" }}}
+
 " Mapping {{{
 
 " Remove newbie crutches in Command Mode
@@ -119,10 +155,10 @@ vnoremap <Right> <Nop>
 vnoremap <Up> <Nop>
 
 " source $MYVIMRC reloads the saved $MYVIMRC
-:nmap <Leader>s :source $MYVIMRC
+:nmap <Leader>s :source $MYVIMRC<CR>
 
 " opens $MYVIMRC for editing, or use :tabedit $MYVIMRC
-:nmap <Leader>v :e $MYVIMRC
+:nmap <Leader>v :e $MYVIMRC<CR>
 
 " <Leader> is \ by default, so those commands can be invoked by doing \v and \s
 " }}}
