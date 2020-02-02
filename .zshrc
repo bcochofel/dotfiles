@@ -1,6 +1,21 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# INTERNAL UTILITY FUNCTIONS {{{1
+
+# Returns whether the given command is executable or aliased.
+_has() {
+  return $( whence $1 &>/dev/null )
+}
+
+_append_to_path() {
+  if [ -d $1 -a -z ${path[(r)$1]} ]; then
+    path=($path $1);
+  fi
+}
+
+# }}}
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -143,6 +158,7 @@ if [ -e ~/.fzf ]; then
   source ~/.fzf/shell/key-bindings.zsh
   source ~/.fzf/shell/completion.zsh
 fi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fzf + ag configuration
 if _has fzf && _has ag; then
@@ -173,5 +189,3 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 # alias for git dotfiles
 alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
