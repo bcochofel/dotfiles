@@ -77,6 +77,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # oh-my-zsh bullet-train theme
 cd ~/.oh-my-zsh/themes/
 curl -O https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
+cd
 
 # zsh-autosuggestions plugin
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -90,8 +91,9 @@ curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 Clone repository
 
 ```bash
+cd
 alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-#echo ".dotfiles" >> .gitignore
+echo ".dotfiles" >> $HOME/.gitignore
 git clone --bare https://github.com/bcochofel/dotfiles.git $HOME/.dotfiles
 alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 mkdir -p ~/.config-backup

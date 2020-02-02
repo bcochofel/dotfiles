@@ -160,12 +160,17 @@ autoload -U +X bashcompinit && bashcompinit
 
 autoload -Uz compinit
 compinit
-# Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
+
+if _has kitty; then
+  # Completion for kitty
+  kitty + complete setup zsh | source /dev/stdin
+fi
 
 # tilix terminal
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+if [ -f /etc/profile.d/vte.h ]; then
+  if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     source /etc/profile.d/vte.sh
+  fi
 fi
 
 # fzf via local installation
