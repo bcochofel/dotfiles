@@ -14,6 +14,22 @@ _append_to_path() {
   fi
 }
 
+# EDITOR
+if _has vim; then
+  export EDITOR=vim VISUAL=vim
+elif _has vi; then
+  export EDITOR=vi VISUAL=vi
+elif _has emacs; then
+  export EDITOR=emacs VISUAL=emacs
+fi
+
+# History control. Don't bother with history if we can't write to the file,
+# like if we're using sudo.
+if [ -w ~/.zsh_history -o -w ~ ]; then
+  SAVEHIST=100000
+  HISTSIZE=100000
+  HISTFILE=~/.zsh_history
+fi
 # }}}
 
 # Path to your oh-my-zsh installation.
