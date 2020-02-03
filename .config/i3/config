@@ -60,7 +60,7 @@ mode "$mode_config" {
   bindsym n exec XDG_CURRENT_DESKTOP=GNOME gnome-control-center network, mode "default"
   bindsym p exec XDG_CURRENT_DESKTOP=GNOME gnome-control-center power, mode "default"
   bindsym s exec XDG_CURRENT_DESKTOP=GNOME gnome-control-center sound, mode "default"
-                   
+
   bindsym Escape mode "default"
   bindsym Return mode "default"
 }
@@ -78,6 +78,14 @@ mode "$mode_system" {
   bindsym Escape mode "default"
   bindsym Return mode "default"
 }
+
+# cheat sheets
+# i3 cheat sheet
+bindsym $mod+Shift+i exec "~/.config/i3/scripts/i3-cheat-sheet.sh"
+# terminal cheat sheet
+bindsym $mod+Shift+t exec "~/.config/i3/scripts/terminal-cheat-sheet.sh"
+# vim cheat sheet
+bindsym $mod+Shift+v exec "~/.config/i3/scripts/vim-cheat-sheet.sh"
 
 # lock the screen
 bindsym Mod1+Ctrl+l exec i3lock -c '#000000'
@@ -103,7 +111,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 # mute mic
 #bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 1 toggle
 #bindcode 190 exec --no-startup-id pactl set-source-mute 1 toggle
-                                                                   
+
 # Sreen brightness controls
 # check https://unix.stackexchange.com/questions/301724/xbacklight-not-working
 # increase screen brightness
@@ -112,22 +120,22 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+ccedilla focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# bindsym $mod+Left focus left
+# bindsym $mod+Down focus down
+# bindsym $mod+Up focus up
+# bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+ccedilla move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -174,7 +182,7 @@ set $WS10 10:chat
 
 # switch between workspace
 bindsym mod1+Tab workspace next
-bindsym mod1+iShift+Tab workspace next
+bindsym mod1+Shift+Tab workspace next
 
 # switch to workspace
 bindsym $mod+1 workspace $WS1
@@ -209,26 +217,26 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+  # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym ccedilla resize grow width 10 px or 10 ppt
+  # Pressing left will shrink the window’s width.
+  # Pressing right will grow the window’s width.
+  # Pressing up will shrink the window’s height.
+  # Pressing down will grow the window’s height.
+  bindsym j resize shrink width 10 px or 10 ppt
+  bindsym k resize grow height 10 px or 10 ppt
+  bindsym l resize shrink height 10 px or 10 ppt
+  bindsym ccedilla resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+  # same bindings, but for the arrow keys
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -248,6 +256,7 @@ assign [class="whatsdesk"] $WS10
 assign [class="yakyak"] $WS10
 
 for_window [class="Spotify"] move to workspace $WS9
+for_window [title="cheat-sheet"] [class="feh"] floating enable, move position center, focus
 
 # start i3bar to display a workspace bar
 # run conky or i3status

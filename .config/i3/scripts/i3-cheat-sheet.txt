@@ -1,0 +1,36 @@
+# Introduction
+
+- Alt Key: Mod1
+- Windows key: Mod4
+
+# Default Bindings tl;dr
+
+## Keys to use with $mod
+
+- $mod+w: tabbed layout
+- $mod+e: default layout
+- $mod+r: resize mode
+- $mod+a: focus parent
+- $mod+s: stacked layout
+- $mod+d: dmenu
+- $mod+f: full screen
+- $mod+h: split horiz.
+- $mod+j: left
+- $mod+k: down
+- $mod+l: up
+- $mod+ç: right
+- $mod+Enter: open terminal
+- $mod+v: split vert.
+- $mod+Space: focus floating/tiling
+
+## Keys to use with Shift+$mod
+
+- Shift+$mod+q: kill window
+- Shift+$mod+e: exit i3
+- Shift+$mod+r: restart i3
+- Shift+$mod+c: reload configuration
+- Shift+$mod+j: move left
+- Shift+$mod+k: move down
+- Shift+$mod+l: move up
+- Shift+$mod+ç: move right
+- Shift+$mod+Space: toggle tiling/floating
