@@ -12,7 +12,8 @@ It uses the following:
 ## Install Utilities
 
 ```bash
-sudo apt install tree curl wget git unzip apt-file mc exuberant-ctags ack-grep silversearcher-ag ripgrep
+sudo apt install imagemagick tree curl wget git unzip apt-file mc \
+  exuberant-ctags ack-grep silversearcher-ag ripgrep
 ```
 
 ## Install i3 Window Manager
