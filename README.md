@@ -36,9 +36,9 @@ sudo apt install terminator tilix tmux
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 ```
 
-### Tmuxinator
+### Tmux Plugins
 
-https://github.com/tmuxinator/tmuxinator
+https://tmuxcheatsheet.com/tmux-plugins-tools/
 
 ### Tmux TPM
 
