@@ -192,7 +192,7 @@ if _has fzf && _has ag; then
   '
 fi
 
-# SecureCRT
+# SecureCRT FIX
 export TERM="xterm-256color"
 
 # Hashicorp Stack

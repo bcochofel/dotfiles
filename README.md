@@ -36,6 +36,12 @@ sudo apt install terminator tilix tmux
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 ```
 
+### Tmux TPM
+
+Install Tmux Plugin Manager
+
+https://github.com/tmux-plugins/tpm
+
 ## Install Vim and plugin dependencies
 
 ```bash

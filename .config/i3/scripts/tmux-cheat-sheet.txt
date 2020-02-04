@@ -18,7 +18,7 @@ $ tmux kill-session -t mysession | $ tmux kill-session -a > kill sessions
 <prefix> ) > move to next session
 
 ## windows                     ## panes
-<prefix> c > create            <prefix> % > split vert.
+<prefix> c > create            <prefix> \% > split vert.
 <prefix> , > rename            <prefix> " > split horiz.
 <prefix> & > close             <prefix> arrows > switch to pane
 <prefix> p > previous          <prefix> o > switch to next pane

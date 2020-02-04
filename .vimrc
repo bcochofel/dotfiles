@@ -1,4 +1,4 @@
-" auto install vim-plug, plugin manager
+" auo o install vim-plug, plugin manager
 " detects if running neovim
 " Neovim uses ~/.config/nvim/init.vim, not ~/.vimrc
 if has('nvim')
@@ -19,7 +19,7 @@ call plug#begin('~/.vim/plugged')
 
 " Theme
 Plug 'lifepillar/vim-solarized8'
-Plug 'arcticicestudio/nord-vim'
+" Plug 'arcticicestudio/nord-vim'
 " Status bar
 Plug 'itchyny/lightline.vim'
 "Plug 'vim-airline/vim-airline'
@@ -49,13 +49,14 @@ Plug 'pearofducks/ansible-vim'
 " ----
 " TMux
 " ----
-" Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
 " Color theme {{{
+let g:solarized_termcolors=256
 colorscheme solarized8_high
-"colorscheme nord
+" colorscheme nord
 set background=dark " dark background
 
 " let g:airline_theme='solarized'
