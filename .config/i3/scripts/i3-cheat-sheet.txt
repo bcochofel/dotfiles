@@ -1,35 +1,35 @@
 # i3 Window manager key bindings
 
-- Alt Key: Mod1 | - Windows key: Mod4 | - $mod: Mod4
+Alt Key: Mod1 | - Windows key: Mod4 | - $mod: Mod4
 
 ## Keys to use with $mod           ## Keys to use with Shift+$mod
-- $mod+w: tabbed layout            - Shift+$mod+q: kill window
-- $mod+e: default layout           - Shift+$mod+e: exit i3
-- $mod+r: resize mode              - Shift+$mod+r: restart i3
-- $mod+a: focus parent             - Shift+$mod+c: reload configuration
-- $mod+s: stacked layout           - Shift+$mod+left: move left
-- $mod+d: dmenu                    - Shift+$mod+down: move down
-- $mod+f: full screen              - Shift+$mod+up: move up
-- $mod+h: split horiz.             - Shift+$mod+right: move right
-- $mod+left: left                  - Shift+$mod+Space: toggle tiling/floating
-- $mod+down: down
-- $mod+up: up
-- $mod+right: right
-- $mod+Enter: open terminal
-- $mod+v: split vert.
-- $mod+Space: focus floating/tiling
+$mod+w: tabbed layout              Shift+$mod+q: kill window
+$mod+e: default layout             Shift+$mod+e: exit i3
+$mod+r: resize mode                Shift+$mod+r: restart i3
+$mod+a: focus parent               Shift+$mod+c: reload configuration
+$mod+s: stacked layout             Shift+$mod+left: move left
+$mod+d: dmenu                      Shift+$mod+down: move down
+$mod+f: full screen                Shift+$mod+up: move up
+$mod+h: split horiz.               Shift+$mod+right: move right
+$mod+left: left                    Shift+$mod+Space: toggle tiling/floating
+$mod+down: down
+$mod+up: up
+$mod+right: right
+$mod+Enter: open terminal
+$mod+v: split vert.
+$mod+Space: focus floating/tiling
 
 ## Custom Keys
-- Mod1+Ctrl+c: mode config
-- Mod1+Ctrl+q: mode system
-- $mod+Shift+i: i3 cheat sheet
-- $mod+Shift+t: terminal cheat sheet
-- $mod+Shift+v: vim cheat sheet
-- Mod1+Ctrl+l: lock screen
-- Print: screenshot multiple displays
-- Shift+Print: screenshot select
-- $mod+Shift+Print: screenshot focus
-- Mod1+Tab: next workspace
-- Mod1+Shift+Tab: previous workspace
-- $mod+#: switch to workspace #
-- $mod+Shift+#: move container to workspace #
+Mod1+Ctrl+c: mode config
+Mod1+Ctrl+q: mode system
+Shift+$mod+i: i3 cheat sheet
+Shift+$mod+t: terminal cheat sheet
+Shift+$mod+v: vim cheat sheet
+Mod1+Ctrl+l: lock screen
+Print: screenshot multiple displays
+Shift+Print: screenshot select
+Shift+$mod+Print: screenshot focus
+Mod1+Tab: next workspace
+Mod1+Shift+Tab: previous workspace
+$mod+#: switch to workspace #
+Shift+$mod+#: move container to workspace #

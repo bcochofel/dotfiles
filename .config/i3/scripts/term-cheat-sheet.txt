@@ -1,0 +1,4 @@
+# terminator/tmux key bindings
+
+## terminator
+Ctrl+Shift+q: quits terminator

@@ -21,8 +21,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'lifepillar/vim-solarized8'
 Plug 'arcticicestudio/nord-vim'
 " Status bar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 
 " Utilities
 Plug 'scrooloose/nerdtree'
@@ -57,8 +58,12 @@ colorscheme solarized8_high
 "colorscheme nord
 set background=dark " dark background
 
-let g:airline_theme='solarized'
-let g:airline_solarized_bg='dark'
+" let g:airline_theme='solarized'
+" let g:airline_solarized_bg='dark'
+
+let g:lightline = {
+  \ 'colorscheme': 'solarized',
+  \ }
 
 " Hey, I do not get the right colors when running Vim inside tmux
 " or in my favourite true-color enabled terminal!
@@ -74,6 +79,10 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
+if !has('gui_running')
+  set t_Co=256 " max number of colors that can be displayed by the terminal
+endif
+
 filetype plugin indent on " add filetype, plugin, and indent support
 
 syntax on " turn on syntax highlighting
@@ -87,6 +96,8 @@ set number relativenumber " turn relative line numbers on
 set colorcolumn=80,120 " add vertical lines on columns
 
 set cursorline " highligh current line
+
+set laststatus=2 " to display the status line always
 
 set shiftwidth=2 " indent is 4 spaces (should be same as softtabstop for consistency)
 set softtabstop=2 " number of spaces inserted when inputting tab

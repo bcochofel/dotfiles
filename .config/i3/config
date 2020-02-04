@@ -83,7 +83,7 @@ mode "$mode_system" {
 # i3 cheat sheet
 bindsym $mod+Shift+i exec "~/.config/i3/scripts/i3-cheat-sheet.sh"
 # terminal cheat sheet
-bindsym $mod+Shift+t exec "~/.config/i3/scripts/terminal-cheat-sheet.sh"
+bindsym $mod+Shift+t exec "~/.config/i3/scripts/term-cheat-sheet.sh"
 # vim cheat sheet
 bindsym $mod+Shift+v exec "~/.config/i3/scripts/vim-cheat-sheet.sh"
 
