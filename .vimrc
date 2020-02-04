@@ -27,7 +27,7 @@ Plug 'itchyny/lightline.vim'
 
 " Utilities
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'preservim/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -49,7 +49,7 @@ Plug 'pearofducks/ansible-vim'
 " ----
 " TMux
 " ----
-Plug 'christoomey/vim-tmux-navigator'
+" Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
