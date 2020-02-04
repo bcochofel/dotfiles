@@ -1,4 +1,21 @@
-# terminator/tmux key bindings
+# terminator key bindings
 
-## terminator
-Ctrl+Shift+q: quits terminator
+Ctrl+Shift+q: quits terminator         Super+g: group all terminals
+Ctr+Shift+w: close current term        Super+Shift+g: ungroup all terminals
+Ctr+Shift+r: reset term state          Super+t: group all terms in tab
+Ctrl+Shift+g: reset state and clear    Super+Shift+t: ungroup all terms in tab
+Shift+Ctrl+<arrows>: resize            Alt+a: broadcast to all
+Ctrl+Shift+f: search in scrollback     Alt+g: broadcast to group
+Ctrl+Shift+o: split horiz              Alt+o: don't broadcast
+Ctrl+Shift+e: split vert.
+Ctrl+Tab: next terminal
+Ctrl+Shift+Tab: previous term
+Alt+<arrows>: shift focus
+Ctrl+Shit+t: open new tab
+Ctrl+PageDown: move to next tab
+Ctrl+PageUp: move to previous tab
+Ctrl+Shift+c: copy
+Ctrl+Shift+v: paste
+Ctrl+Plus (+): increase font
+Ctrl+Minus (-): decrease font
+Ctrl+Zero (0): restore font size
