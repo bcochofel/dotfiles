@@ -7,6 +7,8 @@ Ctrl+a: prefix
 <prefix> ? > show shortcuts
 $ tmux info > show every session, window, pane...
 
+<prefix> [ > copy-mode (q to quit mode, use arrows/PgUp/PgDown to scroll)
+
 ## sessions
 $ tmux [new [-s mysession]] | :new [-s mysession] > start session [with name]
 $ tmux ls | <prefix> s > list sessions
