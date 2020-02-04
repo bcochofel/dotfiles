@@ -1,1 +1,29 @@
 # tmux key bindings
+
+Ctrl+a: prefix
+<prefix> : > enter command mode
+:set -g OPTION > set option for all sessions
+:setw -g OPTION > set option for all windows
+<prefix> ? > show shortcuts
+$ tmux info > show every session, window, pane...
+
+## sessions
+$ tmux [new [-s mysession]] | :new [-s mysession] > start session [with name]
+$ tmux ls | <prefix> s > list sessions
+$ tmux a [-t mysession] > attach to session
+$ tmux kill-session -t mysession | $ tmux kill-session -a > kill sessions
+<prefix> $ > rename session
+<prefix> d > detach session
+<prefix> ( > move to previous session
+<prefix> ) > move to next session
+
+## windows                     ## panes
+<prefix> c > create            <prefix> % > split vert.
+<prefix> , > rename            <prefix> " > split horiz.
+<prefix> & > close             <prefix> arrows > switch to pane
+<prefix> p > previous          <prefix> o > switch to next pane
+<prefix> n > next              <prefix> spacebar > toggle between layouts
+<prefix> # > select by nr      <prefix> x > close pane
+                               <prefix> q > show pane numbers
+                               <prefix> q # > switch to pane #
+                               <prefix>+arrow > resize
