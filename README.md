@@ -146,6 +146,7 @@ https://github.com/VundleVim/Vundle.vim
 - https://github.com/arcticicestudio/nord-vim
 - https://github.com/vim-airline/vim-airline
 - https://github.com/vim-airline/vim-airline-themes
+- https://github.com/itchyny/lightline.vim
 
 ## Utilities
 
