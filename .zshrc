@@ -192,8 +192,7 @@ if _has fzf && _has ag; then
   '
 fi
 
-# SecureCRT FIX
-export TERM="xterm-256color"
+export TERM="screen-256color"
 
 # Hashicorp Stack
 #export NOMAD_ADDR=http://server-1:4646
