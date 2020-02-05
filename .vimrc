@@ -38,6 +38,7 @@ Plug 'mileszs/ack.vim'
 
 " Check syntax
 Plug 'dense-analysis/ale'
+Plug 'maximbaz/lightline-ale'
 
 " ---------
 " Terraform
@@ -66,8 +67,32 @@ set background=dark " dark background
 " let g:airline_solarized_bg='dark'
 
 let g:lightline = {
-  \ 'colorscheme': 'solarized',
-  \ }
+     \ 'colorscheme': 'solarized',
+       \ 'active': {
+       \   'left': [ [ 'mode', 'paste' ],
+       \             [ 'readonly', 'modified' ],
+       \             [ 'absolutepath' ] ],
+       \   'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
+       \              [ 'lineinfo' ],
+       \              [ 'fileformat', 'fileencoding', 'filetype', 'percent' ],
+       \              [ 'gitbranch' ] ],
+       \ },
+       \ 'component_function': {
+       \   'gitbranch': 'gitbranch#name',
+       \ },
+      \ }
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+let g:lightline.component_type = {
+      \     'linter_checking': 'left',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \     'linter_ok': 'left',
+      \ }
 
 " Hey, I do not get the right colors when running Vim inside tmux
 " or in my favourite true-color enabled terminal!
