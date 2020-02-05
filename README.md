@@ -199,6 +199,7 @@ https://github.com/VundleVim/Vundle.vim
 - [auto-pairs: Insert or delete brackets, parens, quotes in pair.](https://github.com/jiangmiao/auto-pairs)
 - [Syntastic: Syntax checking hacks for vim](https://github.com/vim-syntastic/syntastic)
   - Dependencies: pip install yamllint ansible-lint
+- [ALE: Check syntax in Vim asynchronously and fix files](https://github.com/dense-analysis/ale)
 - [Deoplete: Dark powered asynchronous completion framework for neovim/Vim8](https://github.com/Shougo/deoplete.nvim)
   - Dependencies: pip install pynvim
 - [Deoplete-jedi: deoplete.nvim source for Python](https://github.com/deoplete-plugins/deoplete-jedi)
