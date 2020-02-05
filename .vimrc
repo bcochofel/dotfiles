@@ -43,8 +43,8 @@ Plug 'dense-analysis/ale'
 Plug 'maximbaz/lightline-ale'
 
 " GIT
-Plug 'itchyny/vim-gitbranch'
-Plug 'airblade/vim-gitgutter'
+" Plug 'itchyny/vim-gitbranch'
+" Plug 'airblade/vim-gitgutter'
 
 " ---------
 " Terraform
@@ -96,9 +96,8 @@ let g:lightline = {
        \             [ 'readonly', 'modified' ],
        \             [ 'absolutepath' ] ],
        \   'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
-       \              [ 'lineinfo' ],
-       \              [ 'fileformat', 'fileencoding', 'filetype', 'percent' ],
-       \              [ 'gitbranch' ] ],
+       \              [ 'lineinfo', 'percent' ],
+       \              [ 'fileformat', 'fileencoding', 'filetype' ] ],
        \ },
        \ 'component_function': {
        \   'gitbranch': 'gitbranch#name',
