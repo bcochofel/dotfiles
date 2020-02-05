@@ -35,8 +35,8 @@ Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
-" Plug 'jiangmiao/auto-pairs'
-" Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
 
 " Check syntax
 Plug 'dense-analysis/ale'
@@ -143,6 +143,8 @@ filetype plugin indent on " add filetype, plugin, and indent support
 syntax on " turn on syntax highlighting
 
 set hlsearch  " highlight searches
+
+set backspace=indent,start
 
 set smartcase " case-sensitive if search contains an uppercase character
 
