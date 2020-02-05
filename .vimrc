@@ -170,6 +170,10 @@ set wildmenu " better command-line completion
 
 set wildmode=list:longest,full " set command-line completion mode
 
+" Completion options (select longest + show menu even if a single match is
+" found)
+set completeopt=longest,menuone
+
 set showcmd " show partial commands in the last line of the screen
 
 " Ignore compiled files
