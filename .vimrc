@@ -35,10 +35,16 @@ Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
+" Plug 'jiangmiao/auto-pairs'
+" Plug 'tpope/vim-surround'
 
 " Check syntax
 Plug 'dense-analysis/ale'
 Plug 'maximbaz/lightline-ale'
+
+" GIT
+Plug 'itchyny/vim-gitbranch'
+Plug 'airblade/vim-gitgutter'
 
 " ---------
 " Terraform
@@ -55,7 +61,24 @@ Plug 'pearofducks/ansible-vim'
 " ----
 Plug 'christoomey/vim-tmux-navigator'
 
+" ---------------
+" Code completion
+" ---------------
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
+" do not forget to install jedi
+Plug 'deoplete-plugins/deoplete-jedi'
+
 call plug#end()
+
+let g:deoplete#enable_at_startup = 1
 
 " Color theme {{{
 let g:solarized_termcolors=256
