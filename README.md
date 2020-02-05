@@ -51,7 +51,19 @@ https://github.com/tmux-plugins/tpm
 ```bash
 sudo apt install vim
 sudo apt install python3-pip exuberant-ctags ack-grep silversearcher-ag
-sudo pip3 install pynvim flake8 pylint isort yamllint ansible-lint jedi autopep8 yapf docformatter
+sudo pip3 install pynvim flake8 pylint isort yamllint ansible-lint jedi \
+  autopep8 yapf docformatter proselint
+```
+
+### Linters
+
+#### Terraform
+
+https://github.com/terraform-linters/tflint
+
+```bash
+curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o tflint.zip && unzip tflint.zip && rm tflint.zip
+sudo mv tflint /usr/local/bin
 ```
 
 ## Install neovim
