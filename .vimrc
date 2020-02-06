@@ -352,6 +352,10 @@ let g:ansible_attribute_highlight = "ob"
 
 " Mapping {{{
 
+" toggle paste mode
+
+set pastetoggle=<F2>
+
 " better completeopt
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
