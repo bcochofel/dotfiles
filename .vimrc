@@ -29,7 +29,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'preservim/nerdcommenter'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
+" Plug 'liuchengxu/vista.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -284,6 +286,10 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " :help tagbar
 
 map <F7> : TagbarToggle<CR>
+
+" ----- Vista.vim -----
+
+" map <F7> : Vista!!<CR>
 
 " ----- Indent Guides -----
 " :help indent-guides

@@ -181,6 +181,8 @@ https://github.com/VundleVim/Vundle.vim
 - [NERDCommenter: Comment functions so powerful—no comment necessary.](https://github.com/preservim/nerdcommenter)
 - [NERDTree: a file system explorer for the Vim editor.](https://github.com/preservim/nerdtree)
 - [NERDTree-GIT: A plugin of NERDTree showing git status flags.](https://github.com/Xuyuanp/nerdtree-git-plugin)
+- [Vista.vim: Viewer and finder for LSP symbols and
+  tabs](https://github.com/liuchengxu/vista.vim)
 - [Tagbar: a class outline viewer for Vim](https://github.com/majutsushi/tagbar)
   - Dependencies: sudo apt install exuberant-ctags
 - [FZF: A command-line fuzzy finder.](https://github.com/junegunn/fzf.vim)
