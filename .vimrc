@@ -201,6 +201,12 @@ au BufNewFile,BufRead *.py set softtabstop=4
 au BufNewFile,BufRead *.py set tabstop=4
 au BufNewFile,BufRead *.py set fileformat=unix
 
+" Path to python interpreter for neovim
+let g:python3_host_prog  = '/usr/bin/python3'
+let g:python_host_prog  = '/usr/bin/python2'
+" Skip the check of neovim module
+let g:python3_host_skip_check = 0"
+
 " Markdown
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.md set spell
