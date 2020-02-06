@@ -144,7 +144,7 @@ syntax on " turn on syntax highlighting
 
 set hlsearch  " highlight searches
 
-set backspace=indent,start
+set backspace=indent,eol,start
 
 set smartcase " case-sensitive if search contains an uppercase character
 
@@ -156,7 +156,7 @@ set cursorline " highligh current line
 
 set laststatus=2 " to display the status line always
 
-set shiftwidth=2 " indent is 4 spaces (should be same as softtabstop for consistency)
+set shiftwidth=2 " indent is 2 spaces (should be same as softtabstop for consistency)
 set softtabstop=2 " number of spaces inserted when inputting tab
 set expandtab " don't use actual tab character (use spaces instead)
 
@@ -172,11 +172,19 @@ set wildmenu " better command-line completion
 
 set wildmode=list:longest,full " set command-line completion mode
 
+set autoindent " auto indentation
+
 " Completion options (select longest + show menu even if a single match is
 " found)
 set completeopt=longest,menuone
 
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
 set showcmd " show partial commands in the last line of the screen
+
+set encoding=utf-8 " set default enconding
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
@@ -186,11 +194,38 @@ else
   set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
+" Python tabs and spaces
+au BufNewFile,BufRead *.py set expandtab
+au BufNewFile,BufRead *.py set shiftwidth=4
+au BufNewFile,BufRead *.py set softtabstop=4
+au BufNewFile,BufRead *.py set tabstop=4
+au BufNewFile,BufRead *.py set fileformat=unix
+
+" Markdown
+au BufNewFile,BufRead *.md set filetype=markdown
+au BufNewFile,BufRead *.md set spell
+au BufNewFile,BufRead *.md set textwidth=80
+
 set shell=/usr/bin/zsh " prefer zsh for shell-related tasks
 
 " }}}
 
 " Plugin Configurations {{{
+" ----- ALE -----
+let g:ale_linters = {
+      \   'python': ['flake8', 'pylint'],
+      \   'ruby': ['standardrb', 'rubocop'],
+      \   'javascript': ['eslint'],
+      \   'yaml.ansible': ['ansible-lint'],
+      \   'yaml' : ['yamllint'],
+      \}
+let g:ale_fixers = {
+      \    'python': ['yapf'],
+      \}
+nmap <F10> :ALEFix<CR>
+nmap <F9> :ALENext<CR>
+nmap <F8> :ALEPrevious<CR>
+let g:ale_fix_on_save = 1
 
 " ----- Golang -----
 let g:go_highlight_structs = 1
@@ -237,10 +272,12 @@ let g:NERDDefaultAlign = 'left'
 
 map <F6> : NERDTreeToggle<CR>
 
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
 " ----- TagBar -----
 " :help tagbar
 
-map <F8> : TagbarToggle<CR>
+map <F7> : TagbarToggle<CR>
 
 " ----- Indent Guides -----
 " :help indent-guides
@@ -308,6 +345,9 @@ let g:ansible_attribute_highlight = "ob"
 " }}}
 
 " Mapping {{{
+
+" better completeopt
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Remove newbie crutches in Command Mode
 cnoremap <Down> <Nop>

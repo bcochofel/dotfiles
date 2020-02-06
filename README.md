@@ -55,7 +55,13 @@ sudo pip3 install pynvim flake8 pylint isort yamllint ansible-lint jedi \
   autopep8 yapf docformatter proselint
 ```
 
-### Linters
+### Linters/Fixers
+
+Install the following linters/fixers
+
+```bash
+sudo pip3 install yamllint pylint flake8 yapf proselint jedi pynvim
+```
 
 #### Terraform
 
@@ -232,10 +238,7 @@ https://github.com/VundleVim/Vundle.vim
 
 ## TODO
 
-- ALE map for next warn/error
-- ALE fixers
 - Python go to definition
-- Code folding/unfolding
 
 # References
 
