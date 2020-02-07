@@ -238,10 +238,6 @@ https://github.com/VundleVim/Vundle.vim
 
 - [vim-ansible: A vim plugin for syntax highlighting Ansible's common filetypes](https://github.com/pearofducks/ansible-vim)
 
-## TODO
-
-- Python go to definition
-
 # References
 
 - [i3 Window manager](https://i3wm.org/)
