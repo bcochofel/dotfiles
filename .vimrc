@@ -39,6 +39,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
+Plug 'sheerun/vim-polyglot'
 
 " Check syntax
 Plug 'dense-analysis/ale'
