@@ -15,7 +15,9 @@ _append_to_path() {
 }
 
 # EDITOR
-if _has vim; then
+if _has nvim; then
+  export EDITOR=nvim VISUAL=nvim
+elif _has vim; then
   export EDITOR=vim VISUAL=vim
 elif _has vi; then
   export EDITOR=vi VISUAL=vi
@@ -153,6 +155,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+if _has nvim; then
+  alias vim='nvim'
+fi
+
+# alias for git dotfiles
+alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -192,6 +200,9 @@ if _has fzf && _has ag; then
   '
 fi
 
+export GOPATH=~/go
+export GOBIN=~/go/bin
+
 export TERM="screen-256color"
 
 # Hashicorp Stack
@@ -201,6 +212,3 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 complete -o nospace -C /usr/local/bin/vault vault
 complete -o nospace -C /usr/local/bin/nomad nomad
 complete -o nospace -C /usr/local/bin/consul consul
-
-# alias for git dotfiles
-alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
