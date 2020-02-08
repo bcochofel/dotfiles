@@ -203,7 +203,7 @@ fi
 export GOPATH=~/go
 export GOBIN=~/go/bin
 
-export PATH="$PATH:$GOPATH/bin
+export PATH=$GOPATH/bin:$PATH
 
 export TERM="screen-256color"
 
