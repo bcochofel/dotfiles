@@ -12,27 +12,27 @@ It uses the following:
 ## Install Utilities
 
 ```bash
-sudo apt install imagemagick tree curl wget git unzip apt-file mc \
+sudo apt install -y imagemagick tree curl wget git unzip apt-file mc \
   exuberant-ctags ack-grep silversearcher-ag ripgrep
 ```
 
 ## Install i3 Window Manager
 
 ```bash
-sudo apt install i3 i3blocks i3lock i3lock-fancy i3status xautolock conky feh rofi \
+sudo apt install -y i3 i3blocks i3lock i3lock-fancy i3status xautolock conky feh rofi \
   gnome-control-center gnome-screensaver scrot pulseaudio-utils xbacklight
 ```
 
 ## Install zsh
 
 ```bash
-sudo apt install zsh zsh-syntax-highlighting ttf-ancient-fonts fonts-powerline fonts-font-awesome
+sudo apt install -y zsh zsh-syntax-highlighting ttf-ancient-fonts fonts-powerline fonts-font-awesome
 ```
 
 ## Install terminal emulators
 
 ```bash
-sudo apt install terminator tilix tmux
+sudo apt install -y terminator tilix tmux
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 ```
 
@@ -49,10 +49,8 @@ https://github.com/tmux-plugins/tpm
 ## Install Vim and plugin dependencies
 
 ```bash
-sudo apt install vim
-sudo apt install python3-pip exuberant-ctags ack-grep silversearcher-ag
-sudo pip3 install pynvim flake8 pylint isort yamllint ansible-lint jedi \
-  autopep8 yapf docformatter proselint
+sudo apt install -y vim
+sudo apt install -y python3-pip exuberant-ctags ack-grep silversearcher-ag
 ```
 
 ### Linters/Fixers
@@ -60,7 +58,8 @@ sudo pip3 install pynvim flake8 pylint isort yamllint ansible-lint jedi \
 Install the following linters/fixers
 
 ```bash
-sudo pip3 install yamllint pylint flake8 yapf proselint jedi pynvim
+sudo pip3 install pynvim flake8 pylint isort yamllint ansible-lint jedi \
+  autopep8 yapf docformatter proselint
 ```
 
 #### Terraform
@@ -75,7 +74,7 @@ sudo mv tflint /usr/local/bin
 ## Install neovim
 
 ```bash
-sudo apt install neovim
+sudo apt install -y neovim
 ```
 
 # Git your dotfiles
@@ -130,7 +129,6 @@ gitdotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} 
 gitdotfiles checkout
 gitdotfiles config --local status.showUntrackedFiles no
 gitdotfiles status
-#echo "alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
 ```
 
 Additional configuration
