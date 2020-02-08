@@ -40,6 +40,8 @@ Plug 'mileszs/ack.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " Check syntax
 Plug 'dense-analysis/ale'
@@ -220,6 +222,11 @@ set shell=/usr/bin/zsh " prefer zsh for shell-related tasks
 " }}}
 
 " Plugin Configurations {{{
+
+" ----- UltiSnips -----
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " ----- Gutentags -----
 let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
