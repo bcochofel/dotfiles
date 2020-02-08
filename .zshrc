@@ -203,6 +203,8 @@ fi
 export GOPATH=~/go
 export GOBIN=~/go/bin
 
+export PATH="$PATH:$GOPATH/bin
+
 export TERM="screen-256color"
 
 # Hashicorp Stack
