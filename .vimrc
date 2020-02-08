@@ -18,7 +18,7 @@ endif
 
 if empty(glob('~/go'))
   autocmd VimEnter * GoInstallBinaries --sync
-fi
+endif
 
 call plug#begin('~/.vim/plugged')
 
