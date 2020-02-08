@@ -172,13 +172,13 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 set $WS1 1:console
-set $WS2 2:secureCRT
+set $WS2 2:notes
 set $WS3 3:www
-set $WS4 4:vscode
+set $WS4 4:
 set $WS5 5
 set $WS6 6
-set $WS7 7
-set $WS8 8
+set $WS7 7:code
+set $WS8 8:secureCRT
 set $WS9 9:media
 set $WS10 10:chat
 
@@ -249,10 +249,11 @@ bindsym $mod+r mode "resize"
 
 # binding apps to workspaces
 # use xprop to check the name of the windows
-assign [class="SecureCRT"] $WS2
+assign [class="Joplin"] $WS2
+assign [class="SecureCRT"] $WS8
 assign [class="Firefox"] $WS3
 assign [class="Google-chrome"] $WS3
-assign [class="Code"] $WS4
+assign [class="Code"] $WS7
 assign [class="Slack"] $WS10
 assign [class="whatsdesk"] $WS10
 assign [class="yakyak"] $WS10
