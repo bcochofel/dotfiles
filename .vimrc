@@ -102,7 +102,8 @@ let g:lightline = {
      \ 'colorscheme': 'solarized',
        \ 'active': {
        \   'left': [ [ 'mode', 'paste' ],
-       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+       \             [ 'gitbranch'], 
+       \             [ 'readonly', 'filename', 'modified' ] ],
        \   'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
        \              [ 'lineinfo', 'percent' ],
        \              [ 'fileformat', 'fileencoding', 'filetype' ] ],
@@ -123,6 +124,12 @@ let g:lightline.component_type = {
       \     'linter_errors': 'error',
       \     'linter_ok': 'left',
       \ }
+let g:lightline.separator = {
+	\   'left': '', 'right': ''
+  \}
+let g:lightline.subseparator = {
+	\   'left': '', 'right': '' 
+  \}
 
 " Hey, I do not get the right colors when running Vim inside tmux
 " or in my favourite true-color enabled terminal!
