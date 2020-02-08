@@ -13,7 +13,7 @@ It uses the following:
 
 ```bash
 sudo apt install -y imagemagick tree curl wget git unzip apt-file mc \
-  exuberant-ctags ack-grep silversearcher-ag ripgrep
+  exuberant-ctags ack-grep silversearcher-ag ripgrep golang
 ```
 
 ## Install i3 Window Manager
