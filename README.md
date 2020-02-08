@@ -114,6 +114,9 @@ chsh -s $(which zsh)
 
 # kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+
+# screenshots
+mkdir ~/Pictures/screenshots
 ```
 
 Clone repository
