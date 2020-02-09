@@ -102,10 +102,16 @@ Install and configure dependencies
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
+# update ttf fonts cache
+fc-cache -f -v
+
 # oh-my-zsh bullet-train theme
 cd ~/.oh-my-zsh/themes/
 curl -O https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
 cd
+
+# oh-my-zsh powerlevel10k theme
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 
 # zsh-autosuggestions plugin
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
