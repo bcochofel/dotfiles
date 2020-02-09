@@ -20,6 +20,10 @@ _append_to_path() {
     path=($path $1);
   fi
 }
+# }}}
+
+# AWS Profile
+export AWS_DEFAULT_PROFILE=default
 
 # EDITOR
 if _has nvim; then
@@ -39,7 +43,6 @@ if [ -w ~/.zsh_history -o -w ~ ]; then
   HISTSIZE=100000
   HISTFILE=~/.zsh_history
 fi
-# }}}
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -120,16 +123,16 @@ HIST_STAMPS="mm/dd/yyyy"
 plugins=(
   ssh-agent
   zsh-autosuggestions
-  colorize
-  aws
-#  ansible
-#  docker
-#  kubectl
-  git
-#  git-prompt
-#  golang
-#  python
-#  virtualenvwrapper
+#   colorize
+#   aws
+#   ansible
+#   docker
+#   kubectl
+#   git
+#   git-prompt
+#   golang
+#   python
+#   virtualenvwrapper
 )
 
 # ssh-agent plugin setting
