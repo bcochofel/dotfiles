@@ -102,9 +102,6 @@ Install and configure dependencies
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-# update ttf fonts cache
-fc-cache -f -v
-
 # oh-my-zsh bullet-train theme
 cd ~/.oh-my-zsh/themes/
 curl -O https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
@@ -143,6 +140,9 @@ gitdotfiles status
 Additional configuration
 
 ```bash
+# update ttf fonts cache
+fc-cache -f -v
+
 # Create a symbolic link to add kitty to PATH (assuming ~/.local/bin is in
 # your PATH)
 mkdir -p ~/.local/bin
