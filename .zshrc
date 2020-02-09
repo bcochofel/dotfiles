@@ -121,6 +121,7 @@ plugins=(
   ssh-agent
   zsh-autosuggestions
   colorize
+  aws
 #  ansible
 #  docker
 #  kubectl
