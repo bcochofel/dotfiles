@@ -264,7 +264,7 @@ for_window [title="cheat-sheet"] [class="feh"] floating enable, move position ce
 # run conky or i3status
 # force tray icons to be available on primary monitor
 bar {
-#  status_command /home/$USER/.config/i3/i3status-conky/i3status.sh
+ # status_command /home/$USER/.config/i3/i3status-conky/i3status.sh
   status_command i3blocks -c ~/.config/i3blocks/config
   tray_output primary
 }
@@ -277,8 +277,5 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xhost local:root
 exec --no-startup-id ~/bin/monitors.sh
 exec --no-startup-id i3-msg 'workspace $WS1; exec i3-sensible-terminal'
-#exec --no-startup-id i3-msg 'workspace $WS1; exec kitty'
-#exec --no-startup-id i3-msg 'workspace $WS1; exec tilix'
-#exec --no-startup-id i3-msg 'workspace $WS1; exec terminator'
 # wallpaper
 exec --no-startup-id feh --bg-center "/home/$USER/Pictures/background.jpg"
