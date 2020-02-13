@@ -85,16 +85,17 @@ interval=60
 color=#6ABEE7
 interval=5
 
-# [audio]
-# label=♪:
-# color=#6ABEE7
-# interval=5
-
-[volumevalue]
+[audio]
 label=:
 interval=2
 signal=10
 color=#447C93
+
+# [volumevalue]
+# label=:
+# interval=2
+# signal=10
+# color=#447C93
 
 # [keyboard]
 # label=::
