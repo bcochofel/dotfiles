@@ -82,7 +82,7 @@ color=#447C93
 interval=60
 
 [bandwidth]
-color=#447C93
+color=#6ABEE7
 interval=5
 
 # [audio]
@@ -94,7 +94,7 @@ interval=5
 label=:
 interval=2
 signal=10
-color=#6ABEE7
+color=#447C93
 
 # [keyboard]
 # label=::
