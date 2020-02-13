@@ -26,92 +26,105 @@
 # Each block command defaults to the script name to avoid boilerplate.
 #command=/usr/lib/i3blocks/$BLOCK_NAME
 command=~/.config/i3blocks/blocks/$BLOCK_NAME
-separator_block_width=15
+separator_block_width=20
 markup=none
 
-# [bandwidth]
-# instance=wlp2s0;in
-# label=
-# color=#509b98
-# interval=1
-# min_width="9999mb"
-# align=right
-
-# [bandwidth]
-# instance=wlp2s0;out
-# label=
-# color=#21d0c8
-# interval=1
-# min_width="9999mb"
-# align=right
-
-#[spotify]
-#interval=persist
+# [spotify]
+# interval=persist
 
 [spotify2]
-label=
-color=#81b71a
+label=:
+color=#6ABEE7
 interval=5
 
 [load_average]
-label=
-color=#2db94b
+label=:
+color=#447C93
 interval=10
 
 # [memory]
-# label=
-# color=#2db94b
+# label=:
+# color=#447C93
 # instance=mem;free
 # interval=30
 
 # [memory]
-# label=
-# color=#2db94b
+# label=:
+# color=#447C93
 # instance=swap;total
 # interval=30
 
 # [cpu]
-# label=
-# color=#2db94b
+# label=:
+# color=#447C93
 # interval=2
 
+[network]
+label=:
+instance=enp0s31f6
+color=#6ABEE7
+interval=10
+
+[network]
+label=:
+instance=wlp82s0
+color=#6ABEE7
+interval=10
+separator=false
+
 [ssid]
-label=
-color=#00ffff
+color=#6ABEE7
 interval=60
 
 [ip-address]
-label=
-color=#0011ff
+label=:
+color=#447C93
 interval=60
 
-[network]
-label=
-instance=enp9s0
-color=#3792de
-interval=10
-
-[network]
-label=
-instance=wlp12s0
-color=#3792de
-interval=10
-
-[audio]
-label=♪
-color=#81b71a
+[bandwidth]
+color=#447C93
 interval=5
 
-#[bluetooth]
-#label=
-#interval=10
+# [audio]
+# label=♪:
+# color=#6ABEE7
+# interval=5
+
+[volumevalue]
+label=:
+interval=2
+signal=10
+color=#6ABEE7
+
+# [keyboard]
+# label=::
+# command=xkblayout-state print %s
+# interval=1
+# color=#447C93
+# separator=false
+
+# [keylocks]
+# interval=5
+# signal=19
+# markup=pango
+
+# [bluetooth]
+# label=:
+# interval=10
 
 [battery]
 markup=pango
 interval=30
 
-[datetime]
-instance=%H:%M | %d/%m
-label=
-color=#ff9633
+# [datetime]
+# instance=%H:%M %d/%m
+# label=:
+# color=#447C93
+# interval=5
+
+[time]
+label=:
+command=date '+%a %d-%m-%y %l:%M %p'
+color=#6ABEE7
 interval=5
+separator=true
