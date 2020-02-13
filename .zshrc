@@ -212,6 +212,9 @@ if _has fzf && _has ag; then
   '
 fi
 
+# mc solarized theme
+export MC_SKIN=/home/bcochofel/.mc/lib/solarized.ini
+
 export GOPATH=~/go
 export GOBIN=~/go/bin
 
