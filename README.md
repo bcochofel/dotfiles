@@ -20,7 +20,7 @@ sudo apt install -y imagemagick tree curl wget git unzip apt-file mc \
 
 ```bash
 sudo apt install -y i3 i3blocks i3lock i3lock-fancy i3status xautolock conky feh rofi \
-  gnome-control-center gnome-screensaver scrot pulseaudio-utils xbacklight
+  gnome-control-center gnome-screensaver scrot pulseaudio-utils xbacklight python-dbus
 ```
 
 ## Install zsh
