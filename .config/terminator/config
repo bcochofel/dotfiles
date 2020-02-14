@@ -2,6 +2,7 @@
   enabled_plugins = CustomCommandsMenu, InactivityWatch, ActivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, Logger, LaunchpadBugURLHandler
   title_transmit_bg_color = "#d30102"
   focus = system
+  window_state = maximise
 [keybindings]
 [layouts]
   [[default]]
@@ -34,10 +35,11 @@
 
   [[solarized-dark]]
     palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#586e75:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
-    foreground_color = "#00ff00"
-    #foreground_color = "#eee8d5"
+    foreground_color = "#eee8d5"
     background_color = "#002b36"
     cursor_color = "#eee8d5"
+    icon_bell = False
+    split_to_group = True
     scrollback_infinite = True
 
   [[solarized-light]]
@@ -45,4 +47,6 @@
     background_color = "#eee8d5"
     foreground_color = "#002b36"
     cursor_color = "#002b36"
+    icon_bell = False
+    split_to_group = True
     scrollback_infinite = True
