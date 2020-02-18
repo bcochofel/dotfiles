@@ -25,6 +25,9 @@ _append_to_path() {
 # AWS Profile
 export AWS_DEFAULT_PROFILE=default
 
+# aws-vault
+export AWS_VAULT_BACKEND="file"
+
 # EDITOR
 if _has nvim; then
   export EDITOR=nvim VISUAL=nvim
@@ -215,10 +218,18 @@ fi
 # mc solarized theme
 export MC_SKIN=/home/bcochofel/.mc/lib/solarized.ini
 
+# Golang
 export GOPATH=~/go
 export GOBIN=~/go/bin
 
-export PATH=$GOPATH/bin:$PATH
+# Java
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+# Maven
+export MAVEN_HOME=/usr/share/maven
+export M2_HOME=$MAVEN_HOME
+
+export PATH=$GOPATH/bin:$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin
 
 export TERM="screen-256color"
 
