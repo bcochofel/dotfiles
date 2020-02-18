@@ -1,1 +1,18 @@
-# vim key bindings
+# vim key bindings (<leader>: \)
+
+## windows/buffers (CTRL+W)     ## tabs
+n > new                          :tabnew
+s > split horiz.                 gt > go to next
+v > split vert.                  gT > go to prev
+c > close
+o > maximize
+h,j,k,l > move between windows
+
+## plugins
+<leader>+c space : toggle comment
+F2 : toggle paste mode
+F6 : NerdTree
+F7 : Tagbar
+F8 : ALE Previous
+F9 : ALE Next
+F10 : ALE Fix

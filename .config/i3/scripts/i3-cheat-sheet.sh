@@ -7,7 +7,7 @@ export TEXT_FILE="${HOME}/.config/i3/scripts/i3-cheat-sheet.txt"
 export IMG="/tmp/cheat-sheet.png"
 
 TEXT=`cat ${TEXT_FILE}`
-convert -size 1024x768 -background black -fill green \
+convert -size 1600x1200 -background black -fill green \
   -font Courier label:"${TEXT}" -trim -bordercolor black -border 50 +repage $IMG
 
 if [ -f ${IMG} ]; then
