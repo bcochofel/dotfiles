@@ -1,10 +1,10 @@
 ! dpi = 96 (100%)
 ! dpi = 192 (200%)
 ! dpi = 288 (300%)
-Xft.dpi:	240
+Xft.dpi:	144
 Xft.antialias:	1
 Xft.hinting:	1
 Xft.hintstyle:	hintslight
 Xft.rgba:	rgb
-Xcursor.size:	48
+Xcursor.size:	24
 Xcursor.theme:	Yaru

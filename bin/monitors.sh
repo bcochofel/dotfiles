@@ -11,7 +11,7 @@ if [ $MON -gt 1 ]; then
     xrandr --output eDP-1-1 --primary
 else
     echo "One Monitor connected"
-    xrandr --output eDP-1-1 --scale 1x1 --brightness 0.7
+    xrandr --output eDP-1-1 --mode 1920x1080 --scale 1x1 --brightness 0.7
     xrandr --output eDP-1-1 --primary
 fi
 
