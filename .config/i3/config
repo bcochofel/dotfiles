@@ -254,6 +254,7 @@ assign [class="Firefox"] $WS3
 assign [class="Google-chrome"] $WS3
 assign [class="Postman"] $WS4
 assign [class="TestMace"] $WS4
+assign [class="jetbrains-idea-ce"] $WS7
 assign [class="Code"] $WS7
 assign [class="Slack"] $WS10
 assign [class="whatsdesk"] $WS10
