@@ -1,5 +1,9 @@
 # vim key bindings (<leader>: \)
 
+## Edit Visual Block
+Ctrl+v: visual block mode (Shift+i for insert mode)
+~: switch case
+
 ## windows/buffers (CTRL+W)     ## tabs
 n > new                          :tabnew
 s > split horiz.                 gt > go to next

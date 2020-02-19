@@ -53,13 +53,13 @@ bindsym $mod+d exec rofi -dpi 1 -show drun
 set $mode_config Launch: [c]onfig [w]ifi [b]luetooth [d]isplay [n]etwork [p]ower [s]ound
 bindsym Mod1+Ctrl+c mode "$mode_config"
 mode "$mode_config" {
-  bindsym c exec XDG_CURRENT_DESKTOP=GNOME gnome-control-center, mode "default"
-  bindsym w exec XDG_CURRENT_DESKTOP=GNOME gnome-control-center wifi, mode "default"
-  bindsym b exec XDG_CURRENT_DESKTOP=GNOME gnome-control-center bluetooth, mode "default"
-  bindsym d exec XDG_CURRENT_DESKTOP=GNOME gnome-control-center display, mode "default"
-  bindsym n exec XDG_CURRENT_DESKTOP=GNOME gnome-control-center network, mode "default"
-  bindsym p exec XDG_CURRENT_DESKTOP=GNOME gnome-control-center power, mode "default"
-  bindsym s exec XDG_CURRENT_DESKTOP=GNOME gnome-control-center sound, mode "default"
+  bindsym c exec env XDG_CURRENT_DESKTOP=GNOME gnome-control-center, mode "default"
+  bindsym w exec env XDG_CURRENT_DESKTOP=GNOME gnome-control-center wifi, mode "default"
+  bindsym b exec env XDG_CURRENT_DESKTOP=GNOME gnome-control-center bluetooth, mode "default"
+  bindsym d exec env XDG_CURRENT_DESKTOP=GNOME gnome-control-center display, mode "default"
+  bindsym n exec env XDG_CURRENT_DESKTOP=GNOME gnome-control-center network, mode "default"
+  bindsym p exec env XDG_CURRENT_DESKTOP=GNOME gnome-control-center power, mode "default"
+  bindsym s exec env XDG_CURRENT_DESKTOP=GNOME gnome-control-center sound, mode "default"
 
   bindsym Escape mode "default"
   bindsym Return mode "default"

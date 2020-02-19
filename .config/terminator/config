@@ -1,9 +1,42 @@
 [global_config]
-  enabled_plugins = CustomCommandsMenu, InactivityWatch, ActivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, Logger, LaunchpadBugURLHandler
-  title_transmit_bg_color = "#d30102"
   focus = system
   window_state = maximise
+  title_transmit_bg_color = "#d30102"
+  enabled_plugins = CustomCommandsMenu, InactivityWatch, ActivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, Logger, LaunchpadBugURLHandler
 [keybindings]
+  edit_window_title = <Primary><Alt>a
+  edit_tab_title = <Primary><Alt>w
+[profiles]
+  [[default]]
+    icon_bell = False
+    background_color = "#002b36"
+    cursor_color = "#eee8d5"
+    foreground_color = "#eee8d5"
+    scrollback_infinite = True
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#586e75:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    split_to_group = True
+  [[black-green]]
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    foreground_color = "#00ff00"
+    scrollback_infinite = True
+    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+  [[solarized-dark]]
+    icon_bell = False
+    background_color = "#002b36"
+    cursor_color = "#eee8d5"
+    foreground_color = "#eee8d5"
+    scrollback_infinite = True
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#586e75:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    split_to_group = True
+  [[solarized-light]]
+    icon_bell = False
+    background_color = "#eee8d5"
+    cursor_color = "#002b36"
+    foreground_color = "#002b36"
+    scrollback_infinite = True
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    split_to_group = True
 [layouts]
   [[default]]
     [[[child1]]]
@@ -24,37 +57,3 @@
   [[InactivityWatch]]
     inactive_period = 30.0
     watch_interval = 1000
-[profiles]
-  [[default]]
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#586e75:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
-    foreground_color = "#eee8d5"
-    background_color = "#002b36"
-    cursor_color = "#eee8d5"
-    icon_bell = False
-    split_to_group = True
-    scrollback_infinite = True
-
-  [[black-green]]
-    background_type = transparent
-    cursor_color = "#aaaaaa"
-    foreground_color = "#00ff00"
-    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
-    scrollback_infinite = True
-
-  [[solarized-dark]]
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#586e75:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
-    foreground_color = "#eee8d5"
-    background_color = "#002b36"
-    cursor_color = "#eee8d5"
-    icon_bell = False
-    split_to_group = True
-    scrollback_infinite = True
-
-  [[solarized-light]]
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
-    background_color = "#eee8d5"
-    foreground_color = "#002b36"
-    cursor_color = "#002b36"
-    icon_bell = False
-    split_to_group = True
-    scrollback_infinite = True
