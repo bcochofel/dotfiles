@@ -225,8 +225,8 @@ export GOBIN=~/go/bin
 # Java
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
-# Maven + Go + Java
-export PATH=$GOPATH/bin:$JAVA_HOME/bin:/opt/apache-maven-3.6.3/bin:$PATH
+# Go + Java * Maven * Gradle
+export PATH=$GOPATH/bin:$JAVA_HOME/bin:/opt/apache-maven-3.6.3/bin:/opt/gradle-6.2/bin:$PATH
 
 export TERM="screen-256color"
 
