@@ -14,9 +14,8 @@ h,j,k,l > move between windows
 
 ## plugins
 <leader>+c space : toggle comment
-F2 : toggle paste mode
-F6 : NerdTree
-F7 : Tagbar
-F8 : ALE Previous
-F9 : ALE Next
+F2 : toggle paste mode         :Ack! > grep search
+F6 : NerdTree                  :FZF > look for files in cur dir
+F7 : Tagbar                    FZF > Ctrl+T open file in TAB
+F8 : ALE Previous              FZF > Ctrl+X open horiz split
 F10 : ALE Fix
