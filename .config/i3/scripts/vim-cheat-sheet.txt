@@ -9,8 +9,11 @@ n > new                          :tabnew
 s > split horiz.                 gt > go to next
 v > split vert.                  gT > go to prev
 c > close
-o > maximize
-h,j,k,l > move between windows
+o > maximize                    ## buffers
+h,j,k,l > move between windows  :bn | :bp > next/previous buffer
+                                :bd > delete buffer
+                                :ls > list buffers
+                                :b # > go to buffer number
 
 ## plugins
 <leader>+c space : toggle comment
@@ -18,4 +21,5 @@ F2 : toggle paste mode         :Ack! > grep search
 F6 : NerdTree                  :FZF > look for files in cur dir
 F7 : Tagbar                    FZF > Ctrl+T open file in TAB
 F8 : ALE Previous              FZF > Ctrl+X open horiz split
+F9 : ALE Next
 F10 : ALE Fix
