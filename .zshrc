@@ -221,12 +221,12 @@ export MC_SKIN=/home/bcochofel/.mc/lib/solarized.ini
 # Golang
 export GOPATH=~/go
 export GOBIN=~/go/bin
+export PATH=$GOPATH/bin:$PATH
 
-# Java
+# Java + Ant + Maven + Gradle
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-
-# Go + Java * Maven * Gradle
-export PATH=$GOPATH/bin:$JAVA_HOME/bin:/opt/apache-maven-3.6.3/bin:/opt/gradle-6.2/bin:$PATH
+export ANT_HOME=/opt/apache-ant-1.10.7
+export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:/opt/apache-maven-3.6.3/bin:/opt/gradle-6.2/bin:$PATH
 
 export TERM="screen-256color"
 
