@@ -105,13 +105,13 @@ bindsym --release $mod+Shift+Print exec "scrot -u -d 4 '%Y%m%d-%H%M_$wx$h.png' -
 # Pulse Audio controls                                             
 # to find the right sink value: pactl list sinks
 # increase sound volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 # descrease sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 # mute sound
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 # mute mic
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 1 toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 0 toggle
 
 # Sreen brightness controls
 # check https://unix.stackexchange.com/questions/301724/xbacklight-not-working
@@ -292,6 +292,7 @@ client.urgent           #002b36 #dc322f #fdf6e3 #002b36
 exec xautolock -time 10 -locker "i3lock -c '#000000'"
 #exec xautolock -time 10 -locker "gnome-screensaver-command --lock"
 exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
 exec --no-startup-id xhost local:root
 exec --no-startup-id ~/bin/monitors.sh
 exec --no-startup-id i3-msg 'workspace $WS1; exec i3-sensible-terminal'

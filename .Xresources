@@ -1,7 +1,7 @@
 ! dpi = 96 (100%)
 ! dpi = 192 (200%)
 ! dpi = 288 (300%)
-Xft.dpi:	144
+Xft.dpi:	96
 Xft.antialias:	1
 Xft.hinting:	1
 Xft.hintstyle:	hintslight

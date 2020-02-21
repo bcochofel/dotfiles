@@ -1,0 +1,1 @@
+SUBSYSTEM=="drm", ACTION=="change", KERNEL=="card[0-9]*", RUN+="/usr/local/bin/monitors.sh"
