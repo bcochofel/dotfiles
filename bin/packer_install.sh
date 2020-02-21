@@ -10,8 +10,7 @@ else
   LATEST_URL=$(curl --silent https://releases.hashicorp.com/index.json | jq '{packer}' | egrep "linux_amd.*64" | sort -rh | head -1 | awk -F[\"] '{print $4}')
   wget -q $LATEST_URL -O /tmp/packer.zip
   sudo mkdir -p /usr/local/bin
-  (cd /usr/local/bin && unzip /tmp/packer.zip)
-
+  sudo unzip /tmp/packer.zip -d /usr/local/bin
   echo -e '\e[38;5;198m'"++++ Installed: `/usr/local/bin/packer version`"
 fi
 
