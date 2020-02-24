@@ -85,6 +85,16 @@ interval=60
 color=#6ABEE7
 interval=5
 
+# updating only when signaled
+# [volume-pulseaudio]
+# interval=once
+# signal=1
+# USE_ALSA_NAME=1
+
+[mic]
+interval=2
+color=#447C93
+
 [audio]
 label=:
 interval=2
