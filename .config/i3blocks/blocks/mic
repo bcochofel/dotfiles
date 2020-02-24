@@ -34,8 +34,7 @@ case $state in
     echo "  " " muted ";
     #echo "  "
     echo
-    echo \#005FD7;  # Soft blue
-    #echo \#00FF00;  # Bright green
+    echo \#6ABEE7; # Solarized dark
     exit 0;
     ;;
     *)
