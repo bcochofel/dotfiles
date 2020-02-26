@@ -220,7 +220,6 @@ export MC_SKIN=/home/bcochofel/.mc/lib/solarized.ini
 
 # Golang
 export GOPATH=~/go
-export GOBIN=~/go/bin
 export PATH=$GOPATH/bin:$PATH
 
 # Java + Ant + Maven + Gradle
