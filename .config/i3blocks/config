@@ -86,20 +86,20 @@ color=#6ABEE7
 interval=5
 
 # updating only when signaled
-# [volume-pulseaudio]
+[volume-pulseaudio]
+interval=2
 # interval=once
 # signal=1
-# USE_ALSA_NAME=1
 
 [mic]
 interval=2
 color=#6ABEE7
 
-[audio]
-label=:
-interval=2
-signal=10
-color=#6ABEE7
+# [audio]
+# label=:
+# interval=2
+# signal=10
+# color=#6ABEE7
 
 # [volumevalue]
 # label=:
