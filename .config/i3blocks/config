@@ -59,31 +59,31 @@ interval=10
 # color=#447C93
 # interval=2
 
-[network]
-label=:
-instance=enp0s31f6
-color=#6ABEE7
-interval=10
+# [network]
+# label=:
+# instance=enp0s31f6
+# color=#6ABEE7
+# interval=10
 
-[network]
-label=:
-instance=wlp82s0
-color=#6ABEE7
-interval=10
-separator=false
+# [network]
+# label=:
+# instance=wlp82s0
+# color=#6ABEE7
+# interval=10
+# separator=false
 
-[ssid]
-color=#6ABEE7
-interval=60
+# [ssid]
+# color=#6ABEE7
+# interval=60
 
-[ip-address]
-label=:
-color=#6ABEE7
-interval=60
+# [ip-address]
+# label=:
+# color=#6ABEE7
+# interval=60
 
-[bandwidth]
-color=#6ABEE7
-interval=5
+# [bandwidth]
+# color=#6ABEE7
+# interval=5
 
 # updating only when signaled
 [volume-pulseaudio]
