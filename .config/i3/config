@@ -261,6 +261,7 @@ assign [class="Code"] $WS7
 assign [class="Slack"] $WS10
 assign [class="whatsdesk"] $WS10
 assign [class="yakyak"] $WS10
+assign [class="Microsoft Teams - Preview"] $WS10
 
 for_window [class="Spotify"] move to workspace $WS9
 for_window [title="cheat-sheet"] [class="feh"] floating enable, move position center, focus

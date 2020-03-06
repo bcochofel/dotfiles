@@ -23,7 +23,7 @@ _append_to_path() {
 # }}}
 
 # AWS Profile
-export AWS_DEFAULT_PROFILE=default
+export AWS_PROFILE=default
 
 # aws-vault
 export AWS_VAULT_BACKEND="file"
