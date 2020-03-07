@@ -1,18 +1,22 @@
 #!/bin/bash
 
-MON=$(xrandr | grep -w connected | wc -l)
+NR_MON=$(xrandr | grep -w connected | wc -l)
+PRIMARY_MON="eDP-1-1"
+PRIMARY_MON_MODE="1920x1080"
 
-if [ $MON -gt 1 ]; then
-    echo "More than one Monitor connected"
-    xrandr --output eDP-1-1 --scale 1x1
-    sleep 1
-#    xrandr | grep 'DP-2 connected' && xrandr --output eDP-1 --auto --output DP-2 --auto --above eDP-1 || xrandr --output DP-2 --off
-    xrandr | grep 'DP-2 connected' && xrandr --output eDP-1-1 --scale 1x1 --output DP-2 --scale 1x1 --above eDP-1-1 || xrandr --output DP-2 --off
-    xrandr --output eDP-1-1 --primary
+if [ ${NR_MON} -gt 1 ]; then
+    SECOND_MON=$(xrandr | grep -w connected | grep -v ${PRIMARY_MON} | awk '{ print $1 }')
+    SECOND_MON_MODE="1920x1080"
+    echo "More than one Monitor connected (${PRIMARY_MON} | ${SECOND_MON})"
+    xrandr --output ${PRIMARY_MON} --mode ${PRIMARY_MON_MODE} --scale 1x1 \
+      --output ${SECOND_MON} --mode ${SECOND_MON_MODE} --scale 1x1 \
+      --above ${PRIMARY_MON}
+    xrandr --output ${PRIMARY_MON} --primary
 else
-    echo "One Monitor connected"
-    xrandr --output eDP-1-1 --mode 1920x1080 --scale 1x1 --brightness 0.7
-    xrandr --output eDP-1-1 --primary
+  echo "One Monitor connected (${PRIMARY_MON})"
+    xrandr --output ${PRIMARY_MON} --mode ${PRIMARY_MON_MODE} --scale 1x1 \ 
+      --brightness 0.7
+    xrandr --output ${PRIMARY_MON} --primary
 fi
 
 exit 0
