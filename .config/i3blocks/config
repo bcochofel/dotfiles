@@ -65,16 +65,16 @@ interval=10
 # color=#6ABEE7
 # interval=10
 
-# [network]
-# label=:
-# instance=wlp82s0
-# color=#6ABEE7
-# interval=10
-# separator=false
+[network]
+label=:
+instance=wlp82s0
+color=#6ABEE7
+interval=10
+separator=false
 
-# [ssid]
-# color=#6ABEE7
-# interval=60
+[ssid]
+color=#6ABEE7
+interval=60
 
 # [ip-address]
 # label=:
