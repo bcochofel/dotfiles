@@ -12,7 +12,8 @@ if [ ${NR_MON} -gt 1 ]; then
     xrandr --output ${PRIMARY_MON} --primary
 else
   echo "One Monitor connected (${PRIMARY_MON})"
-    xrandr --output ${PRIMARY_MON} --mode ${PRIMARY_MON_MODE} --scale 1x1 --brightness 0.7
+#    xrandr --output ${PRIMARY_MON} --mode ${PRIMARY_MON_MODE} --scale 1x1 --brightness 0.7
+    xrandr --output ${PRIMARY_MON} --mode ${PRIMARY_MON_MODE} --scale 1x1
     xrandr --output ${PRIMARY_MON} --primary
 fi
 
