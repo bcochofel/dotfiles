@@ -117,9 +117,11 @@ bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
 # Sreen brightness controls
 # check https://unix.stackexchange.com/questions/301724/xbacklight-not-working
 # increase screen brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 20
 # decrease screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+bindsym XF86MonBrightnessUp exec brightness.sh Up
+bindsym XF86MonBrightnessDown exec brightness.sh Down
 
 # change focus
 # bindsym $mod+j focus left
