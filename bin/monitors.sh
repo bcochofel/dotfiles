@@ -4,6 +4,10 @@ NR_MON=$(xrandr | grep -w connected | wc -l)
 PRIMARY_MON="eDP-1-1"
 PRIMARY_MON_MODE="1920x1080"
 
+xrandr --output DP-0 --off
+xrandr --output DP-1 --off
+xrandr --output HDMI-0 --off
+
 if [ ${NR_MON} -gt 1 ]; then
     SECOND_MON=$(xrandr | grep -w connected | grep -v ${PRIMARY_MON} | awk '{ print $1 }')
     SECOND_MON_MODE="1920x1080"
