@@ -33,3 +33,4 @@ Mod1+Tab: next workspace
 Mod1+Shift+Tab: previous workspace
 $mod+#: switch to workspace #
 Shift+$mod+#: move container to workspace #
+$mod+Ctrl+Left/Right: move workspace output left/right
