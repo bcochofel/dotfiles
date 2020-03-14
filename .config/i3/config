@@ -310,8 +310,8 @@ exec --no-startup-id blueman-applet
 # allow root to use DISPLAY
 exec --no-startup-id xhost local:root
 # setup monitors
-#exec --no-startup-id ~/bin/monitors.sh
-exec --no-startup-id autorandr --change
+exec --no-startup-id ~/bin/monitors.sh
+# exec --no-startup-id autorandr --change
 # wallpaper
 exec --no-startup-id feh --bg-center "/home/$USER/Pictures/background.jpg"
 #start terminal on workspace 1
