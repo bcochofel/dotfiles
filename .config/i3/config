@@ -301,13 +301,19 @@ client.urgent           #002b36 #dc322f #fdf6e3 #002b36
 
 # === autostart programs ===
 
+# start autolock for 10m timeout
 exec xautolock -time 10 -locker "i3lock -c '#000000'"
 #exec xautolock -time 10 -locker "gnome-screensaver-command --lock"
+# start applets
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
+# allow root to use DISPLAY
 exec --no-startup-id xhost local:root
-exec --no-startup-id ~/bin/monitors.sh
+# setup monitors
+#exec --no-startup-id ~/bin/monitors.sh
+exec --no-startup-id autorandr --change
+# wallpaper
+exec --no-startup-id feh --bg-center "/home/$USER/Pictures/background.jpg"
+#start terminal on workspace 1
 exec --no-startup-id i3-msg 'workspace $WS1; exec i3-sensible-terminal'
 # exec --no-startup-id i3-msg 'workspace $WS1; exec kitty'
-# wallpaper
-exec --no-startup-id feh --bg-fill "/home/$USER/Pictures/background.jpg"
