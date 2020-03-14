@@ -108,7 +108,7 @@ curl -O https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-them
 cd
 
 # oh-my-zsh powerlevel10k theme
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # zsh-autosuggestions plugin
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -157,10 +157,7 @@ sed -i "s/Icon\=kitty/Icon\=\/home\/$USER\/.local\/kitty.app\/share\/icons\/hico
 sudo update-alternatives --set x-terminal-emulator /usr/bin/terminator
 
 # install tmux plugins
-tmux start-server
-tmux new-session -d
-~/.tmux/plugins/tpm/scripts/install_plugins.sh
-tmux kill-server
+tmux start-server && tmux new-session -d && ~/.tmux/plugins/tpm/scripts/install_plugins.sh && tmux kill-server
 ```
 
 Neovim configuration
