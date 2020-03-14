@@ -59,7 +59,7 @@ Install the following linters/fixers
 
 ```bash
 sudo pip3 install pynvim flake8 pylint isort yamllint ansible-lint jedi \
-  autopep8 yapf docformatter proselint saws
+  autopep8 yapf docformatter proselint saws autorandr
 ```
 
 #### Terraform
