@@ -1,8 +1,6 @@
 # i3 Window manager key bindings
-
 Alt Key: Mod1 | - Windows key: Mod4 | - $mod: Mod4
 
-## Keys to use with $mod           ## Keys to use with Shift+$mod
 $mod+w: tabbed layout              Shift+$mod+q: kill window
 $mod+e: default layout             Shift+$mod+e: exit i3
 $mod+r: resize mode                Shift+$mod+r: restart i3
@@ -19,7 +17,6 @@ $mod+Enter: open terminal
 $mod+v: split vert.
 $mod+Space: focus floating/tiling
 
-## Custom Keys
 Mod1+Ctrl+c: mode config
 Mod1+Ctrl+q: mode system
 Shift+$mod+i: i3 cheat sheet
@@ -34,3 +31,4 @@ Mod1+Shift+Tab: previous workspace
 $mod+#: switch to workspace #
 Shift+$mod+#: move container to workspace #
 $mod+Ctrl+Left/Right: move workspace output left/right
+Mod1+Ctrl+m: change monitors layout using autorandr

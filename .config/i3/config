@@ -93,6 +93,10 @@ bindsym $mod+Shift+x exec "~/.config/i3/scripts/tmux-cheat-sheet.sh"
 bindsym Mod1+Ctrl+l exec i3lock -c '#000000'
 #bindsym Mod1+Ctrl+l exec gnome-screensaver-command --lock
 
+# change monitors layout
+# uses autorandr: https://github.com/phillipberndt/autorandr
+bindsym Mod1+Ctrl+m exec "autorandr --change"
+
 # screenshot
 
 # Print multi head                                                 
