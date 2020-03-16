@@ -239,3 +239,6 @@ complete -o nospace -C /usr/local/bin/consul consul
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Kubectl Autocomplete
+[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
