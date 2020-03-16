@@ -186,7 +186,7 @@ set $WS2 2:notes
 set $WS3 3:www
 set $WS4 4:api
 set $WS5 5:keys
-set $WS6 6
+set $WS6 6:zoom
 set $WS7 7:code
 set $WS8 8:secureCRT
 set $WS9 9:media
@@ -266,6 +266,7 @@ assign [class="Google-chrome"] $WS3
 assign [class="Postman"] $WS4
 assign [class="TestMace"] $WS4
 assign [class="KeePassXC"] $WS5
+assign [class="zoom"] $WS6
 assign [class="jetbrains-idea-ce"] $WS7
 assign [class="Code"] $WS7
 assign [class="Slack"] $WS10
