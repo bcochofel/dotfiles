@@ -265,6 +265,7 @@ assign [class="Firefox"] $WS3
 assign [class="Google-chrome"] $WS3
 assign [class="Postman"] $WS4
 assign [class="TestMace"] $WS4
+assign [class="Insomnia"] $WS4
 assign [class="KeePassXC"] $WS5
 assign [class="jetbrains-idea-ce"] $WS7
 assign [class="Code"] $WS7
