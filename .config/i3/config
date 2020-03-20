@@ -187,7 +187,7 @@ set $WS3 3:www
 set $WS4 4:api
 set $WS5 5:keys
 set $WS6 6:zoom
-set $WS7 7:code
+set $WS7 7:dev
 set $WS8 8:secureCRT
 set $WS9 9:media
 set $WS10 10:chat
@@ -266,14 +266,15 @@ assign [class="Google-chrome"] $WS3
 assign [class="Postman"] $WS4
 assign [class="TestMace"] $WS4
 assign [class="KeePassXC"] $WS5
-assign [class="zoom"] $WS6
 assign [class="jetbrains-idea-ce"] $WS7
 assign [class="Code"] $WS7
+assign [class="git-cola"] $WS7
 assign [class="Slack"] $WS10
 assign [class="whatsdesk"] $WS10
 assign [class="yakyak"] $WS10
 assign [class="Microsoft Teams - Preview"] $WS10
 
+for_window [class="zoom"] floating enable, move to workspace $WS6
 for_window [class="Spotify"] move to workspace $WS9
 for_window [title="cheat-sheet"] [class="feh"] floating enable, move position center, focus
 
