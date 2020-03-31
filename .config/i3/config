@@ -270,6 +270,7 @@ assign [class="KeePassXC"] $WS5
 assign [class="jetbrains-idea-ce"] $WS7
 assign [class="Code"] $WS7
 assign [class="git-cola"] $WS7
+assign [class="Lens"] $WS7
 assign [class="Slack"] $WS10
 assign [class="whatsdesk"] $WS10
 assign [class="yakyak"] $WS10
