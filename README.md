@@ -158,6 +158,12 @@ sudo update-alternatives --set x-terminal-emulator /usr/bin/terminator
 
 # install tmux plugins
 tmux start-server && tmux new-session -d && ~/.tmux/plugins/tpm/scripts/install_plugins.sh && tmux kill-server
+
+# kubectx and kubens
+mkdir -p ~/.oh-my-zsh/completions
+chmod -R 755 ~/.oh-my-zsh/completions
+ln -s ~/bin/kubectx.zsh ~/.oh-my-zsh/completions/_kubectx.zsh
+ln -s ~/bin/kubens.zsh ~/.oh-my-zsh/completions/_kubens.zsh
 ```
 
 Neovim configuration
