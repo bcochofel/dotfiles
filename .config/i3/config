@@ -274,6 +274,7 @@ assign [class="Lens"] $WS7
 assign [class="Slack"] $WS10
 assign [class="whatsdesk"] $WS10
 assign [class="yakyak"] $WS10
+assign [class="Skype"] $WS10
 assign [class="Microsoft Teams - Preview"] $WS10
 
 for_window [class="zoom"] floating enable, move to workspace $WS6
