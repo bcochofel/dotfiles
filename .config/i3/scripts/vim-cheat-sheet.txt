@@ -3,6 +3,7 @@
 ## Edit Visual Block
 Ctrl+v: visual block mode (Shift+i for insert mode)
 ~: switch case
+<leader> j : format json with jq
 
 ## windows/buffers (CTRL+W)     ## tabs
 n > new                          :tabnew

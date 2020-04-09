@@ -421,6 +421,9 @@ vnoremap <Up> <Nop>
 " opens $MYVIMRC for editing, or use :tabedit $MYVIMRC
 :nmap <Leader>v :e $MYVIMRC<CR>
 
+" format json with jq
+:nmap <Leader>j :%!jq .<CR>
+
 " <Leader> is \ by default, so those commands can be invoked by doing \v and \s
 "
 " useful settings:
