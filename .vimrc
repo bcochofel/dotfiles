@@ -46,6 +46,7 @@ Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'gcmt/taboo.vim'
 
 " Check syntax
 Plug 'dense-analysis/ale'
@@ -232,6 +233,9 @@ set shell=/usr/bin/zsh " prefer zsh for shell-related tasks
 " }}}
 
 " Plugin Configurations {{{
+
+" ----- Taboo -----
+let g:taboo_tab_format = " %I %r %U %m "
 
 " ----- UltiSnips -----
 let g:UltiSnipsExpandTrigger="<tab>"
