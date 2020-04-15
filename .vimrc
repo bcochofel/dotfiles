@@ -180,7 +180,7 @@ set hidden " allow switching buffers without writing to disk
 
 set noswapfile " no swap files
 
-set path=.,** " search relative to current file + directory
+" set path=.,** " search relative to current file + directory
 
 set confirm " instead raise a dialogue asking if you wish to save changed files.
 
@@ -229,6 +229,17 @@ au BufNewFile,BufRead *.md set spell
 au BufNewFile,BufRead *.md set textwidth=80
 
 set shell=/usr/bin/zsh " prefer zsh for shell-related tasks
+
+let s:default_path = escape(&path, '\ ') " store default value of 'path'
+
+" Always add the current file's directory to the path and tags list if not
+" already there. Add it to the beginning to speed up searches.
+autocmd BufRead *
+      \ let s:tempPath=escape(escape(expand("%:p:h"), ' '), '\ ') |
+      \ exec "set path-=".s:tempPath |
+      \ exec "set path-=".s:default_path |
+      \ exec "set path^=".s:tempPath |
+      \ exec "set path^=".s:default_path
 
 " }}}
 
