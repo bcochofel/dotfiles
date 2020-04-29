@@ -285,6 +285,7 @@ for_window [title="cheat-sheet"] [class="feh"] floating enable, move position ce
 # run conky or i3status
 # force tray icons to be available on primary monitor
 bar {
+  position top
  # status_command /home/$USER/.config/i3/i3status-conky/i3status.sh
   status_command i3blocks -c ~/.config/i3blocks/config
   tray_output primary
