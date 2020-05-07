@@ -184,18 +184,24 @@ bindsym $mod+a focus parent
 set $WS1 1:console
 set $WS2 2:notes
 set $WS3 3:www
-set $WS4 4:api
-set $WS5 5:keys
-set $WS6 6:zoom
-set $WS7 7:dev
+set $WS4 4:dev
+set $WS5 5
+set $WS6 6
+set $WS7 7
 set $WS8 8:media
 set $WS9 9:work
 set $WS10 10:chat
 
 workspace $WS1 output primary
+workspace $WS2 output primary
 workspace $WS3 output primary
-workspace $WS9 output secondary
-workspace $WS10 output secondary
+workspace $WS4 output primary
+workspace $WS5 output primary
+workspace $WS6 output primary
+workspace $WS7 output primary
+workspace $WS8 output secondary primary
+workspace $WS9 output secondary primary
+workspace $WS10 output secondary primary
 
 # switch between workspace
 bindsym mod1+Tab workspace next
@@ -270,11 +276,10 @@ assign [class="Firefox"] $WS3
 assign [class="Postman"] $WS4
 assign [class="TestMace"] $WS4
 assign [class="Insomnia"] $WS4
-assign [class="KeePassXC"] $WS5
-assign [class="jetbrains-idea-ce"] $WS7
-assign [class="Code"] $WS7
-assign [class="git-cola"] $WS7
-assign [class="Lens"] $WS7
+assign [class="jetbrains-idea-ce"] $WS4
+assign [class="Code"] $WS4
+assign [class="git-cola"] $WS4
+assign [class="Lens"] $WS4
 assign [class="Google-chrome"] $WS9
 assign [class="Slack"] $WS10
 assign [class="whatsdesk"] $WS10
@@ -282,7 +287,7 @@ assign [class="yakyak"] $WS10
 assign [class="Skype"] $WS10
 assign [class="Microsoft Teams - Preview"] $WS10
 
-for_window [class="zoom"] floating enable, move to workspace $WS6
+for_window [class="zoom"] floating enable, move to workspace $WS8
 for_window [class="Spotify"] move to workspace $WS9
 for_window [title="cheat-sheet"] [class="feh"] floating enable, move position center, focus
 
