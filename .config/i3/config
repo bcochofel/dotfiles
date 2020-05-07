@@ -192,6 +192,11 @@ set $WS8 8:media
 set $WS9 9:work
 set $WS10 10:chat
 
+workspace $WS1 output primary
+workspace $WS3 output primary
+workspace $WS9 output secondary
+workspace $WS10 output secondary
+
 # switch between workspace
 bindsym mod1+Tab workspace next
 bindsym mod1+Shift+Tab workspace next
