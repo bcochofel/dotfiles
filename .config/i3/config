@@ -188,8 +188,8 @@ set $WS4 4:api
 set $WS5 5:keys
 set $WS6 6:zoom
 set $WS7 7:dev
-set $WS8 8:secureCRT
-set $WS9 9:media
+set $WS8 8:media
+set $WS9 9:work
 set $WS10 10:chat
 
 # switch between workspace
@@ -262,7 +262,6 @@ bindsym $mod+r mode "resize"
 assign [class="Joplin"] $WS2
 assign [class="SecureCRT"] $WS8
 assign [class="Firefox"] $WS3
-assign [class="Google-chrome"] $WS3
 assign [class="Postman"] $WS4
 assign [class="TestMace"] $WS4
 assign [class="Insomnia"] $WS4
@@ -271,6 +270,7 @@ assign [class="jetbrains-idea-ce"] $WS7
 assign [class="Code"] $WS7
 assign [class="git-cola"] $WS7
 assign [class="Lens"] $WS7
+assign [class="Google-chrome"] $WS9
 assign [class="Slack"] $WS10
 assign [class="whatsdesk"] $WS10
 assign [class="yakyak"] $WS10
