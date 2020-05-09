@@ -199,9 +199,6 @@ workspace $WS4 output primary
 workspace $WS5 output primary
 workspace $WS6 output primary
 workspace $WS7 output primary
-workspace $WS8 output
-workspace $WS9 output
-workspace $WS10 output
 
 # switch between workspace
 bindsym mod1+Tab workspace next
