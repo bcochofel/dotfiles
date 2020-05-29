@@ -283,6 +283,7 @@ assign [class="whatsdesk"] $WS10
 assign [class="yakyak"] $WS10
 assign [class="Skype"] $WS10
 assign [class="Microsoft Teams - Preview"] $WS10
+assign [class="Franz"] $WS10
 
 for_window [class="zoom"] floating enable, move to workspace $WS8
 for_window [class="Spotify"] move to workspace $WS9
