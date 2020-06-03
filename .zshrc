@@ -241,7 +241,7 @@ complete -o nospace -C /usr/local/bin/consul consul
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # set word chars
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+WORDCHARS='*?_-.|[]~=&;!#$%^(){}<>'
 
 # Kubectl Autocomplete
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)

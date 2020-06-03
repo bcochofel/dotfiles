@@ -47,6 +47,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'gcmt/taboo.vim'
+Plug 'Chiel92/vim-autoformat'
 
 " Check syntax
 Plug 'dense-analysis/ale'
@@ -70,6 +71,11 @@ Plug 'pearofducks/ansible-vim'
 " Go
 " --
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" ----
+" rego
+" ----
+Plug 'tsandall/vim-rego'
 
 " ----
 " TMux
@@ -292,6 +298,13 @@ let g:go_highlight_generate_tags = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_fmt_command = "goimports"
+
+" ----- rego autoformat -----
+let g:formatdef_rego = '"opa fmt"'
+let g:formatters_rego = ['rego']
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+au BufWritePre *.rego Autoformat
 
 " ----- NerdCommenter -----
 " :help nerdcommenter
