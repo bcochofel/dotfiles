@@ -1,4 +1,4 @@
-" auo o install vim-plug, plugin manager
+" auto install vim-plug, plugin manager
 " detects if running neovim
 " Neovim uses ~/.config/nvim/init.vim, not ~/.vimrc
 if has('nvim')
@@ -70,7 +70,7 @@ Plug 'pearofducks/ansible-vim'
 " --
 " Go
 " --
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
 " ----
 " rego
@@ -92,13 +92,19 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
+Plug 'zchee/deoplete-go', { 'do': 'make' }
+" Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
 " do not forget to install jedi
 Plug 'deoplete-plugins/deoplete-jedi'
 
 call plug#end()
 
 let g:deoplete#enable_at_startup = 1
+let g:go_def_mode = "gopls"
+let g:go_info_mode='guru'
+let g:go_auto_type_info='gopls'
+" go get -u github.com/mdempsky/gocode
+" let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
 " Color theme {{{
 let g:solarized_termcolors=256
