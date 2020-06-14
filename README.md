@@ -1,510 +1,270 @@
-# Conftest
+# Dotfiles for user profile.
 
-[![CircleCI](https://circleci.com/gh/instrumenta/conftest.svg?style=svg)](https://circleci.com/gh/instrumenta/conftest)
+It uses the following:
 
-- Join us on [the Open Policy Agent Slack](https://slack.openpolicyagent.org/) in the #conftest channel
+- Window Manager: i3
+- Linux terminal: terminator/kitty/tilix
+- Editor: vim/neovim + plugins
+- Shell: zsh + oh-my-zsh
 
-## What
+# Install Dependencies/Packages
 
-`conftest` is a utility to help you write tests against structured configuration data. For instance you could
-write tests for your Kubernetes configurations, or Tekton pipeline definitions, Terraform code, Serverless configs
- or any other structured data.
+## Install Utilities
 
-`conftest` relies on the Rego language from [Open Policy Agent](https://www.openpolicyagent.org/) for writing
-the assertions. You can read more about Rego in [How do I write policies](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html)
-in the Open Policy Agent documentation.
+```bash
+sudo apt install -y imagemagick tree curl wget git unzip apt-file mc \
+  exuberant-ctags ack-grep silversearcher-ag ripgrep golang
 
-## Usage
-
-`conftest` allows you to write policies using Open Policy Agent/rego and apply them to one or
-more configuration files.
-
-As of today `conftest` supports:
-
-* YAML
-* JSON
-* INI
-* TOML
-* HOCON
-* HCL
-* CUE
-* Dockerfile
-* HCL2 (Experimental)
-* EDN
-* VCL
-* XML
-
-Policies by default should be placed in a directory
-called `policy` but this can be overridden.
-
-For instance, save the following as `policy/deployment.rego`:
-
-```rego
-package main
-
-deny[msg] {
-  input.kind = "Deployment"
-  not input.spec.template.spec.securityContext.runAsNonRoot = true
-  msg = "Containers must not run as root"
-}
-
-deny[msg] {
-  input.kind = "Deployment"
-  not input.spec.selector.matchLabels.app
-  msg = "Containers must provide app label for pod selectors"
-}
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt install nodejs
 ```
 
-By default `conftest` looks for `deny` and `warn` rules in the `main` namespace. This can be
-altered by running `--namespace` or provided on the configuration file.
+## Install i3 Window Manager
 
-Assuming you have a Kubernetes deployment in `deployment.yaml` you can run `conftest` like so:
-
-```console
-$ conftest test deployment.yaml
-FAIL - deployment.yaml - Containers must not run as root
-FAIL - deployment.yaml - Deployments are not allowed
+```bash
+sudo apt install -y i3 i3blocks i3lock i3lock-fancy i3status xautolock conky feh rofi \
+  gnome-control-center gnome-screensaver scrot pulseaudio-utils xbacklight python-dbus
 ```
 
-`conftest` can also be used with stdin:
+## Install zsh
 
-```console
-$ cat deployment.yaml | conftest test -
-FAIL - Containers must not run as root
-FAIL - Deployments are not allowed
+```bash
+sudo apt install -y zsh zsh-syntax-highlighting ttf-ancient-fonts fonts-powerline fonts-font-awesome
 ```
 
-Note that `conftest` isn't specific to Kubernetes. It will happily let you write tests for any
-configuration files.
+## Install terminal emulators
 
-### --input flag
-
-`conftest` normally detects input type with the file extension, but you can force to use a different one with the `--input` flag (`-i`).
-
-For the available parsers, take a look at: [parsers](parser). For instance:
-
-```console
-$ conftest test -p examples/hcl2/policy examples/hcl2/terraform.tf -i hcl2
-FAIL - examples/hcl2/terraform.tf - ALB `my-alb-listener` is using HTTP rather than HTTPS
-FAIL - examples/hcl2/terraform.tf - ASG `my-rule` defines a fully open ingress
-FAIL - examples/hcl2/terraform.tf - Azure disk `source` is not encrypte
+```bash
+sudo apt install -y terminator tilix tmux
+sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 ```
 
-The `--input` flag can also be a good way to see how different input types would be parsed:
+### Tmux Plugins
 
-```console
-conftest parse examples/hcl2/terraform.tf -i hcl2
+https://tmuxcheatsheet.com/tmux-plugins-tools/
+
+### Tmux TPM
+
+Install Tmux Plugin Manager
+
+https://github.com/tmux-plugins/tpm
+
+## Install Vim and plugin dependencies
+
+```bash
+sudo apt install -y vim
+sudo apt install -y python3-pip exuberant-ctags ack-grep silversearcher-ag
 ```
 
-#### Multi input type
+### Linters/Fixers
 
-`conftest` supports multiple different input types in a single call.
+Install the following linters/fixers
 
-```console
-$ conftest test examples/multitype/grafana.ini examples/multitype/kubernetes.yaml -p examples/multitype
+```bash
+sudo pip3 install pynvim flake8 pylint isort yamllint ansible-lint jedi \
+  autopep8 yapf docformatter proselint saws autorandr
+
+sudo npm i -g eslint eslint-plugin-vue
 ```
 
-### --combine flag
+#### Terraform
 
-This flag introduces *BREAKING CHANGES* in how `conftest` provides input to rego policies. However, you may find it useful to as you can now compare multiple values from different configurations simultaneously.
+https://github.com/terraform-linters/tflint
 
-The `--combine` flag combines files into one `input` data structure. The structure is a `map` where each indice is the file path of the file being evaluated.
-
-Let's try it!
-
-Save the following as `policy/combine.rego`:
-
-```rego
-package main
-
-
-deny[msg] {
-  deployment := input["deployment.yaml"]["spec"]["selector"]["matchLabels"]["app"]
-  service := input["service.yaml"]["spec"]["selector"]["app"]
-
-  deployment != service
-
-  msg = sprintf("Expected these values to be the same but received %v for deployment and %v for service", [deployment, service])
-}
+```bash
+curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o tflint.zip && unzip tflint.zip && rm tflint.zip
+sudo mv tflint /usr/local/bin
 ```
 
-Save the following as `service.yaml`:
+## Install neovim
 
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-kubernetes
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-    targetPort: 8080
-  selector:
-    app: goodbye-kubernetes
+```bash
+sudo apt install -y neovim
 ```
 
-and lastly, save the following as `deployment.yaml`:
+# Git your dotfiles
 
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: hello-kubernetes
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: hello-kubernetes
+Take a look at: https://www.atlassian.com/git/tutorials/dotfiles to keep your dotfiles managed by Git.
+
+# Install dotfiles
+
+Using the method described before you can clone the Git repository to your home.
+
+# Start your repository from scratch
+
+```bash
+git init --bare $HOME/.dotfiles
+alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+gitdotfiles config --local status.showUntrackedFiles no
+echo "alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
 ```
 
-With the above files created, run the following command:
+## Install your dotfiles onto a new system (or migrate to this setup)
 
-```console
-$ conftest test --combine deployment.yaml service.yaml
+Install and configure dependencies
 
-FAIL - Combined-configs (multi-file) - Expected these values to be the same but received hello-kubernetes for deployment and goodbye-kubernetes for service
+```bash
+# oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+# oh-my-zsh bullet-train theme
+cd ~/.oh-my-zsh/themes/
+curl -O https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
+cd
+
+# oh-my-zsh powerlevel10k theme
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+
+# zsh-autosuggestions plugin
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+chsh -s $(which zsh)
+
+# kitty
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+
+# screenshots
+mkdir ~/Pictures/screenshots
 ```
 
-This is just the tip of the iceberg. Now you can ensure that duplicate values match across the entirety of your configuration files.
+Clone repository
 
-### --data flag
-
-Sometimes policies require additional data in order to determine an answer. For example, a whitelist of allowed resources that can be created. Instead of hardcoding this information inside of your policy, conftest allows passing paths to data files with the `--data` flag, e.g.
-
-```console
-conftest test -p examples/data/policy -d examples/data/exclusions examples/data/service.yaml
+```bash
+cd
+alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+echo ".dotfiles" >> $HOME/.gitignore
+git clone --bare https://github.com/bcochofel/dotfiles.git $HOME/.dotfiles
+alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+mkdir -p ~/.config-backup
+gitdotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} ~/.config-backup/{}
+gitdotfiles checkout
+gitdotfiles config --local status.showUntrackedFiles no
+gitdotfiles status
 ```
 
-The paths at the flag are recursively searched for JSON and YAML files. Data can be imported as follows:
+Additional configuration
 
-Given the following yaml file:
+```bash
+# update ttf fonts cache
+fc-cache -f -v
 
-```yaml
-services:
-  ports:
-  - 22
+# Create a symbolic link to add kitty to PATH (assuming ~/.local/bin is in
+# your PATH)
+mkdir -p ~/.local/bin
+mkdir -p ~/.local/share/applications
+ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin/
+# Place the kitty.desktop file somewhere it can be found by the OS
+cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications
+# Update the path to the kitty icon in the kitty.desktop file
+sed -i "s/Icon\=kitty/Icon\=\/home\/$USER\/.local\/kitty.app\/share\/icons\/hicolor\/256x256\/apps\/kitty.png/g" ~/.local/share/applications/kitty.desktop
+
+# choose default terminal
+sudo update-alternatives --set x-terminal-emulator /usr/bin/terminator
+
+# install tmux plugins
+tmux start-server && tmux new-session -d && ~/.tmux/plugins/tpm/scripts/install_plugins.sh && tmux kill-server
+
+# kubectx and kubens
+mkdir -p ~/.oh-my-zsh/completions
+chmod -R 755 ~/.oh-my-zsh/completions
+ln -s ~/bin/kubectx.zsh ~/.oh-my-zsh/completions/_kubectx.zsh
+ln -s ~/bin/kubens.zsh ~/.oh-my-zsh/completions/_kubens.zsh
 ```
 
-This can be imported into your policy:
+Neovim configuration
 
-```rego
-import data.services
-
-ports := services.ports
+```bash
+# create symbolic link for neovim config
+mkdir -p ~/.config/nvim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
 ```
 
-### --output flag
+# Plugin Manager
 
-The output of `conftest` can be configured using the `--output` flag (`-o`).
+## Install Vim-Plug
 
-As of today `conftest` supports the following output types:
+https://github.com/junegunn/vim-plug
 
-- Plaintext `--output=stdout`
-- JSON: `--output=json`
-- [TAP](https://testanything.org/): `--output=tap`
-- Table `--output=table`
+## Install Vundle
 
-#### Example Output
+https://github.com/VundleVim/Vundle.vim
 
-##### Plaintext
+# Useful plugins
 
-```console
-$ conftest test -p examples/kubernetes/policy examples/kubernetes/deployment.yaml
-FAIL - examples/kubernetes/deployment.yaml - Containers must not run as root in Deployment hello-kubernetes
-FAIL - examples/kubernetes/deployment.yaml - Deployment hello-kubernetes must provide app/release labels for pod selectors
-FAIL - examples/kubernetes/deployment.yaml - hello-kubernetes must include Kubernetes recommended labels: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/#labels
-```
+## Look & Feel
 
-##### JSON
+- https://github.com/arcticicestudio/nord-vim
+- https://github.com/vim-airline/vim-airline
+- https://github.com/vim-airline/vim-airline-themes
+- https://github.com/itchyny/lightline.vim
 
-```console
-$ conftest test -o json -p examples/kubernetes/policy examples/kubernetes/deployment.yaml
-[
-        {
-                "filename": "examples/kubernetes/deployment.yaml",
-                "warnings": [],
-                "failures": [
-                        "hello-kubernetes must include Kubernetes recommended labels: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/#labels ",
-                        "Containers must not run as root in Deployment hello-kubernetes",
-                        "Deployment hello-kubernetes must provide app/release labels for pod selectors"
-                ]
-        }
-]
-```
+## Utilities
 
-##### TAP
+- [NERDCommenter: Comment functions so powerful—no comment necessary.](https://github.com/preservim/nerdcommenter)
+- [NERDTree: a file system explorer for the Vim editor.](https://github.com/preservim/nerdtree)
+- [NERDTree-GIT: A plugin of NERDTree showing git status flags.](https://github.com/Xuyuanp/nerdtree-git-plugin)
+- [Vista.vim: Viewer and finder for LSP symbols and
+  tabs](https://github.com/liuchengxu/vista.vim)
+- [Tagbar: a class outline viewer for Vim](https://github.com/majutsushi/tagbar)
+  - Dependencies: sudo apt install exuberant-ctags
+- [FZF: A command-line fuzzy finder.](https://github.com/junegunn/fzf.vim)
+- [CtrlP: Full path fuzzy file, buffer, mru, tag, ... finder for Vim.](https://github.com/ctrlpvim/ctrlp.vim)
+- [Vim-Indent: Indent Guides is a plugin for visually displaying indent levels in Vim.](https://github.com/nathanaelkane/vim-indent-guides)
+- [SuperTab: vim plugin which allows you to use <Tab> for all your insert completion needs (:help ins-completion).](https://github.com/ervandew/supertab)
+- [Ack: Run your favorite search tool from Vim, with an enhanced results list.](https://github.com/mileszs/ack.vim)
+  - Dependencies: sudo apt install ack-grep
+- [Vim-easy-alin: A simple, easy-to-use Vim alignment plugin.](https://github.com/junegunn/vim-easy-align)
+- [tabular: Vim script for text filtering and alignment ](https://github.com/godlygeek/tabular)
+- [vim-gutentags: A Vim plugin that manages your tag files](https://github.com/ludovicchabant/vim-gutentags)
+- [vim-repeat: repeat.vim: enable repeating supported plugin maps with "."](https://github.com/tpope/vim-repeat)
+- [vim-swoop: It allows you to find and replace occurrences in many buffers being aware of the context.](https://github.com/pelodelfuego/vim-swoop)
+- [vim-mark: Highlight several words in different colors simultaneously.](https://github.com/inkarkat/vim-mark)
+- [vim-tmux-navigator: Seamless navigation between tmux panes and vim splits](https://github.com/christoomey/vim-tmux-navigator)
 
-```console
-$ conftest test -o tap -p examples/kubernetes/policy examples/kubernetes/deployment.yaml
-1..3
-not ok 1 - examples/kubernetes/deployment.yaml - Containers must not run as root in Deployment hello-kubernetes
-not ok 2 - examples/kubernetes/deployment.yaml - Deployment hello-kubernetes must provide app/release labels for pod selectors
-not ok 3 - examples/kubernetes/deployment.yaml - hello-kubernetes must include Kubernetes recommended labels: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/#labels
-```
+## General Programming
 
-##### TABLE
+- [vim-polyglot: A solid language pack for Vim.](https://github.com/sheerun/vim-polyglot)
+- [Neomake: Asynchronous linting and make framework for Neovim/Vim](https://github.com/neomake/neomake)
+  - Dependencies: pip install pylint yamllint ansible-lint flake8
+- [auto-pairs: Insert or delete brackets, parens, quotes in pair.](https://github.com/jiangmiao/auto-pairs)
+- [Syntastic: Syntax checking hacks for vim](https://github.com/vim-syntastic/syntastic)
+  - Dependencies: pip install yamllint ansible-lint
+- [ALE: Check syntax in Vim asynchronously and fix files](https://github.com/dense-analysis/ale)
+- [Deoplete: Dark powered asynchronous completion framework for neovim/Vim8](https://github.com/Shougo/deoplete.nvim)
+  - Dependencies: pip install pynvim
+- [Deoplete-jedi: deoplete.nvim source for Python](https://github.com/deoplete-plugins/deoplete-jedi)
+  - Dependencies: pip install jedi
+- [Neoformat: A (Neo)vim plugin for formatting code.](https://github.com/sbdchd/neoformat)
+  - Dependencies: pip install autopep8 yapf docformatter
+- [jedi-vim: jedi-vim - awesome Python autocompletion with VIM](https://github.com/davidhalter/jedi-vim)
 
-```console
-$ conftest test -p examples/kubernetes/policy examples/kubernetes/service.yaml -o table
-+---------+----------------------------------+--------------------------------+
-| RESULT  |               FILE               |            MESSAGE             |
-+---------+----------------------------------+--------------------------------+
-| success | examples/kubernetes/service.yaml |                                |
-| warning | examples/kubernetes/service.yaml | Found service hello-kubernetes |
-|         |                                  | but services are not allowed   |
-+---------+----------------------------------+--------------------------------+
-```
+## GIT
 
-## Examples
+- [vim-fugitive: A Git wrapper so awesome, it should be illegal](https://github.com/tpope/vim-fugitive)
+- [vim-git: Vim Git runtime files](https://github.com/tpope/vim-git)
 
-You can find examples using various other tools in the `examples` directory, including:
+## Tmux
 
-* [AWS SAM Framework](examples/awssam)
-* [CUE](examples/cue)
-* [Docker compose](examples/compose)
-* [Dockerfile](examples/docker)
-* [EDN](examples/edn)
-* [HCL2](examples/hcl2)
-* [HOCON](examples/hocon)
-* [INI](examples/ini)
-* [GitLab](examples/ci)
-* [Kubernetes](examples/kubernetes)
-* [Kustomize](examples/kustomize)
-* [Multitype](examples/multitype)
-* [Serverless Framework](examples/serverless)
-* [Tekton](examples/tekton)
-* [Terraform](examples/terraform)
-* [Traefik](examples/traefik)
-* [Typescript](examples/ts)
-* [VCL](examples/vcl)
-* [XML](examples/xml)
+- [vim-tmux-navigator: Navigation between tmux and vim](https://github.com/christoomey/vim-tmux-navigator)
 
-## Configuration and external policies
+## Markdown
 
-Policies are often reusable between different projects, and `conftest` supports a mechanism
-to specify dependent policies as well as download them. The format reuses the [Bundle defined
-by Open Policy Agent](https://www.openpolicyagent.org/docs/latest/bundles).
+- [vim-markdown: Markdown Vim Mode](https://github.com/plasticboy/vim-markdown)
 
-You can download individual policies directly:
+## Terraform
 
-```console
-conftest pull instrumenta.azurecr.io/test
-```
+- [vim-terraform: basic vim/terraform integration](https://github.com/hashivim/vim-terraform)
+  - Depends: terraform binary
 
-Pull also supports other policy locations, such as git or https. Under the hood conftest leverages [go-getter](https://github.com/hashicorp/go-getter) to download policies. For example, to download a policy via https:
+## Ansible
 
-```console
-conftest pull https://raw.githubusercontent.com/instrumenta/conftest/master/examples/compose/policy/deny.rego
-```
+- [vim-ansible: A vim plugin for syntax highlighting Ansible's common filetypes](https://github.com/pearofducks/ansible-vim)
 
-Policies can be stored in OCI-compatible registries. You can read more about this idea in
-[this post](https://stevelasker.blog/2019/01/25/cloud-native-artifact-stores-evolve-from-container-registries/).
-Conftest supports storing policies using this mechanism leveraging [ORAS](https://github.com/deislabs/oras).
+# References
 
-If you have a compatible OCI registry you can also push new policy bundles like so:
-
-```console
-conftest push instrumenta.azurecr.io/test
-conftest push 127.0.0.1:5000/test
-conftest push <some-other-supported-registry>/test
-```
-
-OCI bundles can be pulled as well:
-
-```console
-conftest pull instrumenta.azurecr.io/test
-conftest pull 127.0.0.1:5000/test
-conftest pull oci://<some-other-supported-registry>/test
-```
-
-The Azure registy and 127.0.0.1:5000 (The local [Docker Registry](https://github.com/docker/distribution)) are special cases where the URL does not need to be prefixed with the scheme `oci://`, in all other cases the scheme needs to be provided in the URL.
-
-If you want to download the latest policies and run the tests in one go, you can do so with:
-
-```console
-conftest test --update <url(s)> <file-to-test>
-```
-
-`conftest` also supports a simple configuration file which can be used to store
-configuration settings for the `conftest` command.
-
-Create a `conftest.toml` configuration file like the following:
-
-```toml
-# You can override the directory in which to store and look for policies
-policy = "tests"
-# You can override the namespace which to search for rules
-namespace = "conftest"
-```
-
-## Debugging queries
-
-When working on more complex queries (or when learning rego), it's useful to see exactly how the policy is
-applied. For this purpose you can use the `--trace` flag. This will output a large trace from Open Policy Agent
-like the following:
-
-<details>
-<summary>Example of trace</summary>
-
-```console
-$ conftest test --trace deployment.yaml
-FAIL - deployment.yaml - Deployment hello-kubernetes must provide app/release labels for pod selectors
-TRAC - deployment.yaml - Enter data.main.deny = _
-TRAC - deployment.yaml - | Eval data.main.deny = _
-TRAC - deployment.yaml - | Index data.main.deny = _ matched 3 rules)
-TRAC - deployment.yaml - | Enter data.main.deny
-TRAC - deployment.yaml - | | Eval data.kubernetes.is_deployment
-TRAC - deployment.yaml - | | Index data.kubernetes.is_deployment (matched 1 rule)
-TRAC - deployment.yaml - | | Enter data.kubernetes.is_deployment
-TRAC - deployment.yaml - | | | Eval input.kind = "Deployment"
-TRAC - deployment.yaml - | | | Exit data.kubernetes.is_deployment
-TRAC - deployment.yaml - | | Eval not data.main.labels
-TRAC - deployment.yaml - | | Enter data.main.labels
-TRAC - deployment.yaml - | | | Eval data.main.labels
-TRAC - deployment.yaml - | | | Index data.main.labels matched 2 rules)
-TRAC - deployment.yaml - | | | Enter data.main.labels
-TRAC - deployment.yaml - | | | | Eval input.metadata.labels["app.kubernetes.io/name"]
-TRAC - deployment.yaml - | | | | Eval input.metadata.labels["app.kubernetes.io/instance"]
-TRAC - deployment.yaml - | | | | Fail input.metadata.labels["app.kubernetes.io/instance"]
-TRAC - deployment.yaml - | | | | Redo input.metadata.labels["app.kubernetes.io/name"]
-TRAC - deployment.yaml - | | | Enter data.main.labels
-TRAC - deployment.yaml - | | | | Eval input.spec.selector.matchLabels.app
-TRAC - deployment.yaml - | | | | Eval input.spec.selector.matchLabels.release
-TRAC - deployment.yaml - | | | | Fail input.spec.selector.matchLabels.release
-TRAC - deployment.yaml - | | | | Redo input.spec.selector.matchLabels.app
-TRAC - deployment.yaml - | | | Fail data.main.labels
-TRAC - deployment.yaml - | | Eval __local9__ = data.main.name
-TRAC - deployment.yaml - | | Index __local9__ = data.main.name matched 3 rules)
-TRAC - deployment.yaml - | | Enter data.main.name
-TRAC - deployment.yaml - | | | Eval true
-TRAC - deployment.yaml - | | | Eval __local5__ = input.metadata.name
-TRAC - deployment.yaml - | | | Exit data.main.name
-TRAC - deployment.yaml - | | Eval sprintf("%s must include Kubernetes recommended labels: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/#labels ", [__local9__], __local2__)
-TRAC - deployment.yaml - | | Eval msg = __local2__
-TRAC - deployment.yaml - | | Exit data.main.deny
-TRAC - deployment.yaml - | Redo data.main.deny
-TRAC - deployment.yaml - | | Redo msg = __local2__
-TRAC - deployment.yaml - | | Redo sprintf("%s must include Kubernetes recommended labels: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/#labels ", [__local9__], __local2__)
-TRAC - deployment.yaml - | | Redo __local9__ = data.main.name
-TRAC - deployment.yaml - | | Redo data.main.name
-TRAC - deployment.yaml - | | | Redo __local5__ = input.metadata.name
-TRAC - deployment.yaml - | | | Redo true
-TRAC - deployment.yaml - | | Enter data.main.name
-TRAC - deployment.yaml - | | | Eval true
-TRAC - deployment.yaml - | | | Eval __local6__ = input.metadata.name
-TRAC - deployment.yaml - | | | Exit data.main.name
-TRAC - deployment.yaml - | | Redo data.main.name
-TRAC - deployment.yaml - | | | Redo __local6__ = input.metadata.name
-TRAC - deployment.yaml - | | | Redo true
-TRAC - deployment.yaml - | | Enter data.main.name
-TRAC - deployment.yaml - | | | Eval true
-TRAC - deployment.yaml - | | | Eval __local4__ = input.metadata.name
-TRAC - deployment.yaml - | | | Exit data.main.name
-TRAC - deployment.yaml - | | Redo data.main.name
-TRAC - deployment.yaml - | | | Redo __local4__ = input.metadata.name
-TRAC - deployment.yaml - | | | Redo true
-TRAC - deployment.yaml - | | Redo data.kubernetes.is_deployment
-TRAC - deployment.yaml - | | Redo data.kubernetes.is_deployment
-TRAC - deployment.yaml - | | | Redo input.kind = "Deployment"
-TRAC - deployment.yaml - | Enter data.main.deny
-TRAC - deployment.yaml - | | Eval data.kubernetes.is_deployment
-TRAC - deployment.yaml - | | Index data.kubernetes.is_deployment (matched 1 rule)
-TRAC - deployment.yaml - | | Eval not input.spec.template.spec.securityContext.runAsNonRoot
-TRAC - deployment.yaml - | | Enter input.spec.template.spec.securityContext.runAsNonRoot
-TRAC - deployment.yaml - | | | Eval input.spec.template.spec.securityContext.runAsNonRoot
-TRAC - deployment.yaml - | | | Fail input.spec.template.spec.securityContext.runAsNonRoot
-TRAC - deployment.yaml - | | Eval __local7__ = data.main.name
-TRAC - deployment.yaml - | | Index __local7__ = data.main.name matched 3 rules)
-TRAC - deployment.yaml - | | Eval sprintf("Containers must not run as root in Deployment %s", [__local7__], __local0__)
-TRAC - deployment.yaml - | | Eval msg = __local0__
-TRAC - deployment.yaml - | | Exit data.main.deny
-TRAC - deployment.yaml - | Redo data.main.deny
-TRAC - deployment.yaml - | | Redo msg = __local0__
-TRAC - deployment.yaml - | | Redo sprintf("Containers must not run as root in Deployment %s", [__local7__], __local0__)
-TRAC - deployment.yaml - | | Redo __local7__ = data.main.name
-TRAC - deployment.yaml - | | Redo data.kubernetes.is_deployment
-TRAC - deployment.yaml - | Enter data.main.deny
-TRAC - deployment.yaml - | | Eval data.kubernetes.is_deployment
-TRAC - deployment.yaml - | | Index data.kubernetes.is_deployment (matched 1 rule)
-TRAC - deployment.yaml - | | Eval not data.main.labels
-TRAC - deployment.yaml - | | Enter data.main.labels
-TRAC - deployment.yaml - | | | Eval data.main.labels
-TRAC - deployment.yaml - | | | Index data.main.labels matched 2 rules)
-TRAC - deployment.yaml - | | | Enter data.main.labels
-TRAC - deployment.yaml - | | | | Eval input.metadata.labels["app.kubernetes.io/name"]
-TRAC - deployment.yaml - | | | | Eval input.metadata.labels["app.kubernetes.io/instance"]
-TRAC - deployment.yaml - | | | | Fail input.metadata.labels["app.kubernetes.io/instance"]
-TRAC - deployment.yaml - | | | | Redo input.metadata.labels["app.kubernetes.io/name"]
-TRAC - deployment.yaml - | | | Enter data.main.labels
-TRAC - deployment.yaml - | | | | Eval input.spec.selector.matchLabels.app
-TRAC - deployment.yaml - | | | | Eval input.spec.selector.matchLabels.release
-TRAC - deployment.yaml - | | | | Fail input.spec.selector.matchLabels.release
-TRAC - deployment.yaml - | | | | Redo input.spec.selector.matchLabels.app
-TRAC - deployment.yaml - | | | Fail data.main.labels
-TRAC - deployment.yaml - | | Eval __local8__ = data.main.name
-TRAC - deployment.yaml - | | Index __local8__ = data.main.name matched 3 rules)
-TRAC - deployment.yaml - | | Eval sprintf("Deployment %s must provide app/release labels for pod selectors", [__local8__], __local1__)
-TRAC - deployment.yaml - | | Eval msg = __local1__
-TRAC - deployment.yaml - | | Exit data.main.deny
-TRAC - deployment.yaml - | Redo data.main.deny
-TRAC - deployment.yaml - | | Redo msg = __local1__
-TRAC - deployment.yaml - | | Redo sprintf("Deployment %s must provide app/release labels for pod selectors", [__local8__], __local1__)
-TRAC - deployment.yaml - | | Redo __local8__ = data.main.name
-TRAC - deployment.yaml - | | Redo data.kubernetes.is_deployment
-TRAC - deployment.yaml - | Exit data.main.deny = _
-TRAC - deployment.yaml - Redo data.main.deny = _
-TRAC - deployment.yaml - | Redo data.main.deny = _
-```
-
-</details>
-
-
-## Plugins
-
-Conftest supports a plugin system to allow for extensions to conftest without editing the codebase. See the [plugin documentation](docs/plugin.md) for more details
-
-## Installation
-
-`conftest` releases are available for Windows, macOS and Linux on the [releases page](https://github.com/instrumenta/conftest/releases).
-On Linux and macOS you can download as follows:
-
-```console
-$ wget https://github.com/instrumenta/conftest/releases/download/v0.16.0/conftest_0.16.0_Linux_x86_64.tar.gz
-$ tar xzf conftest_0.16.0_Linux_x86_64.tar.gz
-$ sudo mv conftest /usr/local/bin
-```
-
-### Brew
-
-Install with Homebrew on macOS or Linux:
-
-```console
-brew tap instrumenta/instrumenta
-brew install conftest
-```
-
-### Scoop
-
-You can also install using [Scoop](https://scoop.sh/) on Windows:
-
-```console
-scoop bucket add instrumenta https://github.com/instrumenta/scoop-instrumenta
-scoop install conftest
-```
-
-### Docker
-
-`conftest` is also able to be used via Docker. Simply mount your configuration and policy at `/project` and specify the relevant command like so:
-
-```console
-$ docker run --rm -v $(pwd):/project instrumenta/conftest test deployment.yaml
-FAIL - deployment.yaml - Containers must not run as root in Deployment hello-kubernetes
-```
-
-## Inspiration
-
-* [kubetest](https://github.com/garethr/kubetest) was a similar project of mine, using [Skylark](https://docs.bazel.build/versions/master/skylark/language.html)
-* [Open Policy Agent](https://www.openpolicyagent.org/) and the Rego query language
-* The [helm-opa](https://github.com/eicnix/helm-opa) plugin from [@eicnix](https://github.com/eicnix/) helped with understanding the OPA Go packages
-* Tools from the wider infrastructure as code community, in particular rspec-puppet. Lots of my thoughts in [my talk from KubeCon 2017](https://speakerdeck.com/garethr/developer-tooling-for-kubernetes-configurations)
+- [i3 Window manager](https://i3wm.org/)
+- [Install oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
+- [Terminator emulator](https://terminator-gtk3.readthedocs.io/en/latest/gettingstarted.html)
+- [Tilix](https://gnunn1.github.io/tilix-web/)
+- [Kitty](https://sw.kovidgoyal.net/kitty/)
+- [Neovim](https://neovim.io/)

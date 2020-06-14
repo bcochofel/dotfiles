@@ -72,6 +72,11 @@ Plug 'pearofducks/ansible-vim'
 " --
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
+" ------
+" Vue.js
+" ------
+Plug 'posva/vim-vue'
+
 " ----
 " rego
 " ----
