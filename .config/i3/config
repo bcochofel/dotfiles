@@ -276,6 +276,7 @@ assign [class="Insomnia"] $WS4
 assign [class="jetbrains-idea-ce"] $WS4
 assign [class="Code"] $WS4
 assign [class="git-cola"] $WS4
+assign [class="Meld"] $WS4
 assign [class="Lens"] $WS5
 assign [class="kube-forwarder"] $WS5
 assign [class="Google-chrome"] $WS9
