@@ -15,8 +15,14 @@ It uses the following:
 sudo apt install -y imagemagick tree curl wget git unzip apt-file mc \
   exuberant-ctags ack-grep silversearcher-ag ripgrep golang
 
+# npm
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install nodejs
+
+# yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list
+sudo apt update && sudo apt install yarn
 ```
 
 ## Install i3 Window Manager
