@@ -222,10 +222,8 @@ export MC_SKIN=/home/bcochofel/.mc/lib/solarized.ini
 export GOPATH=~/go
 export PATH=$GOPATH/bin:$PATH
 
-# Java + Ant + Maven + Gradle
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-export ANT_HOME=/opt/apache-ant-1.10.7
-export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:/opt/apache-maven-3.6.3/bin:/opt/gradle-6.2/bin:$PATH
+# ADR tools https://github.com/npryce/adr-tools/blob/master/INSTALL.md
+export PATH=$PATH:~/bin/adr-tools-3.0.0/src
 
 export TERM="screen-256color"
 
