@@ -290,6 +290,7 @@ assign [class="Franz"] $WS10
 for_window [class="zoom"] floating enable, move to workspace $WS8
 for_window [class="Spotify"] move to workspace $WS9
 for_window [title="cheat-sheet"] [class="feh"] floating enable, move position center, focus
+for_window [class="qjackctl"] floating enable
 
 # start i3bar to display a workspace bar
 # run conky or i3status
