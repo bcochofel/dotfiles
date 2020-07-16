@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# Script to launch audio servers and connect nektar impact gx61
+# Usage: pianoctl <start|stop> <card>
+# card: ALSA card from cat /proc/asounds/cards
+
+if [ "$2" == "" ]
+then
+  HW_CARD=2
+else
+  HW_CARD=$2
+fi
+
+case $1 in
+
+  start )
+    echo Starting JACK...
+
+    # Start JACK
+    # As of Ubuntu 12.10, a period of 128 is needed for good fluidsynth
+    # timing.  (jackd 1.9.9, fluidsynth 1.1.5)
+    # If you aren't running pulseaudio, you can remove the pasuspender line.
+    pasuspender -- \
+        jackd -d alsa --device hw:$HW_CARD --rate 44100 --period 128 \
+            &>/tmp/jackd.out &
+
+    sleep .5
+
+    echo Starting fluidsynth...
+
+    # Start fluidsynth
+    fluidsynth --server --no-shell --audio-driver=jack \
+        --connect-jack-outputs --reverb=0 --chorus=0 --gain=0.8 \
+        /usr/share/sounds/sf2/FluidR3_GM.sf2 \
+        &>/tmp/fluidsynth.out &
+
+    sleep 1
+
+    echo Connecting MIDI Keyboard to fluidsynth
+
+    # Get aconnect info for fluidsynth and impact
+    IMPACT_PORT=$(aconnect -i | grep "client.*Impact" | cut -d ' ' -f 2)0
+    SYNTH_PORT=$(aconnect -o | grep "FLUID Synth" | cut -d ' ' -f 2)0
+
+    echo Nektar Impact GX 61 port: $IMPACT_PORT
+    echo fluidsynth input port: $SYNTH_PORT
+    
+    # Connect the ports
+    aconnect $IMPACT_PORT $SYNTH_PORT
+
+    if pgrep -l jackd && pgrep -l fluidsynth
+    then
+      echo Audio servers running.
+    else
+      echo There was a problem starting the audio servers.
+    fi
+
+    ;;
+
+  stop )
+    aconnect -x
+    killall fluidsynth
+    killall jackd
+    echo Audio servers stopped.
+    ;;
+
+  * )
+    echo Please specify start or stop...
+    ;;
+esac
