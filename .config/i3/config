@@ -293,6 +293,7 @@ for_window [title="cheat-sheet"] [class="feh"] floating enable, move position ce
 
 # audio and midi tools
 for_window [class="qjackctl"] floating enable, move to workspace $WS8
+for_window [class="Patchage"] floating enable, move to workspace $WS8
 for_window [class="qsynth"] floating enable, move to workspace $WS8
 for_window [class="qsynth"] resize set 892 216
 
