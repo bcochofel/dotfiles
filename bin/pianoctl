@@ -25,8 +25,8 @@ case $1 in
     # timing.  (jackd 1.9.9, fluidsynth 1.1.5)
     # If you aren't running pulseaudio, you can remove the pasuspender line.
     # pasuspender -- \
-        jackd -d alsa --device hw:$HW_CARD --rate 44100 --period 128 \
-            &>/tmp/jackd.out &
+    jackd -d alsa --device hw:$HW_CARD --rate 44100 --period 128 \
+      &>/tmp/jackd.out &
 
     sleep .5
 
@@ -34,9 +34,9 @@ case $1 in
 
     # Start fluidsynth
     fluidsynth --server --no-shell --audio-driver=jack \
-        --connect-jack-outputs --reverb=0 --chorus=0 --gain=0.8 \
-        /usr/share/sounds/sf2/FluidR3_GM.sf2 \
-        &>/tmp/fluidsynth.out &
+      --connect-jack-outputs --reverb=0 --chorus=0 --gain=0.8 \
+      /usr/share/sounds/sf2/FluidR3_GM.sf2 \
+      &>/tmp/fluidsynth.out &
 
     sleep 1
 
