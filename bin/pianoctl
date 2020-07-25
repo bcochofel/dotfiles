@@ -15,10 +15,18 @@ else
   HW_CARD=$2
 fi
 
+# get pulseaudio module to unload
+PA_MODULE_IDX=$(pacmd list-modules | tac | grep -A 10 -e "argument: .*device_id=\"$HW_CARD\"" | grep 'index:' | head -n 1 | cut -d ':' -f 2 | tr -d ' ')
+# echo $PA_MODULE_IDX
+
+echo "Unloading pulseaudio module for card $HW_CARD (index $PA_MODULE_IDX)"
+pactl unload-module $PA_MODULE_IDX
+sleep 1
+
 case $1 in
 
   start )
-    echo Starting JACK...
+    echo "Starting JACK..."
 
     # Start JACK
     # As of Ubuntu 12.10, a period of 128 is needed for good fluidsynth
@@ -28,9 +36,9 @@ case $1 in
     jackd -d alsa --device hw:$HW_CARD --rate 44100 --period 128 \
       &>/tmp/jackd.out &
 
-    sleep .5
+    sleep 1
 
-    echo Starting fluidsynth...
+    echo "Starting fluidsynth..."
 
     # Start fluidsynth
     fluidsynth --server --no-shell --audio-driver=jack \
@@ -40,23 +48,23 @@ case $1 in
 
     sleep 1
 
-    echo Connecting MIDI Keyboard to fluidsynth
+    echo "Connecting MIDI Keyboard to fluidsynth..."
 
     # Get aconnect info for fluidsynth and impact
     IMPACT_PORT=$(aconnect -i | grep "client.*Impact" | cut -d ' ' -f 2)0
     SYNTH_PORT=$(aconnect -o | grep "FLUID Synth" | cut -d ' ' -f 2)0
 
-    echo Nektar Impact GX 61 port: $IMPACT_PORT
-    echo fluidsynth input port: $SYNTH_PORT
+    echo "Nektar Impact GX 61 port: $IMPACT_PORT"
+    echo "fluidsynth input port: $SYNTH_PORT"
     
     # Connect the ports
     aconnect $IMPACT_PORT $SYNTH_PORT
 
     if pgrep -l jackd && pgrep -l fluidsynth
     then
-      echo Audio servers running.
+      echo "Audio servers running."
     else
-      echo There was a problem starting the audio servers.
+      echo "There was a problem starting the audio servers."
     fi
 
     ;;
@@ -65,10 +73,10 @@ case $1 in
     aconnect -x
     killall fluidsynth
     killall jackd
-    echo Audio servers stopped.
+    echo "Audio servers stopped."
     ;;
 
   * )
-    echo Please specify start or stop...
+    echo "Please specify start or stop..."
     ;;
 esac
