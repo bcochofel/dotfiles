@@ -19,14 +19,14 @@ fi
 PA_MODULE_IDX=$(pacmd list-modules | tac | grep -A 10 -e "argument: .*device_id=\"$HW_CARD\"" | grep 'index:' | head -n 1 | cut -d ':' -f 2 | tr -d ' ')
 # echo $PA_MODULE_IDX
 
-echo "Unloading pulseaudio module for card $HW_CARD (index $PA_MODULE_IDX)"
-pactl unload-module $PA_MODULE_IDX
-sleep 1
-
 case $1 in
 
   start )
     echo "Starting JACK..."
+
+    echo "Unloading pulseaudio module for card $HW_CARD (index $PA_MODULE_IDX)"
+    pactl unload-module $PA_MODULE_IDX
+    sleep 1
 
     # Start JACK
     # As of Ubuntu 12.10, a period of 128 is needed for good fluidsynth
@@ -42,7 +42,7 @@ case $1 in
 
     # Start fluidsynth
     fluidsynth --server --no-shell --audio-driver=jack \
-      --connect-jack-outputs --reverb=0 --chorus=0 --gain=0.8 \
+      --connect-jack-outputs --reverb=0 --chorus=0 --gain=0.9 \
       /usr/share/sounds/sf2/FluidR3_GM.sf2 \
       &>/tmp/fluidsynth.out &
 
@@ -73,6 +73,7 @@ case $1 in
     aconnect -x
     killall fluidsynth
     killall jackd
+    pulseaudio -k
     echo "Audio servers stopped."
     ;;
 
