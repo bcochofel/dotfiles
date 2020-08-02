@@ -268,6 +268,7 @@ bindsym $mod+r mode "resize"
 # binding apps to workspaces
 # use xprop to check the name of the windows
 assign [class="Joplin"] $WS2
+assign [class="calibre"] $WS2
 assign [class="SecureCRT"] $WS8
 assign [class="Firefox"] $WS3
 assign [class="Postman"] $WS4
@@ -293,7 +294,6 @@ for_window [title="cheat-sheet"] [class="feh"] floating enable, move position ce
 
 # audio and midi tools
 for_window [class="qjackctl"] floating enable, move to workspace $WS8
-for_window [class="Patchage"] floating enable, move to workspace $WS8
 for_window [class="qsynth"] floating enable, move to workspace $WS8
 for_window [class="qsynth"] resize set 892 216
 
