@@ -334,6 +334,6 @@ exec --no-startup-id blueman-applet
 # allow root to use DISPLAY
 exec --no-startup-id xhost local:root
 # wallpaper
-exec --no-startup-id feh --bg-fill "/home/$USER/Pictures/background.png"
+exec --no-startup-id feh --bg-max "/home/$USER/Pictures/background.png"
 #start terminal on workspace 1
 exec --no-startup-id i3-msg 'workspace $WS1; exec i3-sensible-terminal'
