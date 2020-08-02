@@ -23,6 +23,6 @@ else
     xrandr --output ${FIRST_MON} --primary
 fi
 
-feh --no-fehbg --bg-center '/home/bcochofel/Pictures/background.jpg' 
+feh --bg-fill '/home/bcochofel/Pictures/background.png' 
 
 exit 0
