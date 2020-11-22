@@ -215,6 +215,9 @@ if _has fzf && _has ag; then
   '
 fi
 
+# Enable Ctrl-x-e to edit command line
+autoload -U edit-command-line
+
 # mc solarized theme
 export MC_SKIN=/home/bcochofel/.mc/lib/solarized.ini
 
