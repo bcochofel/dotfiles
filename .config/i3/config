@@ -326,14 +326,14 @@ client.urgent           #002b36 #dc322f #fdf6e3 #002b36
 # setup monitors
 exec --no-startup-id ~/bin/monitors.sh
 # start autolock for 10m timeout
-exec xautolock -time 10 -locker "i3lock -c '#000000'" -detectsleep -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
-#exec xautolock -time 10 -locker "gnome-screensaver-command --lock"
+exec xautolock -time 15 -locker "i3lock -c '#000000'" -detectsleep -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
+#exec xautolock -time 15 -locker "gnome-screensaver-command --lock"
 # start applets
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 # allow root to use DISPLAY
 exec --no-startup-id xhost local:root
 # wallpaper
-exec --no-startup-id feh --bg-max "/home/$USER/Pictures/background.png"
+exec --no-startup-id feh --bg-max "/home/$USER/Pictures/background.jpg"
 #start terminal on workspace 1
 exec --no-startup-id i3-msg 'workspace $WS1; exec i3-sensible-terminal'

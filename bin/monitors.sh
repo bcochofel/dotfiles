@@ -23,6 +23,6 @@ else
     xrandr --output ${FIRST_MON} --primary
 fi
 
-feh --bg-max '/home/bcochofel/Pictures/background.png' 
+feh --bg-max '/home/bcochofel/Pictures/background.jpg' 
 
 exit 0
