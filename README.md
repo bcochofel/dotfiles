@@ -88,6 +88,14 @@ sudo mv tflint /usr/local/bin
 sudo apt install -y neovim
 ```
 
+## Install kubectl
+
+```bash
+curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+```
+
 # Git your dotfiles
 
 Take a look at: https://www.atlassian.com/git/tutorials/dotfiles to keep your dotfiles managed by Git.
