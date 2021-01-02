@@ -54,7 +54,7 @@ sudo apt install -y neovim
 
 # Install the following linters/fixers
 sudo pip3 install pynvim flake8 pylint isort yamllint ansible-lint jedi \
-  autopep8 yapf docformatter proselint saws autorandr
+  autopep8 yapf docformatter proselint saws autorandr virtualenvwrapper
 
 sudo npm i -g eslint eslint-plugin-vue
 
