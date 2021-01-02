@@ -9,9 +9,19 @@ It uses the following:
 
 # Install Dependencies/Packages
 
-## Install Utilities
+## Install with Ansible Playbooks
+
+Check [this](https://github.com/bcochofel/ansible-ubuntuwst-roles) for some Ansible Playbooks you can use to install
+all the utilities.
+
+Playbooks that you should run:
+* base_utils.yml
+* i3wm.yml
+
+## Install Manually
 
 ```bash
+# Install Utilities
 sudo apt install -y imagemagick tree curl wget git unzip apt-file mc \
   exuberant-ctags ack-grep silversearcher-ag ripgrep golang
 
@@ -23,88 +33,47 @@ sudo apt install nodejs
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list
 sudo apt update && sudo apt install yarn
-```
 
-## Install i3 Window Manager
-
-```bash
+# Install i3 Window Manager
 sudo apt install -y i3 i3blocks i3lock i3lock-fancy i3status xautolock conky feh rofi \
   gnome-control-center gnome-screensaver scrot pulseaudio-utils xbacklight python-dbus
-```
 
-## Install zsh
-
-```bash
+# Install zsh
 sudo apt install -y zsh zsh-syntax-highlighting ttf-ancient-fonts fonts-powerline fonts-font-awesome
-```
 
-## Install terminal emulators
-
-```bash
+# Install terminal emulators
 sudo apt install -y terminator tilix tmux
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
-```
 
-### Tmux Plugins
-
-https://tmuxcheatsheet.com/tmux-plugins-tools/
-
-### Tmux TPM
-
-Install Tmux Plugin Manager
-
-https://github.com/tmux-plugins/tpm
-
-## Install Vim and plugin dependencies
-
-```bash
+# Install Vim and plugin dependencies
 sudo apt install -y vim
 sudo apt install -y python3-pip exuberant-ctags ack-grep silversearcher-ag
-```
 
-### Linters/Fixers
+## Install neovim
+sudo apt install -y neovim
 
-Install the following linters/fixers
-
-```bash
+# Install the following linters/fixers
 sudo pip3 install pynvim flake8 pylint isort yamllint ansible-lint jedi \
   autopep8 yapf docformatter proselint saws autorandr
 
 sudo npm i -g eslint eslint-plugin-vue
-```
 
-#### Terraform
-
-https://github.com/terraform-linters/tflint
-
-```bash
+# Terraform tflint
+# https://github.com/terraform-linters/tflint
 curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o tflint.zip && unzip tflint.zip && rm tflint.zip
 sudo mv tflint /usr/local/bin
-```
 
-## Install neovim
-
-```bash
-sudo apt install -y neovim
-```
-
-## Install kubectl
-
-```bash
+# Install kubectl
 curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 ```
 
-# Git your dotfiles
-
-Take a look at: https://www.atlassian.com/git/tutorials/dotfiles to keep your dotfiles managed by Git.
-
 # Install dotfiles
 
-Using the method described before you can clone the Git repository to your home.
+The following method describes how you can use Git to keep track of your dotfiles.
 
-# Start your repository from scratch
+## Start your repository from scratch
 
 ```bash
 git init --bare $HOME/.dotfiles
@@ -115,7 +84,7 @@ echo "alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HO
 
 ## Install your dotfiles onto a new system (or migrate to this setup)
 
-Install and configure dependencies
+### Install and configure dependencies
 
 ```bash
 # oh-my-zsh
@@ -134,14 +103,11 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 chsh -s $(which zsh)
 
-# kitty
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-
 # screenshots
 mkdir ~/Pictures/screenshots
 ```
 
-Clone repository
+### Clone repository
 
 ```bash
 cd
@@ -156,38 +122,27 @@ gitdotfiles config --local status.showUntrackedFiles no
 gitdotfiles status
 ```
 
-Additional configuration
+### Additional configuration
 
 ```bash
 # update ttf fonts cache
 fc-cache -f -v
 
-# Create a symbolic link to add kitty to PATH (assuming ~/.local/bin is in
-# your PATH)
-mkdir -p ~/.local/bin
-mkdir -p ~/.local/share/applications
-ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin/
-# Place the kitty.desktop file somewhere it can be found by the OS
-cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications
-# Update the path to the kitty icon in the kitty.desktop file
-sed -i "s/Icon\=kitty/Icon\=\/home\/$USER\/.local\/kitty.app\/share\/icons\/hicolor\/256x256\/apps\/kitty.png/g" ~/.local/share/applications/kitty.desktop
-
 # choose default terminal
 sudo update-alternatives --set x-terminal-emulator /usr/bin/terminator
 
 # install tmux plugins
-tmux start-server && tmux new-session -d && ~/.tmux/plugins/tpm/scripts/install_plugins.sh && tmux kill-server
+tmux start-server
+tmux new-session -d
+~/.tmux/plugins/tpm/scripts/install_plugins.sh
+tmux kill-server
 
 # kubectx and kubens
 mkdir -p ~/.oh-my-zsh/completions
 chmod -R 755 ~/.oh-my-zsh/completions
 ln -s ~/bin/kubectx.zsh ~/.oh-my-zsh/completions/_kubectx.zsh
 ln -s ~/bin/kubens.zsh ~/.oh-my-zsh/completions/_kubens.zsh
-```
 
-Neovim configuration
-
-```bash
 # create symbolic link for neovim config
 mkdir -p ~/.config/nvim
 ln -s ~/.vimrc ~/.config/nvim/init.vim
@@ -282,3 +237,7 @@ https://github.com/VundleVim/Vundle.vim
 - [Tilix](https://gnunn1.github.io/tilix-web/)
 - [Kitty](https://sw.kovidgoyal.net/kitty/)
 - [Neovim](https://neovim.io/)
+- [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
+- [Tmux Plugins](https://tmuxcheatsheet.com/tmux-plugins-tools/)
+- [Git your dotfiles](https://www.atlassian.com/git/tutorials/dotfiles)
+
