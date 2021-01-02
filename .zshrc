@@ -135,7 +135,7 @@ plugins=(
 #   git-prompt
 #   golang
 #   python
-#   virtualenvwrapper
+  virtualenvwrapper
 )
 
 # ssh-agent plugin setting
@@ -184,6 +184,7 @@ autoload -U +X bashcompinit && bashcompinit
 autoload -Uz compinit
 compinit
 
+# kitty terminal
 if _has kitty; then
   # Completion for kitty
   kitty + complete setup zsh | source /dev/stdin
@@ -225,8 +226,8 @@ export MC_SKIN=/home/bcochofel/.mc/lib/solarized.ini
 export GOPATH=~/go
 export PATH=$GOPATH/bin:$PATH
 
-# ADR tools https://github.com/npryce/adr-tools/blob/master/INSTALL.md
-export PATH=$PATH:~/bin/adr-tools-3.0.0/src
+# Python virtaulenv
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 
 export TERM="screen-256color"
 
