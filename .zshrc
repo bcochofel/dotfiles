@@ -247,3 +247,6 @@ WORDCHARS='*?_-.|[]~=&;!#$%^(){}<>'
 
 # Kubectl Autocomplete
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
+
+# stern autocomplete
+[[ /usr/local/bin/stern ]] && source <(stern --completion=zsh)
