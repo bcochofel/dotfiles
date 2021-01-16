@@ -1,0 +1,2 @@
+PATH    DEFAULT=${HOME}/bin:${HOME}/go/bin:${HOME}/.local/bin\
+:${HOME}/.dotnet/tools:${HOME}/.fzf/bin:${PATH}
