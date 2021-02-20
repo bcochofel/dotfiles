@@ -1,15 +1,18 @@
 #!/bin/bash
 
 NR_MON=$(xrandr | grep -w connected | wc -l)
-FIRST_MON="eDP-1-1"
+FIRST_MON="eDP-1"
 FIRST_MON_MODE="1920x1080"
 
-xrandr --output DP-0 --off
-xrandr --output DP-1 --off
-xrandr --output HDMI-0 --off
+xrandr --output eDP-1-2 --off
+xrandr --output eDP-1-3 --off
+xrandr --output eDP-1-4 --off
+xrandr --output HDMI-1-1 --off
 
 if [ ${NR_MON} -gt 1 ]; then
-    SECOND_MON=$(xrandr | grep -w connected | grep -v ${FIRST_MON} | awk '{ print $1 }')
+    #SECOND_MON=$(xrandr | grep -w connected | grep -v ${FIRST_MON} | awk '{ print $1 }')
+    #SECOND_MON=$(xrandr | grep -w connected | grep -v primary | awk '{ print $1 }')
+    SECOND_MON="eDP-1-4"
     #SECOND_MON_MODE="1920x1080"
     SECOND_MON_MODE="2560x1440"
     SECOND_MON_POS="--left-of"
