@@ -1188,6 +1188,15 @@
   # Show azure only when the the command you are typing invokes one of these tools.
   # Tip: Remove the next line to always show azure.
   typeset -g POWERLEVEL9K_AZURE_SHOW_ON_COMMAND='az|terraform|pulumi|terragrunt'
+
+  typeset -g POWERLEVEL9K_AZURE_CLASSES=(
+      '*prod*'  PROD    # These values are examples that are unlikely
+      # '*test*'  TEST    # to match your needs. Customize them as needed.
+      '*'       DEFAULT)
+  typeset -g POWERLEVEL9K_AZURE_PROD_FOREGROUND=7
+  typeset -g POWERLEVEL9K_AZURE_PROD_BACKGROUND=1
+  typeset -g POWERLEVEL9K_AZURE_DEFAULT_FOREGROUND=7
+  typeset -g POWERLEVEL9K_AZURE_DEFAULT_BACKGROUND=4
   # Azure account name color.
   # typeset -g POWERLEVEL9K_AZURE_FOREGROUND=7
   # typeset -g POWERLEVEL9K_AZURE_BACKGROUND=4
