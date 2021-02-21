@@ -148,6 +148,10 @@ mkdir -p ~/.config/nvim
 ln -s ~/.vimrc ~/.config/nvim/init.vim
 ```
 
+### Gnome Keyring
+
+To configure `Gnome Keyring` for i3 follow [this](https://wiki.archlinux.org/index.php/GNOME/Keyring#With_a_display_manager)
+
 # Plugin Manager
 
 ## Install Vim-Plug
