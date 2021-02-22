@@ -32,10 +32,13 @@ font pango:monospace 10
 floating_modifier $mod
 
 # start a terminal
+# choose the default terminal using:
+# sudo update-alternatives --set x-terminal-emulator <terminal>
+# where <terminal> can be:
+# - terminator
+# - kitty
+# - tilix
 bindsym $mod+Return exec i3-sensible-terminal
-# bindsym $mod+Return exec kitty
-#bindsym $mod+Return exec tilix
-#bindsym $mod+Return exec terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -91,11 +94,8 @@ bindsym $mod+Shift+x exec "~/.config/i3/scripts/tmux-cheat-sheet.sh"
 
 # lock the screen
 bindsym Mod1+Ctrl+l exec i3lock -c '#000000'
-#bindsym Mod1+Ctrl+l exec gnome-screensaver-command --lock
 
 # change monitors layout
-# uses autorandr: https://github.com/phillipberndt/autorandr
-#bindsym Mod1+Ctrl+m exec "~/bin/monitors.sh; autorandr --change"
 bindsym Mod1+Ctrl+m exec "~/bin/monitors.sh"
 
 # screenshot
@@ -264,10 +264,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# move workspace to another screen
-#bindsym $mod+Ctrl+Down move workspace to output eDP-1
-#bindsym $mod+Ctrl+Up move workspace to output DP-2
-
 # binding apps to workspaces
 # use xprop to check the name of the windows
 assign [class="Joplin"] $WS2
@@ -301,11 +297,9 @@ for_window [class="qsynth"] floating enable, move to workspace $WS8
 for_window [class="qsynth"] resize set 892 216
 
 # start i3bar to display a workspace bar
-# run conky or i3status
 # force tray icons to be available on primary monitor
 bar {
   position top
- # status_command /home/$USER/.config/i3/i3status-conky/i3status.sh
   status_command i3blocks -c ~/.config/i3blocks/config
   tray_output primary
   colors {
@@ -330,7 +324,6 @@ client.urgent           #002b36 #dc322f #fdf6e3 #002b36
 exec --no-startup-id ~/bin/monitors.sh
 # start autolock for 10m timeout
 exec xautolock -time 15 -locker "i3lock -c '#000000'" -detectsleep -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
-#exec xautolock -time 15 -locker "gnome-screensaver-command --lock"
 # start applets
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
