@@ -10,10 +10,7 @@ xrandr --output eDP-1-4 --off
 xrandr --output HDMI-1-1 --off
 
 if [ ${NR_MON} -gt 1 ]; then
-    #SECOND_MON=$(xrandr | grep -w connected | grep -v ${FIRST_MON} | awk '{ print $1 }')
-    #SECOND_MON=$(xrandr | grep -w connected | grep -v primary | awk '{ print $1 }')
-    SECOND_MON="eDP-1-4"
-    #SECOND_MON_MODE="1920x1080"
+    SECOND_MON=$(xrandr | grep -w connected | grep -v "${FIRST_MON} " | awk '{ print $1 }')
     SECOND_MON_MODE="2560x1440"
     SECOND_MON_POS="--left-of"
     echo "More than one Monitor connected (${FIRST_MON} | ${SECOND_MON})"
