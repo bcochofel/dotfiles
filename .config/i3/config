@@ -190,7 +190,7 @@ set $WS5 5:k8s
 set $WS6 6
 set $WS7 7
 set $WS8 8:media
-set $WS9 9:work
+set $WS9 9:mail
 set $WS10 10:chat
 
 #workspace $WS1 output primary
@@ -280,6 +280,7 @@ assign [class="Meld"] $WS4
 assign [class="Lens"] $WS5
 assign [class="kube-forwarder"] $WS5
 assign [class="Google-chrome"] $WS9
+assign [class="Thunderbird"] $WS9
 assign [class="Slack"] $WS10
 assign [class="whatsdesk"] $WS10
 assign [class="yakyak"] $WS10
@@ -301,7 +302,7 @@ for_window [class="qsynth"] resize set 892 216
 bar {
   position top
   status_command i3blocks -c ~/.config/i3blocks/config
-  tray_output primary
+#  tray_output primary
   colors {
     background #002b36
     statusline #839496
