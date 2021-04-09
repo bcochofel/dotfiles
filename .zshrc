@@ -224,10 +224,13 @@ export MC_SKIN=/home/bcochofel/.mc/lib/solarized.ini
 
 # Golang
 export GOPATH=~/go
-export PATH=$GOPATH/bin:$PATH
+export PATH=$GOPATH/bin:$PATH:/usr/local/go/bin
 
 # Python virtaulenv
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+
+# MS SQL Server Tools
+export PATH=$PATH:/opt/mssql-tools/bin
 
 export TERM="screen-256color"
 
