@@ -2,6 +2,7 @@
 
 ![background](~/Pictures/screenshots/background.png)
 
+
 It uses the following:
 
 - Window Manager: i3
