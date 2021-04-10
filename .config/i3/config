@@ -38,8 +38,8 @@ floating_modifier $mod
 # - terminator
 # - kitty
 # - tilix
-#bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec terminology
+bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec terminology
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -334,5 +334,5 @@ exec --no-startup-id xhost local:root
 # wallpaper
 exec --no-startup-id feh --bg-max "/home/$USER/Pictures/background.jpg"
 #start terminal on workspace 1
-#exec --no-startup-id i3-msg 'workspace $WS1; exec i3-sensible-terminal'
-exec --no-startup-id i3-msg 'workspace $WS1; exec terminology'
+exec --no-startup-id i3-msg 'workspace $WS1; exec i3-sensible-terminal'
+#exec --no-startup-id i3-msg 'workspace $WS1; exec terminology'
