@@ -1,6 +1,6 @@
 # Dotfiles for user profile
 
-![background](~/Pictures/screenshots/background.png)
+![background](./Pictures/screenshots/background.png)
 
 
 It uses the following:
