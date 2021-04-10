@@ -1,4 +1,6 @@
-# Dotfiles for user profile.
+# Dotfiles for user profile
+
+![background](~/Pictures/screenshots/background.png)
 
 It uses the following:
 
@@ -7,18 +9,19 @@ It uses the following:
 - Editor: vim/neovim + plugins
 - Shell: zsh + oh-my-zsh
 
-# Install Dependencies/Packages
+## Install Dependencies/Packages
 
-## Install with Ansible Playbooks
+### Install with Ansible Playbooks
 
 Check [this](https://github.com/bcochofel/ansible-ubuntuwst-roles) for some Ansible Playbooks you can use to install
 all the utilities.
 
 Playbooks that you should run:
-* base_utils.yml
-* i3wm.yml
 
-## Install Manually
+- base_utils.yml
+- i3wm.yml
+
+### Install Manually
 
 ```bash
 # Install Utilities
@@ -69,11 +72,11 @@ chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 ```
 
-# Install dotfiles
+## Install dotfiles
 
 The following method describes how you can use Git to keep track of your dotfiles.
 
-## Start your repository from scratch
+### Start your repository from scratch
 
 ```bash
 git init --bare $HOME/.dotfiles
@@ -82,9 +85,9 @@ gitdotfiles config --local status.showUntrackedFiles no
 echo "alias gitdotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
 ```
 
-## Install your dotfiles onto a new system (or migrate to this setup)
+### Install your dotfiles onto a new system (or migrate to this setup)
 
-### Install and configure dependencies
+#### Install and configure dependencies
 
 ```bash
 # oh-my-zsh
@@ -102,12 +105,9 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 chsh -s $(which zsh)
-
-# screenshots
-mkdir ~/Pictures/screenshots
 ```
 
-### Clone repository
+#### Clone repository
 
 ```bash
 cd
@@ -122,7 +122,7 @@ gitdotfiles config --local status.showUntrackedFiles no
 gitdotfiles status
 ```
 
-### Additional configuration
+#### Additional configuration
 
 ```bash
 # update ttf fonts cache
@@ -148,53 +148,52 @@ mkdir -p ~/.config/nvim
 ln -s ~/.vimrc ~/.config/nvim/init.vim
 ```
 
-### Gnome Keyring
+#### Gnome Keyring
 
 To configure `Gnome Keyring` for i3 follow [this](https://wiki.archlinux.org/index.php/GNOME/Keyring#With_a_display_manager)
 
-# Plugin Manager
+## Plugin Manager
 
-## Install Vim-Plug
+### Install Vim-Plug
 
-https://github.com/junegunn/vim-plug
+[vim-plug](https://github.com/junegunn/vim-plug)
 
-## Install Vundle
+### Install Vundle
 
-https://github.com/VundleVim/Vundle.vim
+[Vundle](https://github.com/VundleVim/Vundle.vim)
 
-# Useful plugins
+## Useful plugins
 
-## Look & Feel
+### Look & Feel
 
-- https://github.com/arcticicestudio/nord-vim
-- https://github.com/vim-airline/vim-airline
-- https://github.com/vim-airline/vim-airline-themes
-- https://github.com/itchyny/lightline.vim
+- [nord-vim](https://github.com/arcticicestudio/nord-vim)
+- [vim-airline](https://github.com/vim-airline/vim-airline)
+- [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes)
+- [lightline](https://github.com/itchyny/lightline.vim)
 
-## Utilities
+### Utilities
 
 - [NERDCommenter: Comment functions so powerful—no comment necessary.](https://github.com/preservim/nerdcommenter)
 - [NERDTree: a file system explorer for the Vim editor.](https://github.com/preservim/nerdtree)
 - [NERDTree-GIT: A plugin of NERDTree showing git status flags.](https://github.com/Xuyuanp/nerdtree-git-plugin)
-- [Vista.vim: Viewer and finder for LSP symbols and
-  tabs](https://github.com/liuchengxu/vista.vim)
+- [Vista.vim: Viewer and finder for LSP symbols and tabs](https://github.com/liuchengxu/vista.vim)
 - [Tagbar: a class outline viewer for Vim](https://github.com/majutsushi/tagbar)
   - Dependencies: sudo apt install exuberant-ctags
 - [FZF: A command-line fuzzy finder.](https://github.com/junegunn/fzf.vim)
 - [CtrlP: Full path fuzzy file, buffer, mru, tag, ... finder for Vim.](https://github.com/ctrlpvim/ctrlp.vim)
 - [Vim-Indent: Indent Guides is a plugin for visually displaying indent levels in Vim.](https://github.com/nathanaelkane/vim-indent-guides)
-- [SuperTab: vim plugin which allows you to use <Tab> for all your insert completion needs (:help ins-completion).](https://github.com/ervandew/supertab)
+- [SuperTab: vim plugin which allows you to use Tab for all your insert completion needs (:help ins-completion).](https://github.com/ervandew/supertab)
 - [Ack: Run your favorite search tool from Vim, with an enhanced results list.](https://github.com/mileszs/ack.vim)
   - Dependencies: sudo apt install ack-grep
 - [Vim-easy-alin: A simple, easy-to-use Vim alignment plugin.](https://github.com/junegunn/vim-easy-align)
-- [tabular: Vim script for text filtering and alignment ](https://github.com/godlygeek/tabular)
+- [tabular: Vim script for text filtering and alignment](https://github.com/godlygeek/tabular)
 - [vim-gutentags: A Vim plugin that manages your tag files](https://github.com/ludovicchabant/vim-gutentags)
 - [vim-repeat: repeat.vim: enable repeating supported plugin maps with "."](https://github.com/tpope/vim-repeat)
 - [vim-swoop: It allows you to find and replace occurrences in many buffers being aware of the context.](https://github.com/pelodelfuego/vim-swoop)
 - [vim-mark: Highlight several words in different colors simultaneously.](https://github.com/inkarkat/vim-mark)
 - [vim-tmux-navigator: Seamless navigation between tmux panes and vim splits](https://github.com/christoomey/vim-tmux-navigator)
 
-## General Programming
+### General Programming
 
 - [vim-polyglot: A solid language pack for Vim.](https://github.com/sheerun/vim-polyglot)
 - [Neomake: Asynchronous linting and make framework for Neovim/Vim](https://github.com/neomake/neomake)
@@ -211,29 +210,29 @@ https://github.com/VundleVim/Vundle.vim
   - Dependencies: pip install autopep8 yapf docformatter
 - [jedi-vim: jedi-vim - awesome Python autocompletion with VIM](https://github.com/davidhalter/jedi-vim)
 
-## GIT
+### GIT
 
 - [vim-fugitive: A Git wrapper so awesome, it should be illegal](https://github.com/tpope/vim-fugitive)
 - [vim-git: Vim Git runtime files](https://github.com/tpope/vim-git)
 
-## Tmux
+### Tmux
 
 - [vim-tmux-navigator: Navigation between tmux and vim](https://github.com/christoomey/vim-tmux-navigator)
 
-## Markdown
+### Markdown
 
 - [vim-markdown: Markdown Vim Mode](https://github.com/plasticboy/vim-markdown)
 
-## Terraform
+### Terraform
 
 - [vim-terraform: basic vim/terraform integration](https://github.com/hashivim/vim-terraform)
   - Depends: terraform binary
 
-## Ansible
+### Ansible
 
 - [vim-ansible: A vim plugin for syntax highlighting Ansible's common filetypes](https://github.com/pearofducks/ansible-vim)
 
-# References
+## References
 
 - [i3 Window manager](https://i3wm.org/)
 - [Install oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
@@ -244,4 +243,3 @@ https://github.com/VundleVim/Vundle.vim
 - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
 - [Tmux Plugins](https://tmuxcheatsheet.com/tmux-plugins-tools/)
 - [Git your dotfiles](https://www.atlassian.com/git/tutorials/dotfiles)
-
