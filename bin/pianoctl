@@ -1,8 +1,10 @@
 #!/bin/bash
 
-# Script to launch audio servers and connect nektar impact gx61
+# Script to launch audio servers and connect digital keyboards
+# prereqs: 
+# sudo apt-get install qjackctl pulseaudio-module-jack jack-tools meterbridge fluidsynth fluid-soundfont-gs
 # Usage: pianoctl <start|stop> <card>
-# card: ALSA card from cat /proc/asounds/cards
+# card: ALSA card from cat /proc/asound/cards
 #
 # To unload pulseaudio module
 # pactl list # get the owner module nr
