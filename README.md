@@ -2,7 +2,6 @@
 
 ![background](./Pictures/screenshots/background.png)
 
-
 It uses the following:
 
 - Window Manager: i3
@@ -30,8 +29,11 @@ sudo apt install -y imagemagick tree curl wget git unzip apt-file mc \
   exuberant-ctags ack-grep silversearcher-ag ripgrep golang
 
 # npm
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt install nodejs
+sudo apt-get update && sudo apt-get install -y ca-certificates curl gnupg
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+NODE_MAJOR=20
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+sudo apt-get update && sudo apt-get install nodejs -y
 
 # yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
