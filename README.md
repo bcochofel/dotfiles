@@ -35,11 +35,6 @@ NODE_MAJOR=20
 echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
 sudo apt-get update && sudo apt-get install nodejs -y
 
-# yarn
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list
-sudo apt update && sudo apt install yarn
-
 # Install i3 Window Manager
 sudo apt install -y i3 i3blocks i3lock i3lock-fancy i3status xautolock conky feh rofi \
   gnome-control-center gnome-screensaver scrot pulseaudio-utils xbacklight python-dbus
@@ -62,7 +57,7 @@ sudo apt install -y neovim
 sudo pip3 install pynvim flake8 pylint isort yamllint ansible-lint jedi \
   autopep8 yapf docformatter proselint saws autorandr virtualenvwrapper
 
-sudo npm i -g eslint eslint-plugin-vue
+sudo npm install --global eslint eslint-plugin-vue yarn
 
 # Terraform tflint
 # https://github.com/terraform-linters/tflint
