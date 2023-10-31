@@ -45,6 +45,7 @@ sudo apt install -y zsh zsh-syntax-highlighting ttf-ancient-fonts fonts-powerlin
 
 # Install terminal emulators
 sudo apt install -y terminator tilix tmux
+# tilix VTE: https://gnunn1.github.io/tilix-web/manual/vteconfig/
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 
 # Install Vim and plugin dependencies
