@@ -75,39 +75,39 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 " ------
 " Vue.js
 " ------
-Plug 'posva/vim-vue'
+"Plug 'posva/vim-vue'
 
 " ----
 " rego
 " ----
-Plug 'tsandall/vim-rego'
+"Plug 'tsandall/vim-rego'
 
 " ----
 " TMux
 " ----
-Plug 'christoomey/vim-tmux-navigator'
+"Plug 'christoomey/vim-tmux-navigator'
 
 " ---------------
 " Code completion
 " ---------------
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'zchee/deoplete-go', { 'do': 'make' }
+"if has('nvim')
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
+"else
+"  Plug 'Shougo/deoplete.nvim'
+"  Plug 'roxma/nvim-yarp'
+"  Plug 'roxma/vim-hug-neovim-rpc'
+"endif
+"Plug 'zchee/deoplete-go', { 'do': 'make' }
 " Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
 " do not forget to install jedi
-Plug 'deoplete-plugins/deoplete-jedi'
+"Plug 'deoplete-plugins/deoplete-jedi'
 
 call plug#end()
 
-let g:deoplete#enable_at_startup = 1
-let g:go_def_mode = "gopls"
-let g:go_info_mode='guru'
-let g:go_auto_type_info='gopls'
+"let g:deoplete#enable_at_startup = 1
+"let g:go_def_mode = "gopls"
+"let g:go_info_mode='guru'
+"let g:go_auto_type_info='gopls'
 " go get -u github.com/mdempsky/gocode
 " let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
@@ -425,7 +425,7 @@ let g:ansible_attribute_highlight = "ob"
 
 " toggle paste mode
 
-set pastetoggle=<F2>
+"set pastetoggle=<F2>
 
 " better completeopt
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"

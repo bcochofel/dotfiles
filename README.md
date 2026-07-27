@@ -4,7 +4,6 @@
 
 It uses the following:
 
-- Window Manager: i3
 - Linux terminal: terminator/kitty/tilix
 - Editor: vim/neovim + plugins
 - Shell: zsh + oh-my-zsh
@@ -15,22 +14,19 @@ It uses the following:
 # Install Utilities
 sudo apt-get update
 sudo apt install -y imagemagick tree curl wget git unzip apt-file mc curl \
-  exuberant-ctags ack-grep silversearcher-ag ripgrep golang ca-certificates \
-  gnupg traceroute net-tools
-
-# Install zsh
-sudo apt install -y zsh zsh-syntax-highlighting fonts-ancient-scripts fonts-powerline fonts-font-awesome
+  exuberant-ctags ack silversearcher-ag ripgrep golang ca-certificates \
+  gnupg traceroute net-tools make vim neovim python3 python3-pip python3-venv \
+  zsh zsh-syntax-highlighting fonts-ancient-scripts fonts-powerline fonts-font-awesome
 
 # Install terminal emulators
 sudo apt install -y terminator tilix tmux
 # tilix VTE: https://gnunn1.github.io/tilix-web/manual/vteconfig/
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 
-# Install Vim and Neovim 
-sudo apt install -y vim neovim
-
-# Install plugin dependencies
-sudo apt install -y exuberant-ctags ack silversearcher-ag
+sudo apt install pipx
+pipx install checkov
+pipx install pre-commit
+pipx ensurepath
 ```
 
 ## Install dotfiles
