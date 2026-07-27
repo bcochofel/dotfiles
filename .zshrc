@@ -135,7 +135,7 @@ plugins=(
 #   git-prompt
 #   golang
 #   python
-  virtualenvwrapper
+#  virtualenvwrapper
 )
 
 # ssh-agent plugin setting
@@ -234,22 +234,8 @@ export PATH=$PATH:/opt/mssql-tools/bin
 
 export TERM="screen-256color"
 
-# Hashicorp Stack
-#export NOMAD_ADDR=http://server-1:4646
-#export VAULT_ADDR=http://server-1:8200
-complete -o nospace -C /usr/local/bin/terraform terraform
-complete -o nospace -C /usr/local/bin/vault vault
-complete -o nospace -C /usr/local/bin/nomad nomad
-complete -o nospace -C /usr/local/bin/consul consul
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # set word chars
 WORDCHARS='*?_-.|[]~=&;!#$%^(){}<>'
-
-# Kubectl Autocomplete
-[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
-
-# stern autocomplete
-[[ /usr/local/bin/stern ]] && source <(stern --completion=zsh)

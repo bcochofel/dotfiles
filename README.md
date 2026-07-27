@@ -11,65 +11,26 @@ It uses the following:
 
 ## Install Dependencies/Packages
 
-### Install with Ansible Playbooks
-
-Check [this](https://github.com/bcochofel/ansible-ubuntuwst-roles) for some Ansible Playbooks you can use to install
-all the utilities.
-
-Playbooks that you should run:
-
-- base_utils.yml
-- i3wm.yml
-
-### Install Manually
-
 ```bash
 # Install Utilities
 sudo apt-get update
 sudo apt install -y imagemagick tree curl wget git unzip apt-file mc curl \
   exuberant-ctags ack-grep silversearcher-ag ripgrep golang ca-certificates \
-  gnupg traceroute net-tools salt-minion
-
-# npm
-curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-NODE_MAJOR=20
-echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
-sudo apt-get update && sudo apt-get install nodejs -y
-
-# Install i3 Window Manager
-sudo apt install -y i3 i3blocks i3lock i3lock-fancy i3status xautolock conky feh rofi \
-  gnome-control-center gnome-screensaver scrot pulseaudio-utils xbacklight
+  gnupg traceroute net-tools
 
 # Install zsh
-sudo apt install -y zsh zsh-syntax-highlighting ttf-ancient-fonts fonts-powerline fonts-font-awesome
+sudo apt install -y zsh zsh-syntax-highlighting fonts-ancient-scripts fonts-powerline fonts-font-awesome
 
 # Install terminal emulators
 sudo apt install -y terminator tilix tmux
 # tilix VTE: https://gnunn1.github.io/tilix-web/manual/vteconfig/
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 
-# Install Vim and plugin dependencies
-sudo apt install -y vim
-sudo apt install -y python3-pip exuberant-ctags ack-grep silversearcher-ag
+# Install Vim and Neovim 
+sudo apt install -y vim neovim
 
-## Install neovim
-sudo apt install -y neovim
-
-# Install the following linters/fixers
-pip install --user pynvim flake8 pylint isort yamllint ansible-lint jedi \
-  autopep8 yapf docformatter proselint saws autorandr virtualenvwrapper pre-commit
-
-sudo npm install --global eslint eslint-plugin-vue yarn
-
-# Terraform tflint
-# https://github.com/terraform-linters/tflint
-curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o tflint.zip && unzip tflint.zip && rm tflint.zip
-sudo mv tflint /usr/local/bin
-
-# Install kubectl
-curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
-chmod +x ./kubectl
-sudo mv ./kubectl /usr/local/bin/kubectl
+# Install plugin dependencies
+sudo apt install -y exuberant-ctags ack silversearcher-ag
 ```
 
 ## Install dotfiles
@@ -136,12 +97,6 @@ tmux start-server
 tmux new-session -d
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 tmux kill-server
-
-# kubectx and kubens
-mkdir -p ~/.oh-my-zsh/completions
-chmod -R 755 ~/.oh-my-zsh/completions
-ln -s ~/bin/kubectx.zsh ~/.oh-my-zsh/completions/_kubectx.zsh
-ln -s ~/bin/kubens.zsh ~/.oh-my-zsh/completions/_kubens.zsh
 
 # create symbolic link for neovim config
 mkdir -p ~/.config/nvim
