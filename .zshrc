@@ -126,6 +126,7 @@ HIST_STAMPS="mm/dd/yyyy"
 plugins=(
   ssh-agent
   zsh-autosuggestions
+  virtualenv
 #   colorize
 #   aws
 #   ansible
@@ -226,8 +227,20 @@ export MC_SKIN=/home/bcochofel/.mc/lib/solarized.ini
 export GOPATH=~/go
 export PATH=$GOPATH/bin:$PATH:/usr/local/go/bin
 
-# Python virtaulenv
-export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+# Auto-activate/deactivate a project-local .venv when moving in/out of its
+# directory. Neither oh-my-zsh's python/virtualenv/virtualenvwrapper plugins
+# nor p10k do this on their own; p10k only displays $VIRTUAL_ENV once set.
+autoload -Uz add-zsh-hook
+_auto_venv() {
+  if [[ -n "$VIRTUAL_ENV" && "$PWD" != "${VIRTUAL_ENV:h}"* ]]; then
+    deactivate
+  fi
+  if [[ -z "$VIRTUAL_ENV" && -f ".venv/bin/activate" ]]; then
+    source ".venv/bin/activate"
+  fi
+}
+add-zsh-hook chpwd _auto_venv
+_auto_venv
 
 # MS SQL Server Tools
 export PATH=$PATH:/opt/mssql-tools/bin

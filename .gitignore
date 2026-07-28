@@ -2,3 +2,6 @@
 
 # intellij
 .idea
+
+# claude code
+.claude
