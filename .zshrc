@@ -252,3 +252,6 @@ export TERM="screen-256color"
 
 # set word chars
 WORDCHARS='*?_-.|[]~=&;!#$%^(){}<>'
+
+# direnv
+eval "$(direnv hook zsh)"
