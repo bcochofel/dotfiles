@@ -14,7 +14,7 @@ It uses the following:
 # Install Utilities
 sudo apt-get update
 sudo apt install -y imagemagick tree curl wget git unzip apt-file mc curl \
-  exuberant-ctags ack silversearcher-ag ripgrep golang ca-certificates \
+  exuberant-ctags ack silversearcher-ag ripgrep golang ca-certificates age \
   gnupg traceroute net-tools make vim neovim python3 python3-pip python3-venv \
   zsh zsh-syntax-highlighting fonts-ancient-scripts fonts-powerline fonts-font-awesome
 
