@@ -255,6 +255,3 @@ WORDCHARS='*?_-.|[]~=&;!#$%^(){}<>'
 
 # direnv
 eval "$(direnv hook zsh)"
-
-# SOPS
-export SOPS_CONFIG="$HOME/.config/sops/.sops.yaml"
